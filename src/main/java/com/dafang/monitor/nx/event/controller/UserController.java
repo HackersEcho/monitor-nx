@@ -30,7 +30,7 @@ public class UserController {
     private UserService userService;
     @ApiOperation("通过id用户")
     @GetMapping("/findById/{id}")
-    public User findById(@ApiParam("主键id") int id) {
+    public User findById(@ApiParam("主键id") @RequestParam("id") int id) {
         User user = userService.findById(id);
         return user;
     }
@@ -66,16 +66,16 @@ public class UserController {
 //        user.setName("李四");
 //        userService.update(user);
 //    }
-    @ApiOperation("测试接口")
-    @ApiResponses(value = {
-            @ApiResponse(code = 1000, message = "成功"),
-            @ApiResponse(code = 1001, message = "失败"),
-            @ApiResponse(code = 1002, message = "缺少参数")})
-    @RequestMapping(value = "/demo3", method = RequestMethod.POST)
-    public String demo3(@ApiParam("电影名称") @RequestParam("filmName") String filmName,
-                        @ApiParam(value = "分数", allowEmptyValue = true) @RequestParam("score") Short score,
-                        @ApiParam("发布时间") @RequestParam(value = "publishTime", required = false) String publishTime,
-                        @ApiParam("创建者id") @RequestParam("creatorId") Long creatorId) {
-        return "ccc";
-    }
+//    @ApiOperation("测试接口")
+//    @ApiResponses(value = {
+//            @ApiResponse(code = 1000, message = "成功"),
+//            @ApiResponse(code = 1001, message = "失败"),
+//            @ApiResponse(code = 1002, message = "缺少参数")})
+//    @RequestMapping(value = "/demo3", method = RequestMethod.POST)
+//    public String demo3(@ApiParam("电影名称") @RequestParam("filmName") String filmName,
+//                        @ApiParam(value = "分数", allowEmptyValue = true) @RequestParam("score") Short score,
+//                        @ApiParam("发布时间") @RequestParam(value = "publishTime", required = false) String publishTime,
+//                        @ApiParam("创建者id") @RequestParam("creatorId") Long creatorId) {
+//        return "ccc";
+//    }
 }

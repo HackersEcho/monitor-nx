@@ -7,7 +7,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @EnableSwagger2
-@MapperScan("com.dafang.monitor.nx.event.mapper")
+@MapperScan("com.dafang.monitor.nx.*.mapper")
 public class MonitorNxApplication {
 
     public static void main(String[] args) {

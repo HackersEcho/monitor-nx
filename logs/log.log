@@ -5468,3 +5468,469 @@ java.lang.NumberFormatException: For input string: ""
 2020-03-09 18:18:33.923  INFO 22396 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2020-03-09 18:18:33.927  INFO 22396 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
 2020-03-09 18:18:33.931  INFO 22396 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-03-18 16:38:33.298  INFO 10284 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on LAPTOP-66TF1FKC with PID 10284 (E:\ideaCode\monitor-nx\target\classes started by huawei in E:\ideaCode\monitor-nx)
+2020-03-18 16:38:33.301 DEBUG 10284 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-03-18 16:38:33.301  INFO 10284 --- [main] c.d.monitor.nx.MonitorNxApplication      : No active profile set, falling back to default profiles: default
+2020-03-18 16:38:34.516  INFO 10284 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-18 16:38:34.525  INFO 10284 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-18 16:38:34.526  INFO 10284 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-18 16:38:34.628  INFO 10284 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-18 16:38:34.628  INFO 10284 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1284 ms
+2020-03-18 16:38:34.706  INFO 10284 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-03-18 16:38:40.350  INFO 10284 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-03-18 16:38:40.929  INFO 10284 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-03-18 16:38:40.997  INFO 10284 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-18 16:38:41.128  INFO 10284 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-03-18 16:38:41.128  INFO 10284 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-03-18 16:38:41.129  INFO 10284 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-03-18 16:38:41.129  INFO 10284 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-03-18 16:38:41.152  INFO 10284 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-03-18 16:38:41.169  INFO 10284 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 2 custom documentation plugin(s)
+2020-03-18 16:38:41.194  INFO 10284 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-03-18 16:38:41.861  INFO 10284 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-03-18 16:38:41.865  INFO 10284 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllUsingGET_1
+2020-03-18 16:38:41.868  INFO 10284 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByIdUsingGET_1
+2020-03-18 16:38:41.869  INFO 10284 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: insertUsingPOST_1
+2020-03-18 16:38:42.346  INFO 10284 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-18 16:38:42.349  INFO 10284 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 9.395 seconds (JVM running for 11.323)
+2020-03-18 16:39:24.569  INFO 10284 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-18 16:39:24.569  INFO 10284 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-18 16:39:24.588  INFO 10284 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-03-18 16:39:43.404  WARN 10284 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-03-18 16:39:43.485  WARN 10284 --- [http-nio-8080-exec-7] i.s.m.p.AbstractSerializableParameter    : Illegal DefaultValue null for parameter type integer
+
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68) ~[na:na]
+	at java.base/java.lang.Long.parseLong(Long.java:709) ~[na:na]
+	at java.base/java.lang.Long.valueOf(Long.java:1151) ~[na:na]
+	at io.swagger.models.parameters.AbstractSerializableParameter.getExample(AbstractSerializableParameter.java:412) ~[swagger-models-1.5.20.jar:1.5.20]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:688) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serializeFields(MapSerializer.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:643) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:33) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ObjectMapper._configAndWriteValue(ObjectMapper.java:4094) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3404) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at springfox.documentation.spring.web.json.JsonSerializer.toJson(JsonSerializer.java:38) ~[springfox-spring-web-2.9.2.jar:null]
+	at springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(Swagger2Controller.java:105) ~[springfox-swagger2-2.9.2.jar:null]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1639) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.base/java.lang.Thread.run(Thread.java:830) ~[na:na]
+
+2020-03-18 16:40:25.033  WARN 10284 --- [http-nio-8080-exec-5] i.s.m.p.AbstractSerializableParameter    : Illegal DefaultValue null for parameter type integer
+
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68) ~[na:na]
+	at java.base/java.lang.Long.parseLong(Long.java:709) ~[na:na]
+	at java.base/java.lang.Long.valueOf(Long.java:1151) ~[na:na]
+	at io.swagger.models.parameters.AbstractSerializableParameter.getExample(AbstractSerializableParameter.java:412) ~[swagger-models-1.5.20.jar:1.5.20]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:688) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serializeFields(MapSerializer.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:643) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:33) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ObjectMapper._configAndWriteValue(ObjectMapper.java:4094) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3404) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at springfox.documentation.spring.web.json.JsonSerializer.toJson(JsonSerializer.java:38) ~[springfox-spring-web-2.9.2.jar:null]
+	at springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(Swagger2Controller.java:105) ~[springfox-swagger2-2.9.2.jar:null]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1639) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.base/java.lang.Thread.run(Thread.java:830) ~[na:na]
+
+2020-03-18 16:42:31.435  INFO 10284 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-18 16:42:31.438  INFO 10284 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-03-18 16:42:31.446  INFO 10284 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-03-18 16:43:30.428  INFO 11520 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on LAPTOP-66TF1FKC with PID 11520 (E:\ideaCode\monitor-nx\target\classes started by huawei in E:\ideaCode\monitor-nx)
+2020-03-18 16:43:30.431 DEBUG 11520 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-03-18 16:43:30.432  INFO 11520 --- [main] c.d.monitor.nx.MonitorNxApplication      : No active profile set, falling back to default profiles: default
+2020-03-18 16:43:31.535  INFO 11520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-18 16:43:31.543  INFO 11520 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-18 16:43:31.543  INFO 11520 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-18 16:43:31.634  INFO 11520 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-18 16:43:31.635  INFO 11520 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1152 ms
+2020-03-18 16:43:31.700  INFO 11520 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-03-18 16:43:33.265  INFO 11520 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-03-18 16:43:33.819  INFO 11520 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-03-18 16:43:33.882  INFO 11520 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-18 16:43:33.998  INFO 11520 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-03-18 16:43:33.999  INFO 11520 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-03-18 16:43:33.999  INFO 11520 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-03-18 16:43:33.999  INFO 11520 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-03-18 16:43:34.022  INFO 11520 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-03-18 16:43:34.037  INFO 11520 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 2 custom documentation plugin(s)
+2020-03-18 16:43:34.062  INFO 11520 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-03-18 16:43:34.732  INFO 11520 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-03-18 16:43:34.735  INFO 11520 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllUsingGET_1
+2020-03-18 16:43:34.739  INFO 11520 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByIdUsingGET_1
+2020-03-18 16:43:34.740  INFO 11520 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: insertUsingPOST_1
+2020-03-18 16:43:35.201  INFO 11520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-18 16:43:35.204  INFO 11520 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 5.178 seconds (JVM running for 6.598)
+2020-03-18 16:43:45.913  INFO 11520 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-18 16:43:45.914  INFO 11520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-18 16:43:45.922  INFO 11520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-03-18 16:43:46.543  WARN 11520 --- [http-nio-8080-exec-5] i.s.m.p.AbstractSerializableParameter    : Illegal DefaultValue null for parameter type integer
+
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68) ~[na:na]
+	at java.base/java.lang.Long.parseLong(Long.java:709) ~[na:na]
+	at java.base/java.lang.Long.valueOf(Long.java:1151) ~[na:na]
+	at io.swagger.models.parameters.AbstractSerializableParameter.getExample(AbstractSerializableParameter.java:412) ~[swagger-models-1.5.20.jar:1.5.20]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:688) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serializeFields(MapSerializer.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:643) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:33) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ObjectMapper._configAndWriteValue(ObjectMapper.java:4094) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3404) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at springfox.documentation.spring.web.json.JsonSerializer.toJson(JsonSerializer.java:38) ~[springfox-spring-web-2.9.2.jar:null]
+	at springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(Swagger2Controller.java:105) ~[springfox-swagger2-2.9.2.jar:null]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1639) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.base/java.lang.Thread.run(Thread.java:830) ~[na:na]
+
+2020-03-18 16:45:19.466  INFO 11520 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-18 16:45:19.468  INFO 11520 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-03-18 16:45:19.476  INFO 11520 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-03-18 16:45:25.318  INFO 2080 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on LAPTOP-66TF1FKC with PID 2080 (E:\ideaCode\monitor-nx\target\classes started by huawei in E:\ideaCode\monitor-nx)
+2020-03-18 16:45:25.321 DEBUG 2080 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-03-18 16:45:25.322  INFO 2080 --- [main] c.d.monitor.nx.MonitorNxApplication      : No active profile set, falling back to default profiles: default
+2020-03-18 16:45:26.379  INFO 2080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-18 16:45:26.386  INFO 2080 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-18 16:45:26.386  INFO 2080 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-18 16:45:26.485  INFO 2080 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-18 16:45:26.486  INFO 2080 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1118 ms
+2020-03-18 16:45:26.551  INFO 2080 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-03-18 16:45:28.152  INFO 2080 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-03-18 16:45:28.654  INFO 2080 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-03-18 16:45:28.722  INFO 2080 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-18 16:45:28.840  INFO 2080 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-03-18 16:45:28.841  INFO 2080 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-03-18 16:45:28.842  INFO 2080 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-03-18 16:45:28.842  INFO 2080 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-03-18 16:45:28.869  INFO 2080 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-03-18 16:45:28.892  INFO 2080 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 2 custom documentation plugin(s)
+2020-03-18 16:45:28.922  INFO 2080 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-03-18 16:45:29.627  INFO 2080 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-03-18 16:45:29.632  INFO 2080 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllUsingGET_1
+2020-03-18 16:45:29.636  INFO 2080 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByIdUsingGET_1
+2020-03-18 16:45:29.637  INFO 2080 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: insertUsingPOST_1
+2020-03-18 16:45:30.211  INFO 2080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-18 16:45:30.214  INFO 2080 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 5.287 seconds (JVM running for 6.772)
+2020-03-18 16:45:37.602  INFO 2080 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-18 16:45:37.603  INFO 2080 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-18 16:45:37.607  INFO 2080 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-03-18 16:45:37.998  WARN 2080 --- [http-nio-8080-exec-7] i.s.m.p.AbstractSerializableParameter    : Illegal DefaultValue null for parameter type integer
+
+java.lang.NumberFormatException: For input string: ""
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68) ~[na:na]
+	at java.base/java.lang.Long.parseLong(Long.java:709) ~[na:na]
+	at java.base/java.lang.Long.valueOf(Long.java:1151) ~[na:na]
+	at io.swagger.models.parameters.AbstractSerializableParameter.getExample(AbstractSerializableParameter.java:412) ~[swagger-models-1.5.20.jar:1.5.20]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:688) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serializeFields(MapSerializer.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:643) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:33) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:722) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ObjectMapper._configAndWriteValue(ObjectMapper.java:4094) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3404) ~[jackson-databind-2.10.2.jar:2.10.2]
+	at springfox.documentation.spring.web.json.JsonSerializer.toJson(JsonSerializer.java:38) ~[springfox-spring-web-2.9.2.jar:null]
+	at springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(Swagger2Controller.java:105) ~[springfox-swagger2-2.9.2.jar:null]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1639) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.base/java.lang.Thread.run(Thread.java:830) ~[na:na]
+
+2020-03-18 16:53:03.452  INFO 2080 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-18 16:53:03.454  INFO 2080 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-03-18 16:53:03.462  INFO 2080 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-03-18 16:54:02.954  INFO 9860 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on LAPTOP-66TF1FKC with PID 9860 (E:\ideaCode\monitor-nx\target\classes started by huawei in E:\ideaCode\monitor-nx)
+2020-03-18 16:54:02.956 DEBUG 9860 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-03-18 16:54:02.957  INFO 9860 --- [main] c.d.monitor.nx.MonitorNxApplication      : No active profile set, falling back to default profiles: default
+2020-03-18 16:54:04.046  INFO 9860 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-18 16:54:04.053  INFO 9860 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-18 16:54:04.054  INFO 9860 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-18 16:54:04.139  INFO 9860 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-18 16:54:04.139  INFO 9860 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1137 ms
+2020-03-18 16:54:04.210  INFO 9860 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-03-18 16:54:05.756  INFO 9860 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-03-18 16:54:06.282  INFO 9860 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-03-18 16:54:06.343  INFO 9860 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-18 16:54:06.460  INFO 9860 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-03-18 16:54:06.461  INFO 9860 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-03-18 16:54:06.462  INFO 9860 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-03-18 16:54:06.462  INFO 9860 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-03-18 16:54:06.487  INFO 9860 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-03-18 16:54:06.501  INFO 9860 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 2 custom documentation plugin(s)
+2020-03-18 16:54:06.524  INFO 9860 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-03-18 16:54:07.185  INFO 9860 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-03-18 16:54:07.188  INFO 9860 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllUsingGET_1
+2020-03-18 16:54:07.191  INFO 9860 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByIdUsingGET_1
+2020-03-18 16:54:07.192  INFO 9860 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: insertUsingPOST_1
+2020-03-18 16:54:07.680  INFO 9860 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-18 16:54:07.682  INFO 9860 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 5.123 seconds (JVM running for 7.394)
+2020-03-18 16:54:18.335  INFO 9860 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-18 16:54:18.336  INFO 9860 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-03-18 16:54:18.343  INFO 9860 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
