@@ -1,11 +1,12 @@
 package com.dafang.monitor.nx.event.mapper;
 
 import com.dafang.monitor.nx.event.entity.po.User;
-import tk.mybatis.mapper.common.Mapper;
+import org.apache.ibatis.annotations.Mapper;
+import tk.mybatis.MyMapper;
 
 import java.util.List;
-
-public interface UserMapper extends Mapper<User> {
+@Mapper
+public interface UserMapper extends MyMapper<User> {
 
     public void insertUser(User user);
 

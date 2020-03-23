@@ -31,7 +31,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("数据统计")
                 .select()
-//                .apis(RequestHandlerSelectors.basePackage("com.dafang.monitor.nx.statistics.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.dafang.monitor.nx.statistics.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
