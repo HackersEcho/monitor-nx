@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.statistics.mapper.DaysMapper">
+
+    <!--  同期日数统计  -->
+    <select id="periodDays" parameterType="DailyParam" resultType="Daily">
+        <choose>
+            <when test="sT !=null and sT &lt; eT">select t.stationNO,b.station_name as stationName,b.latitude,b.longitude,COUNT(1) AS val,YEAR(ObserverTime) as year
+                <include refid="Common.notCrossYearSql"></include>
+            GROUP BY stationNo,YEAR(ObserverTime)
+            </when>
+        <otherwise>
+            SELECT year,sum(val) as val,stationNo,stationName,longitude,latitude FROM (
+            select t.stationNo,b.station_name as stationName,b.latitude,b.longitude,COUNT(1) AS val,YEAR(ObserverTime) as year
+                <include refid="Common.crossYearProfixSql"></include>
+            GROUP BY stationNo,YEAR(ObserverTime)
+            UNION ALL
+            select t.stationNo,b.station_name as stationName,b.latitude,b.longitude,COUNT(1) AS val,YEAR(ObserverTime)-1 as year
+            <include refid="Common.crossYearSuffixSql"></include>
+            GROUP BY stationNo,YEAR(ObserverTime) )t GROUP BY stationNo,year
+        </otherwise>
+    </choose>
+    </select>
+    <!--  连续日数统计  -->
+    <select id="continuousDays" parameterType="DailyParam" resultType="Daily">
+        select t.stationNO,b.station_name as stationName,b.latitude,b.longitude,COUNT(1) AS val,YEAR(ObserverTime) as year
+        <include refid="Common.notCrossYearSql"></include>
+        GROUP BY stationNo,YEAR(ObserverTime)
+    </select>
+
+</mapper>

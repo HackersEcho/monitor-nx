@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Common">
+    <!--
+       1-天气现象码不为空的时候查询t_mete_ns_day_wea 否则查询日表
+       2-当sT月日不为空的时候查询同期  否则查询连续
+   -->
+    <sql id="notCrossYearSql">
+        from
+        <choose>
+            <when test="code == null or code == ''">t_mete_ns_day_data t</when>
+            <otherwise>t_mete_ns_day_wea t</otherwise><!--天气现象-->
+        </choose>
+        join t_mete_station b ON t.stationNo = b.device_id where ${condition}
+        and
+        <choose>
+            <when test="sT != null">DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and #{eT} and</when><!--同期-->
+            <otherwise>t.ObserverTime between #{startDate} and #{endDate} and</otherwise>
+        </choose>
+        <choose>
+            <when test="code == null or code == ''">t.${element} between #{min} and #{max}</when>
+            <otherwise>t.wep_code = #{code}</otherwise>
+        </choose>
+    </sql>
+<!--    跨年sql prefix(0101-sT)  suffix(et-1231)-->
+    <sql id="crossYearProfixSql">
+        from
+        <choose>
+            <when test="code == null or code == ''">t_mete_ns_day_data t</when>
+            <otherwise>t_mete_ns_day_wea t</otherwise><!--天气现象-->
+        </choose>
+        join t_mete_station b ON t.stationNo = b.device_id where ${condition}
+        and
+        DATE_FORMAT(t.ObserverTime,'%m%d')  between '0101' and #{eT} and
+        <choose>
+            <when test="code == null or code == ''">t.${element} between #{min} and #{max}</when>
+            <otherwise>t.wep_code = #{code}</otherwise>
+        </choose>
+    </sql>
+    <sql id="crossYearSuffixSql">
+        from
+        <choose>
+            <when test="code == null or code == ''">t_mete_ns_day_data t</when>
+            <otherwise>t_mete_ns_day_wea t</otherwise><!--天气现象-->
+        </choose>
+        join t_mete_station b ON t.stationNo = b.device_id where ${condition}
+        and
+        DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and '1231' and
+        <choose>
+            <when test="code == null or code == ''">t.${element} between #{min} and #{max}</when>
+            <otherwise>t.wep_code = #{code}</otherwise>
+        </choose>
+    </sql>
+</mapper>
