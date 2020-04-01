@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.accessment.mapper.HumanComfortMapper">
+    <!--连续舒适度指数查询-->
+    <select id="findContinueComfortValue" parameterType="ComfortParam" resultType="Comfort">
+         select
+            t2.station_name as stationName,
+            t1.stationNo,
+            t2.longitude,
+            t2.latitude,
+            t1.ObserverTime,
+            t1.index_value as indexValue,
+            t1.comfort_type as comfortType
+        from
+            base_comfort_index t1
+        join
+            geography_station_info t2
+        on
+            t1.stationNo = t2.device_id
+        where
+            t1.stationNo in (#{regions}) and
+            t1.ObserverTime between #{startDate} and #{endDate} and
+            t1.comfort_type = #{comfortType}
+    </select>
+    <!--同期舒适度指数查询-->
+    <select id="findPeriodComfortValue" parameterType="ComfortParam" resultType="Comfort">
+        <choose>
+            <when test="sT != null and sT &lt; eT">
+                select * from
+                    (select
+                    t2.station_name as stationName,
+                    t1.stationNo,
+                    t2.longitude,
+                    t2.latitude,
+                    t1.ObserverTime,
+                    Year(t1.ObserverTime) as year,
+                    t1.index_value as indexValue,
+                    t1.comfort_type as comfortType
+                    from
+                    base_comfort_index t1
+                    join
+                    geography_station_info t2
+                    on
+                    t1.stationNo = t2.device_id
+                    where
+                    t1.stationNo in (#{regions}) and
+                    date_format(t1.ObserverTime,"%M%d") between #{sT} and '1231' and
+                    t1.comfort_type = #{comfortType}
+                    group by
+                    t1.stationNo,Year(t1.ObserverTime)
+                    union all
+                    select
+                    t2.station_name as stationName,
+                    t1.stationNo,
+                    t2.longitude,
+                    t2.latitude,
+                    t1.ObserverTime,
+                    Year(t1.ObserverTime)-1 as year,
+                    t1.index_value as indexValue,
+                    t1.comfort_type as comfortType
+                    from
+                    base_comfort_index t1
+                    join
+                    geography_station_info t2
+                    on
+                    t1.stationNo = t2.device_id
+                    where
+                    t1.stationNo in (#{regions}) and
+                    date_format(t1.ObserverTime,"%M%d") between '0101' and #{eT} and
+                    t1.comfort_type = #{comfortType}
+                    group by
+                    t1.stationNo,Year(t1.ObserverTime)) tt
+                order by
+                tt.stationNo,tt.year
+            </when>
+            <otherwise>
+                select
+                t2.station_name as stationName,
+                t1.stationNo,
+                t2.longitude,
+                t2.latitude,
+                t1.ObserverTime,
+                Year(t1.ObserverTime) as year,
+                t1.index_value as indexValue,
+                t1.comfort_type as comfortType
+                from
+                base_comfort_index t1
+                join
+                geography_station_info t2
+                on
+                t1.stationNo = t2.device_id
+                where
+                t1.stationNo in (#{regions}) and
+                date_format(t1.ObserverTime,"%M%d") between #{sT} and #{eT} and
+                t1.comfort_type = #{comfortType}
+                group by
+                t1.stationNo,Year(t1.ObserverTime)
+            </otherwise>
+        </choose>
+    </select>
+</mapper>
