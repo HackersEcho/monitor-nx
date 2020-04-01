@@ -36,6 +36,15 @@ public class Swagger2Config {
                 .build();
     }
     @Bean
+    public Docket createRestApi3() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("气候评价")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.dafang.monitor.nx.accessment.controller"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+    @Bean
     public ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("宁夏API文档")//接口文档主题
