@@ -41,7 +41,7 @@ public class HumanComfortController {
     }
     @PostMapping(value = "periodList")
     @ApiOperation(value = "同期舒适度指数",notes = "人体舒适度")
-    public List<Map<String,Object>> periodList(@Apicp("regions,startDate,endDate,climateScale,comfortType") @RequestBody ComfortParam params){
+    public List<Map<String,Object>> periodList(@RequestBody ComfortParam params){
         params.setST(params.getStartDate().substring(4));
         params.setET(params.getEndDate().substring(4));
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
