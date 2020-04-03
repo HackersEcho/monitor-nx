@@ -13,10 +13,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class HumanComfortControllerTest {
     @Autowired
     private HumanComfortController controller;
+    //同期舒适度指数
     @Test
-    void queryHumanComfort(){
-        ComfortParam build = ComfortParam.builder().startDate("20190501").regions("53517").endDate("20190601").comfortType(1).build();
-//        controller.queryHumanComfort(build);
+    void queryPeriodHumanComfort(){
+        ComfortParam build = ComfortParam.builder().startDate("20190501").regions("53517").endDate("20190601").climateScale("1981-2010").comfortType("1").build();
+        controller.periodList(build);
     }
 
 }

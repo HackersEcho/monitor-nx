@@ -24,7 +24,7 @@ public class Comfort implements Serializable {
     //纬度
     private String latitude;
     //时间（JsonFormat保证前后端数据格式一致）
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyyMMdd")
     private LocalDate observerTime;
     //年份
     private Integer year;
