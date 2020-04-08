@@ -26,7 +26,7 @@ public class ComfortParam implements Serializable {
     private String endDate;
     @ApiModelProperty(name = "climateScale",value = "常年值区间",example = "1981-2010")
     private String climateScale;
-    @ApiModelProperty(value = "指数类型（1：温湿指数  2：风寒指数 3：着衣指数 4：综合舒适指数）",example = "1")
+    @ApiModelProperty(value = "指数类型（1：温湿指数  2：风寒指数 3：着衣指数 4：综合舒适指数 5：人体舒适度指数）",example = "1")
     private String comfortType;
     @ApiModelProperty(value = "通过startDate得到开始时间的月日  用于查询同期时需要用到",hidden = true)
     @JsonIgnore

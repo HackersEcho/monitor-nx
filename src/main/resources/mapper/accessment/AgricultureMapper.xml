@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.accessment.mapper.AgricultureMapper">
+    <!--查询时间段内气温、降水、日照常年值-->
+    <select id="baseDataList" parameterType="AgricultureParam" resultType="Agriculture">
+        select
+        t.stationNo,b.station_name as stationName,b.longitude,b.latitude,t.ObserverTime,t.Years as year,
+        t.TEM_Avg as temAvg,t.TEM_Max as temMax,t.TEM_Min as temMin,t.PRE_Time_2020 as pre,t.SSH as ssh
+        from
+        base_day_data t
+        join geography_station_info  b ON t.stationNo = b.device_id where ${condition}
+        and
+        DATE_FORMAT(t.ObserverTime,'%m%d') between #{startMonthDay} and #{endMonthDay}
+    </select>
+
+</mapper>

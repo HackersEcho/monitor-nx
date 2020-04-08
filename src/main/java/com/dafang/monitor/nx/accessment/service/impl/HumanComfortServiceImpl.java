@@ -1,7 +1,6 @@
 package com.dafang.monitor.nx.accessment.service.impl;
 
 import cn.hutool.core.convert.Convert;
-import cn.hutool.core.util.NumberUtil;
 import com.dafang.monitor.nx.accessment.entity.emun.ComfortLevelEnum;
 import com.dafang.monitor.nx.accessment.entity.po.Comfort;
 import com.dafang.monitor.nx.accessment.entity.po.ComfortParam;
@@ -118,5 +117,13 @@ public class HumanComfortServiceImpl implements HumanComfortService {
         return resList;
     }
 
+    @Override
+    public List<Comfort> dailyContinueList(ComfortParam params) {
+        return humanComfortMapper.continueList(params);
+    }
 
+    @Override
+    public List<Comfort> dailyPeriodList(ComfortParam params) {
+        return humanComfortMapper.periodList(params);
+    }
 }

@@ -1,5 +1,6 @@
 package com.dafang.monitor.nx.accessment.controller;
 
+import com.dafang.monitor.nx.accessment.entity.po.Comfort;
 import com.dafang.monitor.nx.accessment.entity.po.ComfortParam;
 import com.dafang.monitor.nx.accessment.service.HumanComfortService;
 import com.dafang.monitor.nx.config.ApiIgp;
@@ -47,5 +48,15 @@ public class HumanComfortController {
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         List<Map<String,Object>> results = humanComfortService.periodList(params);
         return results;
+    }
+    @PostMapping(value = "dailyContinueList")
+    @ApiOperation(value = "连续舒适度指数逐日数据",notes = "人体舒适度")
+    public List<Comfort> dailyContinueList(@RequestBody ComfortParam params){
+        return humanComfortService.dailyContinueList(params);
+    }
+    @PostMapping(value = "dailyPeriodList")
+    @ApiOperation(value = "同期舒适度逐日指数数据",notes = "人体舒适度")
+    public List<Comfort> dailyPeriodList(@RequestBody ComfortParam params){
+        return humanComfortService.dailyPeriodList(params);
     }
 }

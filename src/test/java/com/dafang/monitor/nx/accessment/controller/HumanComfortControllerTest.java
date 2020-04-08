@@ -14,10 +14,16 @@ class HumanComfortControllerTest {
     @Autowired
     private HumanComfortController controller;
     //同期舒适度指数
+//    @Test
+//    void periodList(){
+//        ComfortParam build = ComfortParam.builder().startDate("20190501").regions("53517").endDate("20190601").climateScale("1981-2010").comfortType("1").build();
+//        controller.periodList(build);
+//    }
+    //连续舒适度指数
     @Test
-    void queryPeriodHumanComfort(){
-        ComfortParam build = ComfortParam.builder().startDate("20190501").regions("53517").endDate("20190601").climateScale("1981-2010").comfortType("1").build();
-        controller.periodList(build);
+    void continueList(){
+        ComfortParam build = ComfortParam.builder().startDate("20200301").regions("53517").endDate("20200401").climateScale("1981-2010").comfortType("1").build();
+        controller.continueList(build);
     }
 
 }
