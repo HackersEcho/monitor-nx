@@ -15,9 +15,9 @@ public interface HumanComfortMapper extends MyMapper<Comfort> {
     /*
     查询连续舒适度指数
      */
-    List<Comfort> findContinueComfortValue(ComfortParam comfortParam);
+    List<Comfort> continueList(ComfortParam comfortParam);
     /*
     查询同期舒适度指数
      */
-    List<Comfort> findPeriodComfortValue(ComfortParam comfortParam);
+    List<Comfort> periodList(ComfortParam comfortParam);
 }
