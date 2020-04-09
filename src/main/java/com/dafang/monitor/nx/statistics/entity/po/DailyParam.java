@@ -36,11 +36,15 @@ public class DailyParam implements Serializable {
     @ApiModelProperty(value = "查询的数据库字段",example = "TEM_MAX")
     private String element;
     @ApiModelProperty(value = "最小值")
-    private Double min;
+    @Builder.Default
+    private Double min = -999d;
     @ApiModelProperty(value = "最大值")
-    private Double max;
+    @Builder.Default
+    private Double max=999d;
     @ApiModelProperty(value = "天气现象码")
     private String code;
+    @ApiModelProperty(value = "操作类型",example = "sum || avg || min || max")
+    private String opType;
     @ApiModelProperty(value = "需要我们通过regions去得到要查询的的站点信息",hidden = true)
     @JsonIgnore
     private String condition;

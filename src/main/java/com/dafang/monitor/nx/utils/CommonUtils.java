@@ -1,8 +1,13 @@
 package com.dafang.monitor.nx.utils;
 
+import cn.hutool.core.convert.Convert;
+import cn.hutool.core.util.ReflectUtil;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.validation.constraints.NotNull;
+import java.lang.reflect.Method;
 import java.time.LocalDate;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -88,6 +93,26 @@ public class CommonUtils {
         LocalDate eDate = LocalDateUtils.stringToDate(endDate);
         String observationDays = sDate.getMonthValue() + "月" + sDate.getDayOfMonth() + "日~" + eDate.getMonthValue() + "月" + eDate.getDayOfMonth() + "日";
         return observationDays;
+    }
+    /*
+     * 根据对应的操作指令得到相应的处理值
+     * @param datas 集合
+     * @param element 查询要素字段
+     * @param op (min|max|avg|sum)
+     * @return double 返回对应的处理值
+     * @author echo
+     * @date 2020/3/15
+     */
+    public static double getValByOp(@NotNull List<Map<String, Object>> datas, String element, String op){
+        DoubleSummaryStatistics summaryStatistics = filterData(datas,element).stream().mapToDouble(x ->
+                Convert.toDouble(x.get(element))).summaryStatistics();
+        double res = switch(op){
+            case "min"-> summaryStatistics.getMin();
+            case "max"-> summaryStatistics.getMax();
+            case "sum"-> summaryStatistics.getSum();
+            default -> summaryStatistics.getAverage();
+        };
+        return res;
     }
 
     /**
