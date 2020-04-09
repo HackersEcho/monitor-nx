@@ -1,10 +1,10 @@
 package com.dafang.monitor.nx.accessment.controller;
 
+import com.dafang.monitor.nx.accessment.entity.po.AccumuTemParam;
 import com.dafang.monitor.nx.accessment.entity.po.AgricultureParam;
 import com.dafang.monitor.nx.accessment.service.AgricultureService;
 import com.dafang.monitor.nx.utils.CommonUtils;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class AgricultureController {
 
     @Autowired
-    AgricultureService service;
+    private AgricultureService service;
 
     @PostMapping(value = "dataList")
     @ApiOperation(value = "农业数据",notes = "气候与农业")
@@ -28,4 +28,25 @@ public class AgricultureController {
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         return service.dataList(params);
     }
+
+    @PostMapping(value = "periodList")
+    @ApiOperation(value = "同期积温",notes = "积温")
+    public List<Map<String,Object>> periodList(AccumuTemParam params){
+        params.setST(params.getStartDate().substring(4));
+        params.setET(params.getEndDate().substring(4));
+        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+        Integer type = params.getType();
+        if(type == 1){
+            params.setElement("t.TEM_Avg");
+            params.setAccCondition("AND t.TEM_Avg > 10");
+        }else if(type == 2){
+            params.setElement("t.TEM_Avg-10");
+            params.setAccCondition("");
+        }else if(type == 3){
+            params.setElement("t.TEM_Avg");
+            params.setAccCondition("AND t.TEM_Avg < 10");
+        }
+        return null;
+    }
+
 }
