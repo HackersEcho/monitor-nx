@@ -16,33 +16,33 @@
     <select id="periodList" parameterType="AccumuTemParam" resultType="AccumuTem">
         <choose>
             <when test="sT != null and sT &gt; eT">
-                select t.stationNO,b.station_name as stationName,SUM(#{element}) as temAvg,b.longitude,b.latitude,YEAR(ObserverTime) as year
-                <include refid="Common.notCrossYearSql"></include>
-                and #{element} between '-999' and '999'
-                #{accCondition}
-                group by t.statioNo,YEAR(ObserverTime)
+                select t.stationNO,b.station_name as stationName,SUM(${element}) as temAvg,b.longitude,b.latitude,YEAR(ObserverTime) as year
+                <include refid="AssessmentCommon.notCrossYearSql"></include>
+                and ${element} between '-999' and '999'
+                ${accCondition}
+                group by t.stationNo,YEAR(t.ObserverTime)
             </when>
             <otherwise>
-                select t.stationNO,b.station_name as stationName,SUM(#{element}) as temAvg,b.longitude,b.latitude,YEAR(ObserverTime) as year
-                <include refid="Common.crossYearSuffixSql"></include>
-                and #{element} between '-999' and '999'
-                #{accCondition}
-                group by t.statioNo,YEAR(ObserverTime)
+                select t.stationNO,b.station_name as stationName,SUM(${element}) as temAvg,b.longitude,b.latitude,YEAR(ObserverTime) as year
+                <include refid="AssessmentCommon.crossYearSuffixSql"></include>
+                and ${element} between '-999' and '999'
+                ${accCondition}
+                group by t.stationNo,YEAR(t.ObserverTime)
                 union all
-                select t.stationNO,b.station_name as stationName,SUM(#{element}) as temAvg,b.longitude,b.latitude,YEAR(ObserverTime)-1 as year
-                <include refid="Common.crossYearProfixSql"></include>
-                and #{element} between '-999' and '999'
-                #{accCondition}
-                group by t.statioNo,YEAR(ObserverTime)
+                select t.stationNO,b.station_name as stationName,SUM(${element}) as temAvg,b.longitude,b.latitude,YEAR(ObserverTime)-1 as year
+                <include refid="AssessmentCommon.crossYearProfixSql"></include>
+                and ${element} between '-999' and '999'
+                ${accCondition}
+                group by t.stationNo,YEAR(t.ObserverTime)
             </otherwise>
         </choose>
     </select>
     <!--连续查询积温-->
     <select id="continueList" parameterType="AccumuTemParam" resultType="AccumuTem">
-        select t.stationNO,b.station_name as stationName,SUM(#{element}) as temAvg,b.longitude,b.latitude,YEAR(ObserverTime) as year
-        <include refid="Common.notCrossYearSql"></include>
-        and #{element} between '-999' and '999'
-        #{accCondition}
-        group by t.statioNo,YEAR(ObserverTime)
+        select t.stationNO,b.station_name as stationName,SUM(${element}) as temAvg,b.longitude,b.latitude
+        <include refid="AssessmentCommon.notCrossYearSql"></include>
+        and ${element} between '-999' and '999'
+        ${accCondition}
+        group by t.stationNo
     </select>
 </mapper>

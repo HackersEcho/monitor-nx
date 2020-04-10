@@ -23,8 +23,13 @@ public class AgricultureControllerTest {
     }
     @Test
     public void periodList(){
-        AccumuTemParam build = AccumuTemParam.builder().regions("53517").startDate("20190301").endDate("20190401").climateScale("1981-2010").build();
+        AccumuTemParam build = AccumuTemParam.builder().regions("53517").startDate("20190301").endDate("20190401").climateScale("1981-2010").type(1).build();
         controller.periodList(build);
+    }
+    @Test
+    public void continueList(){
+        AccumuTemParam build = AccumuTemParam.builder().regions("53517,53518,53519").startDate("20180301").endDate("20190401").type(2).build();
+        controller.continueList(build);
     }
 
 }

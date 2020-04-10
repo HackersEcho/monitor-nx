@@ -43,4 +43,20 @@ public class AccumuTemParam implements Serializable {
     private String accCondition;//积温条件
     @JsonIgnore
     private String element;//积温要素（temAvg）
+    @JsonIgnore
+    private String code;//判断表名的依据
+
+    public AccumuTemParam(String regions, String startDate, String endDate, String sT, String eT, String climateScale, Integer type, String condition, String accCondition, String element, String code) {
+        this.regions = regions;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.sT = sT;
+        this.eT = eT;
+        this.climateScale = climateScale;
+        this.type = type;
+        this.condition = condition;
+        this.accCondition = accCondition;
+        this.element = element;
+        this.code = code;
+    }
 }

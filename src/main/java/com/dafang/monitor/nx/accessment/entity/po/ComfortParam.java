@@ -36,4 +36,6 @@ public class ComfortParam implements Serializable {
     private String eT;
     @JsonIgnore
     private String condition;
+    @JsonIgnore
+    private String code;//判断表名的依据
 }

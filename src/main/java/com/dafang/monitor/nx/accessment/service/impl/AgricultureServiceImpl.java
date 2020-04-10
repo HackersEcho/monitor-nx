@@ -82,14 +82,18 @@ public class AgricultureServiceImpl implements AgricultureService {
         map.put(element + "_anomalyVal", NumberUtil.round(liveVal,1));
     }
 
+    /**
+     * 同期积温
+     * @param params
+     * @return
+     */
     @Override
     public List<Map<String, Object>> periodList(AccumuTemParam params) {
         List<Map<String, Object>> results = new ArrayList<>();
         List<AccumuTem> baseData = mapper.periodList(params);
-        int type = params.getType();
         int startYear = Convert.toInt(params.getStartDate().substring(0, 4));
         int endtYear = Convert.toInt(params.getEndDate().substring(0, 4));
-        String[] scale = params.getClimateScale().split("_");
+        String[] scale = params.getClimateScale().split("-");
         int scaleLen = Convert.toInt(scale[1]) - Convert.toInt(scale[0]) + 1;
         List<String> stationNos = baseData.stream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
         for (String stationNo : stationNos) {
@@ -97,8 +101,8 @@ public class AgricultureServiceImpl implements AgricultureService {
             List<AccumuTem> singleList = baseData.stream().filter(x -> StringUtils.equals(x.getStationNo(), stationNo)).collect(Collectors.toList());
             String stationName = singleList.get(0).getStationName();
             //常年值
-            singleList.stream().filter(x->x.getYear() >= Convert.toInt(scale[0]) && x.getYear() <= Convert.toInt(scale[1])).
-                    mapToDouble(x->Convert.toDouble(x.getTemAvg())).summaryStatistics().getAverage();
+            double perenVal = singleList.stream().filter(x -> x.getYear() >= Convert.toInt(scale[0]) && x.getYear() <= Convert.toInt(scale[1])).
+                    mapToDouble(x -> Convert.toDouble(x.getTemAvg())).summaryStatistics().getAverage();
             //历史同期最大值
             double historyExtrem = singleList.stream().mapToDouble(x -> Convert.toDouble(x.getTemAvg())).summaryStatistics().getMax();
             //历史同期最大值对应年份
@@ -109,20 +113,44 @@ public class AgricultureServiceImpl implements AgricultureService {
                 Map<String,Object> map = new HashMap<>();
                 int year = i;
                 //实况值
-                OptionalDouble liveVal = singleList.stream().filter(x -> x.getYear() == year).mapToDouble(x -> Convert.toDouble(x.getTemAvg())).findFirst();
+                Double liveVal = singleList.stream().filter(x -> x.getYear() == year).
+                        map(x -> Convert.toDouble(x.getTemAvg())).collect(Collectors.toList()).get(0);
+                double annolyVal = liveVal - perenVal;
                 //排位
                 int sort = collect.indexOf(liveVal)+1;
                 map.put("stationNo", stationNo);
                 map.put("stationName", stationName);
-
+                map.put("liveVal", NumberUtil.round(liveVal,1));
+                map.put("perenVal", NumberUtil.round(perenVal,1));
+                map.put("annolyVal", NumberUtil.round(annolyVal,1));
+                map.put("historyExtrem", historyExtrem);
+                map.put("historyExtremYear", historyExtremYear);
+                map.put("sort", sort);
+                results.add(map);
             }
         }
-
-        return null;
+        return results;
     }
 
+    /**
+     * 连续积温
+     * @param params
+     * @return
+     */
     @Override
     public List<Map<String, Object>> continueList(AccumuTemParam params) {
-        return null;
+        List<Map<String,Object>> results = new ArrayList<>();
+        List<AccumuTem> baseData = mapper.continueList(params);
+        List<String> stationNos = baseData.stream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
+        for (String stationNo : stationNos) {
+            Map<String,Object> map = new HashMap<>();
+            List<AccumuTem> singleList = baseData.stream().filter(x -> StringUtils.equals(x.getStationNo(), stationNo)).collect(Collectors.toList());
+            AccumuTem accumuTem = singleList.get(0);
+            map.put("stationNo",stationNo);
+            map.put("stationName",accumuTem.getStationName());
+            map.put("liveVal",NumberUtil.round(accumuTem.getTemAvg(),1));
+            results.add(map);
+        }
+        return results;
     }
 }

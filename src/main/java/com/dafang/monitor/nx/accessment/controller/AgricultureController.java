@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Api(value = "气候评价",tags = {"气候与农业"})
 @RestController
-@RequestMapping(value = "accessment/Agriculture/")
+@RequestMapping(value = "accessment/agriculture/")
 public class AgricultureController {
 
     @Autowired
@@ -35,6 +35,7 @@ public class AgricultureController {
         params.setST(params.getStartDate().substring(4));
         params.setET(params.getEndDate().substring(4));
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
+        params.setCode("1");
         Integer type = params.getType();
         if(type == 1){
             params.setElement("t.TEM_Avg");
@@ -46,7 +47,26 @@ public class AgricultureController {
             params.setElement("t.TEM_Avg");
             params.setAccCondition("AND t.TEM_Avg < 10");
         }
-        return null;
+        return service.periodList(params);
+    }
+
+    @PostMapping(value = "continueList")
+    @ApiOperation(value = "连续积温",notes = "积温")
+    public List<Map<String,Object>> continueList(AccumuTemParam params){
+        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+        params.setCode("1");
+        Integer type = params.getType();
+        if(type == 1){
+            params.setElement("t.TEM_Avg");
+            params.setAccCondition("AND t.TEM_Avg > 10");
+        }else if(type == 2){
+            params.setElement("t.TEM_Avg-10");
+            params.setAccCondition(" ");
+        }else if(type == 3){
+            params.setElement("t.TEM_Avg");
+            params.setAccCondition("AND t.TEM_Avg < 10");
+        }
+        return service.continueList(params);
     }
 
 }

@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
- * 舒适度指数实体类
+ * 舒适度指数实体类/积温
  */
 @Entity
 @Data
