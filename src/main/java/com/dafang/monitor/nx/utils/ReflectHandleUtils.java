@@ -70,11 +70,11 @@ public static <T> List<T> filterData(List<T> datas,String element){
 };
 
 
-//    public static void main(String[] args) {
-////        List<Daily> dailies = filterData(initData(),"TEM_Avg");
-////        double valByOp = getValByOp(dailies, "TEM_Avg", "min");
-////        System.out.println(valByOp);
-////    }
+    public static void main(String[] args) {
+        List<Daily> dailies = filterData(initData(),"TEM_Avg");
+        double valByOp = getValByOp(dailies, "TEM_Avg", "min");
+        System.out.println(valByOp);
+    }
 
     public static List<Daily> initData(){
         var dailies = new ArrayList<Daily>();
