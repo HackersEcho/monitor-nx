@@ -1,11 +1,9 @@
 package com.dafang.monitor.nx.utils;
 
 import cn.hutool.core.convert.Convert;
-import cn.hutool.core.util.ReflectUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
-import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
@@ -46,7 +44,7 @@ public class CommonUtils {
         } else {// 通过区域编号查找
             String regionField = "";
             if (regList[0].equals("0") || regList[0].equals("1") || regList[0].equals("2") || regList[0].equals("3")) {
-                regionField = "region_id_two";
+                regionField = "station_type";
             } else if (regList[0].equals("4") || regList[0].equals("5")) {
                 regionField = "basin_id";
             } else {

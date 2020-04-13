@@ -1,7 +1,6 @@
 package com.dafang.monitor.nx.entity;
 
 import cn.hutool.core.convert.Convert;
-import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -35,7 +34,9 @@ public enum  RegionStaEnum {
         this.stas = stas;
         this.desc = desc;
     }
-// 通过regionId得到对应的站点
+
+    // 通过regionId得到对应的站点
+
     public static List<String> getStas(String regionId){
         List<String> res = new ArrayList<>();
         for (RegionStaEnum r : RegionStaEnum.values()) {
@@ -45,6 +46,18 @@ public enum  RegionStaEnum {
         }
         return res;
     }
+    public String getRegionId() {
+        return regionId;
+    }
+
+    public String getStas() {
+        return stas;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
     @Override
     public String toString() {
         return "RegionStaEnum{" +
@@ -53,5 +66,4 @@ public enum  RegionStaEnum {
                 ", desc='" + desc + '\'' +
                 '}';
     }
-
 }

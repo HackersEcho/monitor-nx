@@ -54,4 +54,8 @@ public class DailyParam implements Serializable {
     @ApiModelProperty(name = "得到结束时间的月日  用于查询同期时需要用到",hidden = true)
     @JsonIgnore
     private String eT;
+
+    @ApiModelProperty(name = "客户端拼接的条件  带and",hidden = true)
+    @JsonIgnore
+    private String clientCondition;
 }
