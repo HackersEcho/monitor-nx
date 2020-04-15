@@ -70,7 +70,7 @@ public class AgricultureController {
 
     @PostMapping(value = "continueList")
     @ApiOperation(value = "连续积温",notes = "积温")
-    public AccessmentResuleDto<List<Map<String,Object>>>  continueList(@Apicp ("regions,startDate,endDate,climateScale,type") @RequestBody AccumuTemParam params){
+    public AccessmentResuleDto<List<Map<String,Object>>>  continueList(@Apicp ("regions,startDate,endDate,type") @RequestBody AccumuTemParam params){
         AccessmentResuleDto<List<Map<String,Object>>> resuleDto = new AccessmentResuleDto<>();
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         params.setCode("1");

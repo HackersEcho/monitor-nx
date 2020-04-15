@@ -64,8 +64,9 @@ public class HumanComfortController {
     }
     @PostMapping(value = "dailyContinueList")
     @ApiOperation(value = "连续舒适度指数逐日数据",notes = "人体舒适度")
-    public AccessmentResuleDto<List<Comfort>> dailyContinueList(@ApiIgp("sT,eT,condition,code") @RequestBody ComfortParam params){
+    public AccessmentResuleDto<List<Comfort>> dailyContinueList(@ApiIgp("sT,eT,condition,code,climateScale") @RequestBody ComfortParam params){
         AccessmentResuleDto<List<Comfort>> resuleDto = new AccessmentResuleDto<>();
+        params.setCondition(CommonUtils.getCondition(params.getRegions()));
         List<Comfort> dailyContinueList = humanComfortService.dailyContinueList(params);
         resuleDto.setRespData(dailyContinueList);
         if (dailyContinueList.size() == 0){
@@ -76,8 +77,11 @@ public class HumanComfortController {
     }
     @PostMapping(value = "dailyPeriodList")
     @ApiOperation(value = "同期舒适度逐日指数数据",notes = "人体舒适度")
-    public AccessmentResuleDto<List<Comfort>> dailyPeriodList(@ApiIgp("sT,eT,condition,code") @RequestBody ComfortParam params){
+    public AccessmentResuleDto<List<Comfort>> dailyPeriodList(@ApiIgp("sT,eT,condition,code,climateScale") @RequestBody ComfortParam params){
         AccessmentResuleDto<List<Comfort>> resuleDto = new AccessmentResuleDto<>();
+        params.setST(params.getStartDate().substring(4));
+        params.setET(params.getEndDate().substring(4));
+        params.setCondition(CommonUtils.getCondition(params.getRegions()));
         List<Comfort> dailyPeriodList = humanComfortService.dailyPeriodList(params);
         resuleDto.setRespData(dailyPeriodList);
         if (dailyPeriodList.size() == 0){
