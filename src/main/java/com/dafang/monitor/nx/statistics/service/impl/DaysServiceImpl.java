@@ -1,6 +1,7 @@
 package com.dafang.monitor.nx.statistics.service.impl;
 
 import cn.hutool.core.convert.Convert;
+import cn.hutool.core.util.NumberUtil;
 import com.dafang.monitor.nx.statistics.entity.po.Daily;
 import com.dafang.monitor.nx.statistics.entity.po.DailyParam;
 import com.dafang.monitor.nx.statistics.entity.vo.CommonVal;
@@ -8,7 +9,6 @@ import com.dafang.monitor.nx.statistics.entity.vo.ContinuousDays;
 import com.dafang.monitor.nx.statistics.entity.vo.PeriodDays;
 import com.dafang.monitor.nx.statistics.mapper.DaysMapper;
 import com.dafang.monitor.nx.statistics.service.DaysService;
-import com.dafang.monitor.nx.utils.DoubleMathUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +33,7 @@ public class DaysServiceImpl implements DaysService {
         int startYear = Convert.toInt(params.getStartDate().substring(0, 4));
         int endYear = Convert.toInt(params.getEndDate().substring(0, 4));
         String[] scales = params.getClimateScale().split("-");// 常年值区间段
+        int scaleLen = Convert.toInt(scales[1]) -  Convert.toInt(scales[0]);
         List<Daily> periodList = mapper.periodDays(params);
         List<String> staList = periodList.parallelStream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
         for (String stationNo : staList) {
@@ -47,8 +48,8 @@ public class DaysServiceImpl implements DaysService {
                 String maxDaysTime = singleList.stream().filter(x -> x.getVal() == maxDays).map(x -> x.getYear().toString()).collect(Collectors.joining("-"));
                // 得到常年天数并保留一位小数
                 double perenVal =  singleList.stream().filter(x -> x.getYear() >= Convert.toInt(scales[0])
-                       && x.getYear() <= Convert.toInt(scales[1])).mapToDouble(x -> x.getVal()).sum() / 30;
-                perenVal = DoubleMathUtil.sub(perenVal, 0, 1);
+                       && x.getYear() <= Convert.toInt(scales[1])).mapToDouble(x -> x.getVal()).sum() / scaleLen;
+                perenVal = NumberUtil.sub(perenVal, 0, 1).doubleValue();
                 List<Map<String, CommonVal>> data = new ArrayList<>();
                 for (int i = startYear;i<=endYear;i++){// 得到查询年份的
                     Map<String, CommonVal> map = new HashMap<>();
@@ -58,7 +59,7 @@ public class DaysServiceImpl implements DaysService {
                     CommonVal build = CommonVal.builder().build();
                     if (optional.isPresent()){
                         double liveVal = optional.get().getVal();
-                        double anomalyVal = DoubleMathUtil.sub(liveVal, perenVal, 1);
+                        double anomalyVal = NumberUtil.sub(liveVal, perenVal, 1).doubleValue();
                         int rank = daysList.indexOf(liveVal) + 1;
                         build = CommonVal.builder().liveVal(liveVal).perenVal(perenVal).anomalyVal(anomalyVal).rank(rank).build();
                     }
