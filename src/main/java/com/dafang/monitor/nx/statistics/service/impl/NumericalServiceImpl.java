@@ -119,7 +119,8 @@ public class NumericalServiceImpl implements NumericalService {
                         builder.perenVal(perenVal).anomalyVal(anomalyVal);
                     }
                    // 计算排位
-                    List<Double> valList = yearDatas.stream().map(x -> x.get("val")).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+                    List<Double> valList = yearDatas.stream().filter(x->x.get("year")>=params.getRankStartYear()
+                             && x.get("year")<=params.getRankEndYear()).map(x -> x.get("val")).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
                     if (StringUtils.containsIgnoreCase(params.getElement(),"min")){// 当查询如低温的情况  排序应该按照越小排位越高的策略
                         valList.sort(Comparator.naturalOrder());
                     }

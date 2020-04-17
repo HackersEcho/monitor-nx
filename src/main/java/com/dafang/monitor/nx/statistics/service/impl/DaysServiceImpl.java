@@ -44,6 +44,8 @@ public class DaysServiceImpl implements DaysService {
             if (singleList.size()>0){
                 Daily daily = singleList.get(0);
                 List<Double> daysList = singleList.stream().map(x -> x.getVal()).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+                List<Double> rankList  = singleList.stream().filter(x -> x.getYear() >= params.getRankStartYear() && x.getYear() <= params.getRankEndYear())
+                        .map(x -> x.getVal()).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
                 double maxDays = daysList.get(0);
                 String maxDaysTime = singleList.stream().filter(x -> x.getVal() == maxDays).map(x -> x.getYear().toString()).collect(Collectors.joining("-"));
                // 得到常年天数并保留一位小数
@@ -60,7 +62,7 @@ public class DaysServiceImpl implements DaysService {
                     if (optional.isPresent()){
                         double liveVal = optional.get().getVal();
                         double anomalyVal = NumberUtil.sub(liveVal, perenVal, 1).doubleValue();
-                        int rank = daysList.indexOf(liveVal) + 1;
+                        int rank = rankList.indexOf(liveVal) + 1;
                         build = CommonVal.builder().liveVal(liveVal).perenVal(perenVal).anomalyVal(anomalyVal).rank(rank).build();
                     }
                     // 如果款年key应该为2018-2019这样的格式

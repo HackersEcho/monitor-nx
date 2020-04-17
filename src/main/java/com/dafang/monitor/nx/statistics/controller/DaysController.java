@@ -32,15 +32,14 @@ public class DaysController {
     @PostMapping(value = "period")
     @ApiOperation(value = "同期日数数据查询",notes = "同期日数")
     public ResuleDto<List<PeriodDays>> periodDays(@Apicp("regions,startDate,endDate,climateScale," +
-            "element,min,max,code") @RequestBody  DailyParam params){
+            "element,min,max,code,rankStartYear,rankEndYear") @RequestBody  DailyParam params){
         ResuleDto<List<PeriodDays>> resuleDto = new ResuleDto<>();
         params.setST(params.getStartDate().substring(4));
         params.setET(params.getEndDate().substring(4));
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         List<PeriodDays> periodDays = service.periodDays(params);
-        if (periodDays.size()>0){
-            resuleDto.setRespData(periodDays);
-        }else {
+        resuleDto.setRespData(periodDays);
+        if (periodDays.size() == 0){
             resuleDto.setRespCode(0);
             resuleDto.setMessage("该条件下无数据");
         }
@@ -53,9 +52,8 @@ public class DaysController {
         ResuleDto<List<ContinuousDays>> resuleDto = new ResuleDto<>();
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         List<ContinuousDays> continuousDays = service.continuousDays(params);
-        if (continuousDays.size()>0){
-            resuleDto.setRespData(continuousDays);
-        }else {
+        resuleDto.setRespData(continuousDays);
+        if (continuousDays.size() == 0){
             resuleDto.setRespCode(0);
             resuleDto.setMessage("该条件下无数据");
         }
