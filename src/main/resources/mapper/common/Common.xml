@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="Common">
     <!--
-       1-天气现象码不为空的时候查询t_mete_ns_day_wea 否则查询日表
+       1-天气现象码不为空的时候查询 base_day_wea 否则查询日表
        2-当sT月日不为空的时候查询同期  否则查询连续
    -->
     <sql id="notCrossYearSql">
         from
         <choose>
             <when test="code == null or code == ''">t_mete_ns_day_data t</when>
-            <otherwise>t_mete_ns_day_wea t</otherwise><!--天气现象-->
+            <otherwise>base_day_wea t</otherwise><!--天气现象-->
         </choose>
         join t_mete_station b ON t.stationNo = b.device_id where ${condition}
         and
@@ -32,7 +32,7 @@
         from
         <choose>
             <when test="code == null or code == ''">t_mete_ns_day_data t</when>
-            <otherwise>t_mete_ns_day_wea t</otherwise><!--天气现象-->
+            <otherwise>base_day_wea t</otherwise><!--天气现象-->
         </choose>
         join t_mete_station b ON t.stationNo = b.device_id where ${condition}
         and
@@ -46,7 +46,7 @@
         from
         <choose>
             <when test="code == null or code == ''">t_mete_ns_day_data t</when>
-            <otherwise>t_mete_ns_day_wea t</otherwise><!--天气现象-->
+            <otherwise>base_day_wea t</otherwise><!--天气现象-->
         </choose>
         join t_mete_station b ON t.stationNo = b.device_id where ${condition}
         and

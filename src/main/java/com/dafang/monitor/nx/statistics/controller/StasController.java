@@ -31,7 +31,7 @@ public class StasController {
     @PostMapping(value = "period")
     @ApiOperation(value = "同期站数数数据查询",notes = "同期站数数")
     public ResuleDto<Object> periodStas(@Apicp("regions,startDate,endDate,climateScale," +
-            "element,min,max,code") @RequestBody DailyParam params){
+            "element,min,max,code,rankStartYear,rankEndYear") @RequestBody DailyParam params){
         ResuleDto<Object> resuleDto = new ResuleDto<>();
         params.setST(params.getStartDate().substring(4));
         params.setET(params.getEndDate().substring(4));
@@ -43,9 +43,8 @@ public class StasController {
     }
     // 数据校验
     public <T> void check(ResuleDto<Object> resuleDto,List<T> list){
+        resuleDto.setRespData(list);
         if (list.size()>0){
-            resuleDto.setRespData(list);
-        }else {
             resuleDto.setRespCode(0);
             resuleDto.setMessage("该条件下无数据");
         }

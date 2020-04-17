@@ -29,7 +29,6 @@ public class Daily implements Serializable {
     private Double TEM_Max;
     private Double TEM_Min;
     private Double SSH;
-    private Double Tem_avg;
     private String longitude;
     private String latitude;
     private String region_id;
