@@ -1,46 +1,589 @@
-2020-04-01 09:22:10.791  INFO 17336 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on dell-PC with PID 17336 (E:\zyj\ideaCode\monitor-nx\target\classes started by dell in E:\zyj\ideaCode\monitor-nx)
-2020-04-01 09:22:10.801 DEBUG 17336 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
-2020-04-01 09:22:10.801  INFO 17336 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
-2020-04-01 09:22:12.154  INFO 17336 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-04-01 09:22:12.161  INFO 17336 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-04-01 09:22:12.161  INFO 17336 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-04-01 09:22:12.254  INFO 17336 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-04-01 09:22:12.255  INFO 17336 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1398 ms
-2020-04-01 09:22:12.316  INFO 17336 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
-2020-04-01 09:22:12.910  INFO 17336 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2020-04-01 09:22:13.707  INFO 17336 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-04-01 09:22:13.824  INFO 17336 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-04-01 09:22:13.962  INFO 17336 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
-2020-04-01 09:22:13.963  INFO 17336 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
-2020-04-01 09:22:13.963  INFO 17336 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
-2020-04-01 09:22:13.963  INFO 17336 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
-2020-04-01 09:22:13.987  INFO 17336 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2020-04-01 09:22:14.000  INFO 17336 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 3 custom documentation plugin(s)
-2020-04-01 09:22:14.030  INFO 17336 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-04-01 09:22:14.273  INFO 17336 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-04-01 09:22:14.289  INFO 17336 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-04-01 09:22:14.391  INFO 17336 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-04-01 09:22:14.394  INFO 17336 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 3.954 seconds (JVM running for 4.59)
-2020-04-01 12:04:03.709  INFO 16936 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on dell-PC with PID 16936 (E:\zyj\ideaCode\monitor-nx\target\classes started by dell in E:\zyj\ideaCode\monitor-nx)
-2020-04-01 12:04:03.712 DEBUG 16936 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
-2020-04-01 12:04:03.712  INFO 16936 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
-2020-04-01 12:04:05.065  INFO 16936 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-04-01 12:04:05.073  INFO 16936 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-04-01 12:04:05.074  INFO 16936 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-04-01 12:04:05.148  INFO 16936 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-04-01 12:04:05.149  INFO 16936 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1388 ms
-2020-04-01 12:04:05.218  INFO 16936 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
-2020-04-01 12:04:05.753  INFO 16936 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2020-04-01 12:04:06.604  INFO 16936 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-04-01 12:04:06.741  INFO 16936 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-04-01 12:04:06.887  INFO 16936 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
-2020-04-01 12:04:06.887  INFO 16936 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
-2020-04-01 12:04:06.888  INFO 16936 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
-2020-04-01 12:04:06.888  INFO 16936 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
-2020-04-01 12:04:06.916  INFO 16936 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2020-04-01 12:04:06.931  INFO 16936 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 3 custom documentation plugin(s)
-2020-04-01 12:04:06.958  INFO 16936 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-04-01 12:04:07.240  INFO 16936 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-04-01 12:04:07.257  INFO 16936 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-04-01 12:04:07.372  INFO 16936 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-04-01 12:04:07.375  INFO 16936 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 4.034 seconds (JVM running for 4.7)
+2020-04-13 16:21:53.480  INFO 11504 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on DESKTOP-9QOFKJO with PID 11504 (E:\IDEA\monitor-nx\target\classes started by zyj in E:\IDEA\monitor-nx)
+2020-04-13 16:21:53.540 DEBUG 11504 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-13 16:21:53.541  INFO 11504 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
+2020-04-13 16:21:57.196  INFO 11504 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-13 16:21:57.237  INFO 11504 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-13 16:21:57.239  INFO 11504 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-13 16:21:57.504  INFO 11504 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-13 16:21:57.504  INFO 11504 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3614 ms
+2020-04-13 16:21:57.667  INFO 11504 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-04-13 16:22:00.992  INFO 11504 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-04-13 16:22:02.118  WARN 11504 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceController': Unsatisfied dependency expressed through field 'service'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceServiceImpl': Unsatisfied dependency expressed through field 'mapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+2020-04-13 16:22:02.118  INFO 11504 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-13 16:22:02.224  INFO 11504 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-04-13 16:22:02.235  INFO 11504 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-04-13 16:22:02.277  INFO 11504 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-04-13 16:22:02.335 ERROR 11504 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceController': Unsatisfied dependency expressed through field 'service'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceServiceImpl': Unsatisfied dependency expressed through field 'mapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at com.dafang.monitor.nx.MonitorNxApplication.main(MonitorNxApplication.java:14) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceServiceImpl': Unsatisfied dependency expressed through field 'mapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	... 32 common frames omitted
+Caused by: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.setSqlSource(MapperHelper.java:378) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.processMappedStatement(MapperHelper.java:297) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.processConfiguration(MapperHelper.java:283) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:93) ~[mapper-spring-1.1.5.jar:na]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44) ~[spring-tx-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	... 42 common frames omitted
+Caused by: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at tk.mybatis.mapper.mapperhelper.MapperTemplate.setSqlSource(MapperTemplate.java:256) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.setSqlSource(MapperHelper.java:375) ~[mapper-core-1.1.5.jar:na]
+	... 48 common frames omitted
+Caused by: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at tk.mybatis.mapper.mapperhelper.MapperTemplate.getEntityClass(MapperTemplate.java:179) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.provider.base.BaseInsertProvider.insertSelective(BaseInsertProvider.java:84) ~[mapper-base-1.1.5.jar:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at tk.mybatis.mapper.mapperhelper.MapperTemplate.setSqlSource(MapperTemplate.java:246) ~[mapper-core-1.1.5.jar:na]
+	... 49 common frames omitted
+
+2020-04-13 16:24:12.711  INFO 12436 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on DESKTOP-9QOFKJO with PID 12436 (E:\IDEA\monitor-nx\target\classes started by zyj in E:\IDEA\monitor-nx)
+2020-04-13 16:24:12.715 DEBUG 12436 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-13 16:24:12.716  INFO 12436 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
+2020-04-13 16:24:14.635  INFO 12436 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-13 16:24:14.643  INFO 12436 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-13 16:24:14.644  INFO 12436 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-13 16:24:14.737  INFO 12436 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-13 16:24:14.737  INFO 12436 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1870 ms
+2020-04-13 16:24:14.829  INFO 12436 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-04-13 16:24:17.614  INFO 12436 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-04-13 16:24:18.132  WARN 12436 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceController': Unsatisfied dependency expressed through field 'service'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceServiceImpl': Unsatisfied dependency expressed through field 'mapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+2020-04-13 16:24:18.132  INFO 12436 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-13 16:24:18.140  INFO 12436 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-04-13 16:24:18.144  INFO 12436 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-04-13 16:24:18.161  INFO 12436 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-04-13 16:24:18.175 ERROR 12436 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceController': Unsatisfied dependency expressed through field 'service'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceServiceImpl': Unsatisfied dependency expressed through field 'mapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at com.dafang.monitor.nx.MonitorNxApplication.main(MonitorNxApplication.java:14) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceServiceImpl': Unsatisfied dependency expressed through field 'mapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	... 32 common frames omitted
+Caused by: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.setSqlSource(MapperHelper.java:378) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.processMappedStatement(MapperHelper.java:297) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.processConfiguration(MapperHelper.java:283) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:93) ~[mapper-spring-1.1.5.jar:na]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44) ~[spring-tx-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	... 42 common frames omitted
+Caused by: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at tk.mybatis.mapper.mapperhelper.MapperTemplate.setSqlSource(MapperTemplate.java:256) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.setSqlSource(MapperHelper.java:375) ~[mapper-core-1.1.5.jar:na]
+	... 48 common frames omitted
+Caused by: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at tk.mybatis.mapper.mapperhelper.MapperTemplate.getEntityClass(MapperTemplate.java:179) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.provider.base.BaseInsertProvider.insertSelective(BaseInsertProvider.java:84) ~[mapper-base-1.1.5.jar:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at tk.mybatis.mapper.mapperhelper.MapperTemplate.setSqlSource(MapperTemplate.java:246) ~[mapper-core-1.1.5.jar:na]
+	... 49 common frames omitted
+
+2020-04-13 16:29:42.510  INFO 12708 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on DESKTOP-9QOFKJO with PID 12708 (E:\IDEA\monitor-nx\target\classes started by zyj in E:\IDEA\monitor-nx)
+2020-04-13 16:29:42.515 DEBUG 12708 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-13 16:29:42.516  INFO 12708 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
+2020-04-13 16:29:44.391  INFO 12708 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-13 16:29:44.400  INFO 12708 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-13 16:29:44.400  INFO 12708 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-13 16:29:44.486  INFO 12708 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-13 16:29:44.486  INFO 12708 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1867 ms
+2020-04-13 16:29:44.556  INFO 12708 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-04-13 16:29:46.643  INFO 12708 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-04-13 16:29:47.134  WARN 12708 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceController': Unsatisfied dependency expressed through field 'service'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceServiceImpl': Unsatisfied dependency expressed through field 'mapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+2020-04-13 16:29:47.135  INFO 12708 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-13 16:29:47.148  INFO 12708 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-04-13 16:29:47.152  INFO 12708 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-04-13 16:29:47.166  INFO 12708 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-04-13 16:29:47.176 ERROR 12708 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceController': Unsatisfied dependency expressed through field 'service'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceServiceImpl': Unsatisfied dependency expressed through field 'mapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at com.dafang.monitor.nx.MonitorNxApplication.main(MonitorNxApplication.java:14) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'waterResourceServiceImpl': Unsatisfied dependency expressed through field 'mapper'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'waterResourceMapper' defined in file [E:\IDEA\monitor-nx\target\classes\com\dafang\monitor\nx\accessment\mapper\WaterResourceMapper.class]: Invocation of init method failed; nested exception is tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	... 32 common frames omitted
+Caused by: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.setSqlSource(MapperHelper.java:378) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.processMappedStatement(MapperHelper.java:297) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.processConfiguration(MapperHelper.java:283) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:93) ~[mapper-spring-1.1.5.jar:na]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44) ~[spring-tx-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	... 42 common frames omitted
+Caused by: tk.mybatis.mapper.MapperException: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at tk.mybatis.mapper.mapperhelper.MapperTemplate.setSqlSource(MapperTemplate.java:256) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.mapperhelper.MapperHelper.setSqlSource(MapperHelper.java:375) ~[mapper-core-1.1.5.jar:na]
+	... 48 common frames omitted
+Caused by: tk.mybatis.mapper.MapperException: 无法获取 com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper.insertSelective 方法的泛型信息!
+	at tk.mybatis.mapper.mapperhelper.MapperTemplate.getEntityClass(MapperTemplate.java:179) ~[mapper-core-1.1.5.jar:na]
+	at tk.mybatis.mapper.provider.base.BaseInsertProvider.insertSelective(BaseInsertProvider.java:84) ~[mapper-base-1.1.5.jar:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at tk.mybatis.mapper.mapperhelper.MapperTemplate.setSqlSource(MapperTemplate.java:246) ~[mapper-core-1.1.5.jar:na]
+	... 49 common frames omitted
+
+2020-04-13 16:33:05.440  INFO 5100 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on DESKTOP-9QOFKJO with PID 5100 (E:\IDEA\monitor-nx\target\classes started by zyj in E:\IDEA\monitor-nx)
+2020-04-13 16:33:05.444 DEBUG 5100 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-13 16:33:05.445  INFO 5100 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
+2020-04-13 16:33:07.326  INFO 5100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-13 16:33:07.335  INFO 5100 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-13 16:33:07.335  INFO 5100 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-13 16:33:07.426  INFO 5100 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-13 16:33:07.426  INFO 5100 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1906 ms
+2020-04-13 16:33:07.503  INFO 5100 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-04-13 16:33:09.047  INFO 5100 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-04-13 16:33:10.141  INFO 5100 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-13 16:33:10.307  INFO 5100 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-13 16:33:10.702  INFO 5100 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-04-13 16:33:10.703  INFO 5100 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-04-13 16:33:10.704  INFO 5100 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-04-13 16:33:10.704  INFO 5100 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-04-13 16:33:10.735  INFO 5100 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-04-13 16:33:10.910  INFO 5100 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 3 custom documentation plugin(s)
+2020-04-13 16:33:11.062  INFO 5100 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:33:11.608  INFO 5100 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:33:11.643  INFO 5100 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:33:11.687  INFO 5100 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: continueListUsingPOST_1
+2020-04-13 16:33:11.700  INFO 5100 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: periodListUsingPOST_1
+2020-04-13 16:33:11.710  INFO 5100 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: dataListUsingPOST_1
+2020-04-13 16:33:12.017  INFO 5100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-13 16:33:12.021  INFO 5100 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 7.227 seconds (JVM running for 8.907)
+2020-04-13 16:33:25.636  INFO 5100 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-13 16:33:25.637  INFO 5100 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-13 16:33:25.700  INFO 5100 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 63 ms
+2020-04-13 16:34:08.920  INFO 5100 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-13 16:34:08.922  INFO 5100 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-13 16:34:08.931  INFO 5100 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-04-13 16:34:15.440  INFO 14172 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on DESKTOP-9QOFKJO with PID 14172 (E:\IDEA\monitor-nx\target\classes started by zyj in E:\IDEA\monitor-nx)
+2020-04-13 16:34:15.445 DEBUG 14172 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-13 16:34:15.446  INFO 14172 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
+2020-04-13 16:34:17.351  INFO 14172 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-13 16:34:17.362  INFO 14172 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-13 16:34:17.362  INFO 14172 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-13 16:34:17.444  INFO 14172 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-13 16:34:17.444  INFO 14172 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1916 ms
+2020-04-13 16:34:17.514  INFO 14172 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-04-13 16:34:19.286  INFO 14172 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-04-13 16:34:20.242  INFO 14172 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-13 16:34:20.387  INFO 14172 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-13 16:34:20.537  INFO 14172 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-04-13 16:34:20.538  INFO 14172 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-04-13 16:34:20.540  INFO 14172 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-04-13 16:34:20.541  INFO 14172 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-04-13 16:34:20.568  INFO 14172 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-04-13 16:34:20.581  INFO 14172 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 3 custom documentation plugin(s)
+2020-04-13 16:34:20.609  INFO 14172 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:34:21.121  INFO 14172 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:34:21.147  INFO 14172 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:34:21.201  INFO 14172 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: continueListUsingPOST_1
+2020-04-13 16:34:21.218  INFO 14172 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: periodListUsingPOST_1
+2020-04-13 16:34:21.225  INFO 14172 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: dataListUsingPOST_1
+2020-04-13 16:34:21.555  INFO 14172 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-13 16:34:21.561  INFO 14172 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 6.717 seconds (JVM running for 8.239)
+2020-04-13 16:34:45.629  INFO 14172 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-13 16:34:45.630  INFO 14172 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-13 16:34:45.637  INFO 14172 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-04-13 16:34:54.000 ERROR 14172 --- [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalStateException: No primary or default constructor found for class com.dafang.monitor.nx.accessment.entity.po.WaterResourceparam] with root cause
+
+java.lang.NoSuchMethodException: com.dafang.monitor.nx.accessment.entity.po.WaterResourceparam.<init>()
+	at java.base/java.lang.Class.getConstructor0(Class.java:3350) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredConstructor(Class.java:2554) ~[na:na]
+	at org.springframework.web.method.annotation.ModelAttributeMethodProcessor.createAttribute(ModelAttributeMethodProcessor.java:216) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletModelAttributeMethodProcessor.createAttribute(ServletModelAttributeMethodProcessor.java:85) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.method.annotation.ModelAttributeMethodProcessor.resolveArgument(ModelAttributeMethodProcessor.java:139) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:167) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:134) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1639) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.base/java.lang.Thread.run(Thread.java:830) ~[na:na]
+
+2020-04-13 16:35:23.720  INFO 14172 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-13 16:35:23.723  INFO 14172 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-13 16:35:23.731  INFO 14172 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-04-13 16:35:30.772  INFO 6868 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on DESKTOP-9QOFKJO with PID 6868 (E:\IDEA\monitor-nx\target\classes started by zyj in E:\IDEA\monitor-nx)
+2020-04-13 16:35:30.776 DEBUG 6868 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-13 16:35:30.776  INFO 6868 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
+2020-04-13 16:35:32.716  INFO 6868 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-13 16:35:32.725  INFO 6868 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-13 16:35:32.725  INFO 6868 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-13 16:35:32.824  INFO 6868 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-13 16:35:32.824  INFO 6868 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1966 ms
+2020-04-13 16:35:32.899  INFO 6868 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-04-13 16:35:37.490  INFO 6868 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-04-13 16:35:38.470  INFO 6868 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-13 16:35:38.609  INFO 6868 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-13 16:35:38.755  INFO 6868 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-04-13 16:35:38.756  INFO 6868 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-04-13 16:35:38.757  INFO 6868 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-04-13 16:35:38.758  INFO 6868 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-04-13 16:35:38.800  INFO 6868 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-04-13 16:35:38.816  INFO 6868 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 3 custom documentation plugin(s)
+2020-04-13 16:35:38.847  INFO 6868 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:35:39.286  INFO 6868 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:35:39.322  INFO 6868 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:35:39.366  INFO 6868 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: continueListUsingPOST_1
+2020-04-13 16:35:39.378  INFO 6868 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: periodListUsingPOST_1
+2020-04-13 16:35:39.386  INFO 6868 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: dataListUsingPOST_1
+2020-04-13 16:35:39.646  INFO 6868 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-13 16:35:39.650  INFO 6868 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 9.512 seconds (JVM running for 11.086)
+2020-04-13 16:35:43.852  INFO 6868 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-13 16:35:43.853  INFO 6868 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-13 16:35:43.861  INFO 6868 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-04-13 16:35:48.344 DEBUG 6868 --- [http-nio-8080-exec-7] c.d.m.n.a.m.WaterResourceMapper.preList  : ==>  Preparing: SELECT t.stationNo,b.station_name as stationName,year(t.ObserverTime) as year,SUM(t.PRE_Time_2020) as pre FROM `base_day_data` t join geography_station_info b on t.stationNo = b.device_id where t.PRE_Time_2020 BETWEEN '-999' and '999' GROUP BY t.stationNo,year(t.ObserverTime) 
+2020-04-13 16:35:48.383 DEBUG 6868 --- [http-nio-8080-exec-7] c.d.m.n.a.m.WaterResourceMapper.preList  : ==> Parameters: 
+2020-04-13 16:35:51.747 DEBUG 6868 --- [http-nio-8080-exec-7] c.d.m.n.a.m.WaterResourceMapper.preList  : <==      Total: 1553
+2020-04-13 16:36:57.106 DEBUG 6868 --- [http-nio-8080-exec-10] c.d.m.n.a.m.WaterResourceMapper.preList  : ==>  Preparing: SELECT t.stationNo,b.station_name as stationName,year(t.ObserverTime) as year,SUM(t.PRE_Time_2020) as pre FROM `base_day_data` t join geography_station_info b on t.stationNo = b.device_id where t.PRE_Time_2020 BETWEEN '-999' and '999' GROUP BY t.stationNo,year(t.ObserverTime) 
+2020-04-13 16:36:57.107 DEBUG 6868 --- [http-nio-8080-exec-10] c.d.m.n.a.m.WaterResourceMapper.preList  : ==> Parameters: 
+2020-04-13 16:37:00.204 DEBUG 6868 --- [http-nio-8080-exec-10] c.d.m.n.a.m.WaterResourceMapper.preList  : <==      Total: 1553
+2020-04-13 16:39:10.343 DEBUG 6868 --- [http-nio-8080-exec-1] c.d.m.n.a.m.WaterResourceMapper.preList  : ==>  Preparing: SELECT t.stationNo,b.station_name as stationName,year(t.ObserverTime) as year,SUM(t.PRE_Time_2020) as pre FROM `base_day_data` t join geography_station_info b on t.stationNo = b.device_id where t.PRE_Time_2020 BETWEEN '-999' and '999' GROUP BY t.stationNo,year(t.ObserverTime) 
+2020-04-13 16:39:10.343 DEBUG 6868 --- [http-nio-8080-exec-1] c.d.m.n.a.m.WaterResourceMapper.preList  : ==> Parameters: 
+2020-04-13 16:39:13.443 DEBUG 6868 --- [http-nio-8080-exec-1] c.d.m.n.a.m.WaterResourceMapper.preList  : <==      Total: 1553
+2020-04-13 16:42:14.243  INFO 6868 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-13 16:42:14.245  INFO 6868 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-13 16:42:14.252  INFO 6868 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-04-13 16:42:22.354  INFO 13456 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on DESKTOP-9QOFKJO with PID 13456 (E:\IDEA\monitor-nx\target\classes started by zyj in E:\IDEA\monitor-nx)
+2020-04-13 16:42:22.359 DEBUG 13456 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-13 16:42:22.359  INFO 13456 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
+2020-04-13 16:42:24.173  INFO 13456 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-13 16:42:24.182  INFO 13456 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-13 16:42:24.182  INFO 13456 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-13 16:42:24.271  INFO 13456 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-13 16:42:24.271  INFO 13456 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1822 ms
+2020-04-13 16:42:24.352  INFO 13456 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-04-13 16:42:25.792  INFO 13456 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-04-13 16:42:26.750  INFO 13456 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-13 16:42:26.868  INFO 13456 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-13 16:42:27.008  INFO 13456 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-04-13 16:42:27.009  INFO 13456 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-04-13 16:42:27.010  INFO 13456 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-04-13 16:42:27.010  INFO 13456 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-04-13 16:42:27.034  INFO 13456 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-04-13 16:42:27.049  INFO 13456 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 3 custom documentation plugin(s)
+2020-04-13 16:42:27.093  INFO 13456 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:42:27.527  INFO 13456 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:42:27.547  INFO 13456 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:42:27.579  INFO 13456 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: continueListUsingPOST_1
+2020-04-13 16:42:27.604  INFO 13456 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: periodListUsingPOST_1
+2020-04-13 16:42:27.610  INFO 13456 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: dataListUsingPOST_1
+2020-04-13 16:42:27.873  INFO 13456 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-13 16:42:27.876  INFO 13456 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 6.171 seconds (JVM running for 7.706)
+2020-04-13 16:42:34.900  INFO 13456 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-13 16:42:34.901  INFO 13456 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-13 16:42:34.907  INFO 13456 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-04-13 16:42:41.390 DEBUG 13456 --- [http-nio-8080-exec-6] c.d.m.n.a.m.WaterResourceMapper.preList  : ==>  Preparing: SELECT t.stationNo,b.station_name as stationName,year(t.ObserverTime) as year,SUM(t.PRE_Time_2020) as pre FROM `base_day_data` t join geography_station_info b on t.stationNo = b.device_id where t.PRE_Time_2020 BETWEEN '-999' and '999' GROUP BY t.stationNo,year(t.ObserverTime) 
+2020-04-13 16:42:41.415 DEBUG 13456 --- [http-nio-8080-exec-6] c.d.m.n.a.m.WaterResourceMapper.preList  : ==> Parameters: 
+2020-04-13 16:42:44.923 DEBUG 13456 --- [http-nio-8080-exec-6] c.d.m.n.a.m.WaterResourceMapper.preList  : <==      Total: 1553
+2020-04-13 16:42:56.918 DEBUG 13456 --- [http-nio-8080-exec-7] c.d.m.n.a.m.WaterResourceMapper.preList  : ==>  Preparing: SELECT t.stationNo,b.station_name as stationName,year(t.ObserverTime) as year,SUM(t.PRE_Time_2020) as pre FROM `base_day_data` t join geography_station_info b on t.stationNo = b.device_id where t.PRE_Time_2020 BETWEEN '-999' and '999' GROUP BY t.stationNo,year(t.ObserverTime) 
+2020-04-13 16:42:56.918 DEBUG 13456 --- [http-nio-8080-exec-7] c.d.m.n.a.m.WaterResourceMapper.preList  : ==> Parameters: 
+2020-04-13 16:43:00.146 DEBUG 13456 --- [http-nio-8080-exec-7] c.d.m.n.a.m.WaterResourceMapper.preList  : <==      Total: 1553
+2020-04-13 16:46:31.144  INFO 13456 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-13 16:46:31.147  INFO 13456 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-13 16:46:31.155  INFO 13456 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-04-13 16:46:39.085  INFO 4716 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on DESKTOP-9QOFKJO with PID 4716 (E:\IDEA\monitor-nx\target\classes started by zyj in E:\IDEA\monitor-nx)
+2020-04-13 16:46:39.090 DEBUG 4716 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-13 16:46:39.091  INFO 4716 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
+2020-04-13 16:46:40.801  INFO 4716 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-13 16:46:40.810  INFO 4716 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-13 16:46:40.811  INFO 4716 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-13 16:46:40.896  INFO 4716 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-13 16:46:40.897  INFO 4716 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1704 ms
+2020-04-13 16:46:40.973  INFO 4716 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-04-13 16:46:42.591  INFO 4716 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-04-13 16:46:43.832  INFO 4716 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-13 16:46:43.981  INFO 4716 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-13 16:46:44.151  INFO 4716 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-04-13 16:46:44.152  INFO 4716 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-04-13 16:46:44.153  INFO 4716 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-04-13 16:46:44.154  INFO 4716 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-04-13 16:46:44.183  INFO 4716 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-04-13 16:46:44.199  INFO 4716 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 3 custom documentation plugin(s)
+2020-04-13 16:46:44.226  INFO 4716 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:46:44.668  INFO 4716 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:46:44.691  INFO 4716 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:46:44.725  INFO 4716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: continueListUsingPOST_1
+2020-04-13 16:46:44.736  INFO 4716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: periodListUsingPOST_1
+2020-04-13 16:46:44.742  INFO 4716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: dataListUsingPOST_1
+2020-04-13 16:46:45.001  INFO 4716 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-13 16:46:45.004  INFO 4716 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 6.529 seconds (JVM running for 8.08)
+2020-04-13 16:47:44.122  INFO 4716 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-13 16:47:44.123  INFO 4716 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-13 16:47:44.131  INFO 4716 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-04-13 16:47:49.081 DEBUG 4716 --- [http-nio-8080-exec-6] c.d.m.n.a.m.WaterResourceMapper.preList  : ==>  Preparing: SELECT t.stationNo,b.station_name as stationName,year(t.ObserverTime) as year,SUM(t.PRE_Time_2020) as pre FROM `base_day_data` t join geography_station_info b on t.stationNo = b.device_id where t.PRE_Time_2020 BETWEEN '-999' and '999' GROUP BY t.stationNo,year(t.ObserverTime) 
+2020-04-13 16:47:49.114 DEBUG 4716 --- [http-nio-8080-exec-6] c.d.m.n.a.m.WaterResourceMapper.preList  : ==> Parameters: 
+2020-04-13 16:47:52.693 DEBUG 4716 --- [http-nio-8080-exec-6] c.d.m.n.a.m.WaterResourceMapper.preList  : <==      Total: 1553
+2020-04-13 16:56:40.869  INFO 4716 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-13 16:56:40.871  INFO 4716 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-13 16:56:40.896  INFO 4716 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-04-13 16:56:48.950  INFO 13876 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on DESKTOP-9QOFKJO with PID 13876 (E:\IDEA\monitor-nx\target\classes started by zyj in E:\IDEA\monitor-nx)
+2020-04-13 16:56:48.953 DEBUG 13876 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-13 16:56:48.953  INFO 13876 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
+2020-04-13 16:56:50.766  INFO 13876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-13 16:56:50.774  INFO 13876 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-13 16:56:50.775  INFO 13876 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-13 16:56:50.851  INFO 13876 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-13 16:56:50.852  INFO 13876 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1772 ms
+2020-04-13 16:56:50.923  INFO 13876 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-04-13 16:56:52.577  INFO 13876 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-04-13 16:56:53.552  INFO 13876 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-13 16:56:53.714  INFO 13876 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-13 16:56:53.871  INFO 13876 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-04-13 16:56:53.873  INFO 13876 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-04-13 16:56:53.874  INFO 13876 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-04-13 16:56:53.874  INFO 13876 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-04-13 16:56:53.901  INFO 13876 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-04-13 16:56:53.916  INFO 13876 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 3 custom documentation plugin(s)
+2020-04-13 16:56:53.943  INFO 13876 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:56:54.387  INFO 13876 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:56:54.407  INFO 13876 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 16:56:54.442  INFO 13876 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: continueListUsingPOST_1
+2020-04-13 16:56:54.456  INFO 13876 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: periodListUsingPOST_1
+2020-04-13 16:56:54.464  INFO 13876 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: dataListUsingPOST_1
+2020-04-13 16:56:54.727  INFO 13876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-13 16:56:54.730  INFO 13876 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 6.403 seconds (JVM running for 7.973)
+2020-04-13 16:57:00.824  INFO 13876 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-13 16:57:00.824  INFO 13876 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-13 16:57:00.831  INFO 13876 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-04-13 16:57:00.930 DEBUG 13876 --- [http-nio-8080-exec-1] c.d.m.n.a.m.WaterResourceMapper.preList  : ==>  Preparing: SELECT t.stationNo,b.station_name as stationName,year(t.ObserverTime) as year,SUM(t.PRE_Time_2020) as pre FROM `base_day_data` t join geography_station_info b on t.stationNo = b.device_id where t.PRE_Time_2020 BETWEEN '-999' and '999' GROUP BY t.stationNo,year(t.ObserverTime) 
+2020-04-13 16:57:00.968 DEBUG 13876 --- [http-nio-8080-exec-1] c.d.m.n.a.m.WaterResourceMapper.preList  : ==> Parameters: 
+2020-04-13 16:57:04.302 DEBUG 13876 --- [http-nio-8080-exec-1] c.d.m.n.a.m.WaterResourceMapper.preList  : <==      Total: 1553
+2020-04-13 16:57:55.278 DEBUG 13876 --- [http-nio-8080-exec-8] c.d.m.n.a.m.WaterResourceMapper.preList  : ==>  Preparing: SELECT t.stationNo,b.station_name as stationName,year(t.ObserverTime) as year,SUM(t.PRE_Time_2020) as pre FROM `base_day_data` t join geography_station_info b on t.stationNo = b.device_id where t.PRE_Time_2020 BETWEEN '-999' and '999' GROUP BY t.stationNo,year(t.ObserverTime) 
+2020-04-13 16:57:55.279 DEBUG 13876 --- [http-nio-8080-exec-8] c.d.m.n.a.m.WaterResourceMapper.preList  : ==> Parameters: 
+2020-04-13 16:57:58.286 DEBUG 13876 --- [http-nio-8080-exec-8] c.d.m.n.a.m.WaterResourceMapper.preList  : <==      Total: 1553
+2020-04-13 17:05:11.505 DEBUG 13876 --- [http-nio-8080-exec-8] c.d.m.n.a.m.WaterResourceMapper.preList  : ==>  Preparing: SELECT t.stationNo,b.station_name as stationName,year(t.ObserverTime) as year,SUM(t.PRE_Time_2020) as pre FROM `base_day_data` t join geography_station_info b on t.stationNo = b.device_id where t.PRE_Time_2020 BETWEEN '-999' and '999' GROUP BY t.stationNo,year(t.ObserverTime) 
+2020-04-13 17:05:11.507 DEBUG 13876 --- [http-nio-8080-exec-8] c.d.m.n.a.m.WaterResourceMapper.preList  : ==> Parameters: 
+2020-04-13 17:05:14.588 DEBUG 13876 --- [http-nio-8080-exec-8] c.d.m.n.a.m.WaterResourceMapper.preList  : <==      Total: 1553
+2020-04-13 17:31:52.244  INFO 13876 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-13 17:31:52.246  INFO 13876 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-13 17:31:52.250  INFO 13876 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-04-13 17:32:00.518  INFO 5720 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on DESKTOP-9QOFKJO with PID 5720 (E:\IDEA\monitor-nx\target\classes started by zyj in E:\IDEA\monitor-nx)
+2020-04-13 17:32:00.523 DEBUG 5720 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-13 17:32:00.525  INFO 5720 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
+2020-04-13 17:32:02.378  INFO 5720 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-13 17:32:02.389  INFO 5720 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-13 17:32:02.390  INFO 5720 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-13 17:32:02.473  INFO 5720 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-13 17:32:02.473  INFO 5720 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1864 ms
+2020-04-13 17:32:02.555  INFO 5720 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-04-13 17:32:04.595  INFO 5720 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-04-13 17:32:05.541  INFO 5720 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-13 17:32:05.695  INFO 5720 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-13 17:32:05.834  INFO 5720 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-04-13 17:32:05.835  INFO 5720 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-04-13 17:32:05.835  INFO 5720 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-04-13 17:32:05.836  INFO 5720 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-04-13 17:32:05.878  INFO 5720 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-04-13 17:32:05.895  INFO 5720 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 3 custom documentation plugin(s)
+2020-04-13 17:32:05.924  INFO 5720 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 17:32:06.365  INFO 5720 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 17:32:06.395  INFO 5720 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-13 17:32:06.438  INFO 5720 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: continueListUsingPOST_1
+2020-04-13 17:32:06.454  INFO 5720 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: periodListUsingPOST_1
+2020-04-13 17:32:06.461  INFO 5720 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: dataListUsingPOST_1
+2020-04-13 17:32:06.756  INFO 5720 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-13 17:32:06.762  INFO 5720 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 6.937 seconds (JVM running for 8.501)
+2020-04-13 17:33:44.852  INFO 5720 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-13 17:33:44.853  INFO 5720 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-13 17:33:44.862  INFO 5720 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-04-13 17:33:49.246 DEBUG 5720 --- [http-nio-8080-exec-6] c.d.m.n.a.m.WaterResourceMapper.preList  : ==>  Preparing: SELECT t.stationNo,b.station_name as stationName,year(t.ObserverTime) as year,SUM(t.PRE_Time_2020) as pre FROM `base_day_data` t join geography_station_info b on t.stationNo = b.device_id where t.PRE_Time_2020 BETWEEN '-999' and '999' GROUP BY t.stationNo,year(t.ObserverTime) 
+2020-04-13 17:33:49.272 DEBUG 5720 --- [http-nio-8080-exec-6] c.d.m.n.a.m.WaterResourceMapper.preList  : ==> Parameters: 
+2020-04-13 17:33:52.614 DEBUG 5720 --- [http-nio-8080-exec-6] c.d.m.n.a.m.WaterResourceMapper.preList  : <==      Total: 1553
+2020-04-13 17:34:06.457 DEBUG 5720 --- [http-nio-8080-exec-7] c.d.m.n.a.m.WaterResourceMapper.preList  : ==>  Preparing: SELECT t.stationNo,b.station_name as stationName,year(t.ObserverTime) as year,SUM(t.PRE_Time_2020) as pre FROM `base_day_data` t join geography_station_info b on t.stationNo = b.device_id where t.PRE_Time_2020 BETWEEN '-999' and '999' GROUP BY t.stationNo,year(t.ObserverTime) 
+2020-04-13 17:34:06.457 DEBUG 5720 --- [http-nio-8080-exec-7] c.d.m.n.a.m.WaterResourceMapper.preList  : ==> Parameters: 
+2020-04-13 17:34:09.505 DEBUG 5720 --- [http-nio-8080-exec-7] c.d.m.n.a.m.WaterResourceMapper.preList  : <==      Total: 1553
+2020-04-13 17:37:16.781  INFO 5720 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-13 17:37:16.784  INFO 5720 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-13 17:37:16.791  INFO 5720 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
