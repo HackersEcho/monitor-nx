@@ -23,8 +23,8 @@ import java.util.List;
  * @createDate: 2020/3/14
  * @version: 1.0
  */
-@Api(value = "echo",tags = {"日数处理"})
 @RestController
+@Api(value = "echo",tags = {"日数处理"})
 @RequestMapping(value = "days/")
 public class DaysController {
     @Autowired
