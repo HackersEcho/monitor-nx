@@ -36,11 +36,15 @@ public class DailyParam implements Serializable {
     @ApiModelProperty(value = "查询的数据库字段",example = "TEM_MAX")
     private String element;
     @ApiModelProperty(value = "最小值")
-    private Double min;
+    @Builder.Default
+    private Double min = -999d;
     @ApiModelProperty(value = "最大值")
-    private Double max;
+    @Builder.Default
+    private Double max=999d;
     @ApiModelProperty(value = "天气现象码")
     private String code;
+    @ApiModelProperty(value = "操作类型",example = "sum || avg || min || max")
+    private String opType;
     @ApiModelProperty(value = "需要我们通过regions去得到要查询的的站点信息",hidden = true)
     @JsonIgnore
     private String condition;
@@ -50,4 +54,13 @@ public class DailyParam implements Serializable {
     @ApiModelProperty(name = "得到结束时间的月日  用于查询同期时需要用到",hidden = true)
     @JsonIgnore
     private String eT;
+    @ApiModelProperty(value = "排位年限开始年份")
+    @Builder.Default
+    private Integer rankStartYear=1961;
+    @ApiModelProperty(value = "排位年限结束年份")
+    @Builder.Default
+    private Integer rankEndYear=2020;
+    @ApiModelProperty(name = "客户端拼接的条件  带and",hidden = true)
+    @JsonIgnore
+    private String clientCondition;
 }

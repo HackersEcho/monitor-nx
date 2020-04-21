@@ -44,16 +44,19 @@ public class AgricultureServiceImpl implements AgricultureService {
                 // 得到当前年份的数据
                 List<Agriculture> currentList = singleList.stream().filter(x -> x.getYear() ==year).collect(Collectors.toList());
                 String[] elements = {"temAvg_avg","temMax_avg","temMin_avg","ssh_sum","pre_sum"};
-                for (String element : elements) {
-                    handle(currentList,perenList,element.split("_")[0],element.split("_")[1],scaleLen,map);
+                if(currentList.size()>0){
+                    for (String element : elements) {
+                        currentList = ReflectHandleUtils.filterData(currentList, element.split("_")[0]);
+                        handle(currentList,perenList,element.split("_")[0],element.split("_")[1],scaleLen,map);
+                    }
+                    //高温日数
+                    long highTemDays = currentList.stream().filter(x -> Convert.toDouble(x.getTemMax()) > 35).count();
+                    //霜冻日数
+                    long frostDays = currentList.stream().filter(x -> Convert.toDouble(x.getTemMin()) < 0).count();
+                    map.put("highTemDays",highTemDays);
+                    map.put("frostDays",frostDays);
+                    results.add(map);
                 }
-                //高温日数
-                long highTemDays = currentList.stream().filter(x -> Convert.toDouble(x.getTemMax()) > 35).count();
-                //霜冻日数
-                long frostDays = currentList.stream().filter(x -> Convert.toDouble(x.getTemMin()) < 0).count();
-                map.put("highTemDays",highTemDays);
-                map.put("frostDays",frostDays);
-                results.add(map);
             }
         }
         return results;

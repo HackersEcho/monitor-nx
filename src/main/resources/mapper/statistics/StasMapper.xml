@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.statistics.mapper.StasMapper">
+
+    <!--  同期站数统计  -->
+    <select id="periodList" parameterType="DailyParam" resultType="Daily">
+        <choose>
+            <when test="sT !=null and sT &lt; eT">select t.stationNO,${element} as element,YEAR(ObserverTime) as year
+                <include refid="Common.notCrossYearSql"></include>
+                <if test="clientCondition != null">${clientCondition}</if>
+            </when>
+            <otherwise>
+                select t.stationNo,${element} as element,YEAR(ObserverTime) as year
+                <include refid="Common.crossYearProfixSql"></include>
+                <if test="clientCondition != null">${clientCondition}</if>
+                UNION ALL
+                select t.stationNo,${element} as element,YEAR(ObserverTime)-1 as year
+                <include refid="Common.crossYearSuffixSql"></include>
+                <if test="clientCondition != null">${clientCondition}</if>
+            </otherwise>
+        </choose>
+    </select>
+</mapper>

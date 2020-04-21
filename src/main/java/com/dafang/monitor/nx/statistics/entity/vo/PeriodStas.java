@@ -18,15 +18,12 @@ import java.util.Map;
 @Builder
 @Entity
 @ApiModel(value = "同期日数")
-public class PeriodDays implements Serializable {
-    private static final long serialVersionUID = -8752056118824574544L;
-    private String stationNo;
-    private String stationName;
-    private String longitude;
-    private String latitude;
-    @ApiModelProperty(name = "历史最多日数")
-    private Double mostHistoryDay;
-    @ApiModelProperty(name = "历史最多日数出现时间")
+public class PeriodStas implements Serializable {
+    @ApiModelProperty(name = "区域名称")
+    private String regionName;
+    @ApiModelProperty(name = "历史最多站数")
+    private Double mostHistoryStas;
+    @ApiModelProperty(name = "历史最多站数出现时间")
     private String mostHistoryDate;
     @ApiModelProperty(name = "常年值")
     private Double perenVal;

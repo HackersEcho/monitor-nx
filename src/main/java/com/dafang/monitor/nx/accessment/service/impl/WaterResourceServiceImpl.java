@@ -58,24 +58,27 @@ public class WaterResourceServiceImpl implements WaterResourceService {
                 for (int i = startYear; i<= endYear; i++){
                     Map<String, Object> map = new HashMap<>();
                     int year = i;
-                    String liveVal = singleList.stream().filter(x -> x.getYear() == year).collect(Collectors.toList()).get(0).getPre();
-                    double reLiveVal = Convert.toDouble(liveVal)*area/100000;//降水资源实况值
-                    double reAnomalyVal =  reLiveVal - rePerenVal;//将水资源距平
-                    map.put("year", year);
-                    map.put("regionName", regionName);
-                    map.put("liveVal", NumberUtil.round(reLiveVal,2));
-                    map.put("perenVal", NumberUtil.round(rePerenVal,2));
-                    map.put("annomalyVal", NumberUtil.round(reAnomalyVal,2));
-                    map.put("standardValue", NumberUtil.round(standardValue,2));
-                    map.put("level",getWaterResourcesLevel(reLiveVal,rePerenVal,standardValue));
-                    regionList.add(map);
+                    List<WaterResource> currentList = singleList.stream().filter(x -> x.getYear() == year).collect(Collectors.toList());
+                    if(currentList.size()>0){
+                        String liveVal = singleList.stream().filter(x -> x.getYear() == year).collect(Collectors.toList()).get(0).getPre();
+                        double reLiveVal = Convert.toDouble(liveVal)*area/100000;//降水资源实况值
+                        double reAnomalyVal =  reLiveVal - rePerenVal;//将水资源距平
+                        map.put("year", year);
+                        map.put("regionName", regionName);
+                        map.put("liveVal", NumberUtil.round(reLiveVal,2));
+                        map.put("perenVal", NumberUtil.round(rePerenVal,2));
+                        map.put("annomalyVal", NumberUtil.round(reAnomalyVal,2));
+                        map.put("standardValue", NumberUtil.round(standardValue,2));
+                        map.put("level",getWaterResourcesLevel(reLiveVal,rePerenVal,standardValue));
+                        regionList.add(map);
+                    }
                 }
             }
         }
         for (AreaEnum areaInfo : AreaEnum.values()) {//区域站
             String regionId = areaInfo.getRegionId();
             String regionName = areaInfo.getRegionName();
-            if(regionId.length() <= 2){
+            if(regionId.length() <= 2 && regionList.size() > 0){
                 List<String> stas = RegionEnum.getStas(regionId);//区域包含的所有站点
                 for (int i = startYear; i<= endYear; i++){
                     Map<String, Object> map = new HashMap<>();

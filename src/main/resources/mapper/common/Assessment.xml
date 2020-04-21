@@ -14,7 +14,7 @@
         join geography_station_info  b ON t.stationNo = b.device_id where ${condition}
         and
         <choose>
-            <when test="sT != null and sT != ''">DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and #{eT} and</when><!--同期-->
+            <when test="sT != null and sT != ''">DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and #{eT} </when><!--同期-->
             <otherwise>t.ObserverTime between #{startDate} and #{endDate} </otherwise><!--连续-->
         </choose>
     </sql>
