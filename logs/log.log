@@ -2490,3 +2490,6 @@ java.util.MissingFormatArgumentException: Format specifier '%s'
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
 	at java.base/java.lang.Thread.run(Thread.java:830) ~[na:na]
 
+2020-04-21 17:39:20.961  INFO 11212 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-21 17:39:20.971  INFO 11212 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-21 17:39:20.988  INFO 11212 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
