@@ -26,26 +26,26 @@ public class ReflectHandleUtils {
      * @author echo
      * @date 2020/3/15
      */
-//    public static <T> double getValByOp(List<T> datas,String element,String op){
-//        String methodName = "get"+element.substring(0,1).toUpperCase()+element.substring(1);
-//        DoubleSummaryStatistics summaryStatistics = datas.stream().mapToDouble(x -> {
-//            Method method = ReflectUtil.getMethod(x.getClass(), methodName);
-//            Object invoke = null;
-//            try {
-//                invoke = method.invoke(x);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            return Convert.toDouble(invoke);
-//        }).summaryStatistics();
-//        double res = switch(op){
-//            case "min"-> summaryStatistics.getMin();
-//            case "max"-> summaryStatistics.getMax();
-//            case "sum"-> summaryStatistics.getSum();
-//            default -> summaryStatistics.getAverage();
-//        };
-//        return res;
-//    }
+    public static <T> double getValByOp(List<T> datas,String element,String op){
+        String methodName = "get"+element.substring(0,1).toUpperCase()+element.substring(1);
+        DoubleSummaryStatistics summaryStatistics = datas.stream().mapToDouble(x -> {
+            Method method = ReflectUtil.getMethod(x.getClass(), methodName);
+            Object invoke = null;
+            try {
+                invoke = method.invoke(x);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return Convert.toDouble(invoke);
+        }).summaryStatistics();
+        double res = switch(op){
+            case "min"-> summaryStatistics.getMin();
+            case "max"-> summaryStatistics.getMax();
+            case "sum"-> summaryStatistics.getSum();
+            default -> summaryStatistics.getAverage();
+        };
+        return res;
+    }
 /*
  * 根据单要素过滤异常数据
  * @param datas
@@ -65,16 +65,19 @@ public static <T> List<T> filterData(List<T> datas,String element){
             e.printStackTrace();
         }
         Double aDouble = Convert.toDouble(invoke);
+        if(aDouble == null){
+            aDouble = -99999.0;
+        }
         return aDouble <= 999 && aDouble >= -999;
     }).collect(Collectors.toList());
 };
 
 
-//    public static void main(String[] args) {
-////        List<Daily> dailies = filterData(initData(),"TEM_Avg");
-////        double valByOp = getValByOp(dailies, "TEM_Avg", "min");
-////        System.out.println(valByOp);
-////    }
+    public static void main(String[] args) {
+        List<Daily> dailies = filterData(initData(),"TEM_Avg");
+        double valByOp = getValByOp(dailies, "TEM_Avg", "min");
+        System.out.println(valByOp);
+    }
 
     public static List<Daily> initData(){
         var dailies = new ArrayList<Daily>();

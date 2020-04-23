@@ -8,15 +8,18 @@
                 select t.stationNo,b.station_name as stationName,b.longitude,b.latitude,t.ObserverTime,
                 YEAR (t.ObserverTime ) AS YEAR,t.index_value AS indexValue
                 <include refid="AssessmentCommon.notCrossYearSql"></include>
+                and t.comfort_type = #{comfortType}
             </when>
             <otherwise><!--同期跨年-->
                 select t.stationNo,b.station_name as stationName,b.longitude,b.latitude,t.ObserverTime,
                 YEAR ( t.ObserverTime ) AS YEAR,t.index_value AS indexValue
                 <include refid="AssessmentCommon.crossYearSuffixSql"></include>
+                and t.comfort_type = #{comfortType}
                 union all
                 select t.stationNo,b.stattion_name as stationName,b.longitude,b.latitude,t.ObserverTime,
                 YEAR ( t.ObserverTime )-1 AS YEAR,t.index_value AS indexValue
                 <include refid="AssessmentCommon.crossYearProfixSql"></include>
+                and t.comfort_type = #{comfortType}
             </otherwise>
         </choose>
     </select>
@@ -25,5 +28,6 @@
         select t.stationNo,b.station_name as stationName,b.longitude,b.latitude,t.ObserverTime,
         YEAR (t.ObserverTime ) AS YEAR,t.index_value AS indexValue
         <include refid="AssessmentCommon.notCrossYearSql"></include>
+        and t.comfort_type = #{comfortType}
     </select>
 </mapper>

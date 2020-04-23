@@ -8,11 +8,11 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 /*
- * 农业实体类
+积温
  */
 @Data
 @Entity
-public class Agriculture implements Serializable {
+public class AccumuTem implements Serializable {
     //站号
     private String stationNo;
     //站名
@@ -22,14 +22,10 @@ public class Agriculture implements Serializable {
     private LocalDate observerTime;
     //年份
     private Integer year;
+    //经度
+    private String longitude;
+    //纬度
+    private String latitude;
     //平均气温
     private String temAvg;
-    //最高气温
-    private String temMax;
-    //最低气温
-    private String temMin;
-    //降水
-    private String pre;
-    //日照
-    private String ssh;
 }

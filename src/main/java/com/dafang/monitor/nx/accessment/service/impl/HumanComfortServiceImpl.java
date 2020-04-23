@@ -7,6 +7,7 @@ import com.dafang.monitor.nx.accessment.entity.po.ComfortParam;
 import com.dafang.monitor.nx.accessment.mapper.HumanComfortMapper;
 import com.dafang.monitor.nx.accessment.service.HumanComfortService;
 import com.dafang.monitor.nx.utils.CommonUtils;
+import com.dafang.monitor.nx.utils.LocalDateUtils;
 import com.dafang.monitor.nx.utils.ReflectHandleUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,11 +120,21 @@ public class HumanComfortServiceImpl implements HumanComfortService {
 
     @Override
     public List<Comfort> dailyContinueList(ComfortParam params) {
-        return humanComfortMapper.continueList(params);
+        LocalDate startDate = LocalDateUtils.stringToDate(params.getStartDate());
+        LocalDate endDate = LocalDateUtils.stringToDate(params.getEndDate());
+        List<Comfort> baseData = humanComfortMapper.continueList(params);
+        List<Comfort> results = baseData.stream().
+                filter(x -> x.getObserverTime().isAfter(startDate) && x.getObserverTime().isBefore(endDate)).collect(Collectors.toList());
+        return results;
     }
 
     @Override
     public List<Comfort> dailyPeriodList(ComfortParam params) {
-        return humanComfortMapper.periodList(params);
+        LocalDate startDate = LocalDateUtils.stringToDate(params.getStartDate());
+        LocalDate endDate = LocalDateUtils.stringToDate(params.getEndDate());
+        List<Comfort> baseData = humanComfortMapper.periodList(params);
+        List<Comfort> results = baseData.stream().
+                filter(x -> x.getObserverTime().isAfter(startDate) && x.getObserverTime().isBefore(endDate)).collect(Collectors.toList());
+        return results;
     }
 }
