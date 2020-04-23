@@ -32,7 +32,7 @@ public class NumericalController {
     private NumericalService service;
     @PostMapping(value = "comprehensive")
     @ApiOperation(value = "综合统计",notes = "平均值 累计值 最大值 最小值")
-    public ResuleDto<Object> comprehensive(@Apicp("regions,startDate,endDate,opType,element,min,max,rankStartYear,rankEndYear") @RequestBody DailyParam params){
+    public ResuleDto<Object> comprehensive(@Apicp("regions,startDate,endDate,opType,element,min,max") @RequestBody DailyParam params){
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         ResuleDto<Object> resuleDto = new ResuleDto<>();
         List<Map<String, Object>> mapList = service.comprehensiveStatistic(params);
@@ -45,7 +45,7 @@ public class NumericalController {
     }
     @PostMapping(value = "extrem")
     @ApiOperation(value = "极值统计",notes = "统计最大值 最小值 极大值 极小值...")
-    public ResuleDto<List<ComprehensiveExtrem>> extrem(@Apicp("regions,startDate,endDate,climateScale,element") @RequestBody DailyParam params){
+    public ResuleDto<List<ComprehensiveExtrem>> extrem(@Apicp("regions,startDate,endDate,climateScale,element,rankStartYear,rankEndYear") @RequestBody DailyParam params){
         ResuleDto<List<ComprehensiveExtrem>> resuleDto = new ResuleDto<>();
         params.setMin(-999d);
         params.setMax(999d);
