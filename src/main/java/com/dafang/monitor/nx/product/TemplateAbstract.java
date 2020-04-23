@@ -20,11 +20,14 @@ import java.util.Map;
 public abstract class TemplateAbstract {
     // 受保护的属性放在init()数据初始化里面赋值
     protected String templateName;//模板名称
-    private String filePath = "D:\\product";// 文件生成的目标路径，例如：D:/wordFile/
+//    private String filePath = "D:\\product";// 文件生成的目标路径，例如：D:/wordFile/
+    private String filePath = "W:\\newkmlfile\\Product";// 文件生成的目标路径，例如：D:/wordFile/
     protected String fileName;//文件名称
     protected String startData;
     protected String endData;
-    protected Integer year;//当前年
+    protected String year;//当前年
+    protected String month;//月
+    protected String day;//日
     protected List<Product> baseData;//所有数据
     protected List<Product> perenList;//常年值数据
     protected List<Product> currentList;//当年数据
@@ -33,7 +36,8 @@ public abstract class TemplateAbstract {
     public boolean entrance(ProductParams params){
         init(params);
         Map<String,Object> dataMap = getDatas();
-//        createWord(dataMap, templateName, fileName);
+        fileName = fileName+".doc";
+        createWord(dataMap, templateName, fileName);
         return false;
     }
 
