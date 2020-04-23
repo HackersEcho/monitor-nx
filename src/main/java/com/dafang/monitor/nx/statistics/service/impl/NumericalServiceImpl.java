@@ -3,15 +3,16 @@ package com.dafang.monitor.nx.statistics.service.impl;
 import cn.hutool.core.convert.Convert;
 import com.dafang.monitor.nx.statistics.entity.po.Daily;
 import com.dafang.monitor.nx.statistics.entity.po.DailyParam;
-import com.dafang.monitor.nx.statistics.entity.vo.CommonVal;
-import com.dafang.monitor.nx.statistics.entity.vo.ComprehensiveExtrem;
+import com.dafang.monitor.nx.statistics.entity.vo.*;
 import com.dafang.monitor.nx.statistics.mapper.NumericalMapper;
 import com.dafang.monitor.nx.statistics.service.NumericalService;
 import com.dafang.monitor.nx.utils.CommonUtils;
+import com.dafang.monitor.nx.utils.LocalDateUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -140,4 +141,96 @@ public class NumericalServiceImpl implements NumericalService {
         return resultList;
     }
 
+    @Override
+    public List<FirstDays>  firstDays(DailyParam params) {
+        List<FirstDays> resList = new ArrayList<>();// 返回值
+        // 默认常年值对应的天数转成月日以当前年份为准
+        LocalDate now = LocalDate.now();
+        int startYear = Convert.toInt(params.getStartDate().substring(0, 4));
+        int endYear = Convert.toInt(params.getEndDate().substring(0, 4));
+        String[] scales = params.getClimateScale().split("-");// 常年值区间段
+        int scaleLen = Convert.toInt(scales[1]) -  Convert.toInt(scales[0]);
+        // 获取数据
+        List<Daily> periodList = mapper.periodList(params);
+        List<String> staList = periodList.parallelStream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
+        for (String stationNo : staList) {
+            FirstDays.FirstDaysBuilder firBuilder = FirstDays.builder();
+            // 得到单个站点的所有数据
+            List<Daily> singleList = periodList.parallelStream().filter(
+                    x -> StringUtils.equals(stationNo, x.getStationNo())).collect(Collectors.toList());
+            Daily daily = singleList.get(0);
+            firBuilder.stationNo(stationNo).stationName(daily.getStationName());
+            // 得到单个站点历年所有的初日终日时间以及对应的天数
+            List<Map<String, String>> yearDatas = firstDaysHandle(singleList);
+            // 得到初日和终日常年值
+            List<Map<String, String>> perenList = yearDatas.stream().filter(x -> StringUtils.compare(x.get("year"), scales[0]) >= 0
+                    && StringUtils.compare(x.get("year"), scales[0]) <= 1).collect(Collectors.toList());
+            int firstPerenDays = Convert.toInt(perenList.stream().mapToDouble(x -> Convert.toDouble(x.get("firstDays"))).average().getAsDouble()+0.5);// 初日对应的天数
+            int endPerenDays = Convert.toInt(perenList.stream().mapToDouble(x -> Convert.toDouble(x.get("endDays"))).average().getAsDouble()+0.5);
+            // 因为hutool的Convert.toInt()是向下取整,所以加上0.5相当于四舍五入的功能
+            String firstPerenDay = LocalDateUtils.getMDDesc(now.withDayOfYear(firstPerenDays));
+            String endPerenDay = LocalDateUtils.getMDDesc(now.withDayOfYear(endPerenDays));
+            firBuilder.firstPerenDay(firstPerenDay).endPerenDay(endPerenDay);
+            // 查询年份数据统计
+            List<Map<String, FirstDayCommonVal>> middleList = new ArrayList<>();
+            for (int i = startYear;i <= endYear;i++){
+                Map<String, FirstDayCommonVal> resMap = new HashMap<>();
+                int year = i;
+                String key = year + "";
+                FirstDayCommonVal.FirstDayCommonValBuilder builder = FirstDayCommonVal.builder();
+                Optional<Map<String, String>> currOp = yearDatas.stream().filter(x -> Convert.toInt(x.get("year")) == year).findFirst();
+                if (currOp.isPresent()){
+                    Map<String, String> map = currOp.get();
+                    // 得到初日和终日实况值
+                    Integer firstLiveDays = Convert.toInt(map.get("firstDays"), null);
+                    Integer endLiveDays = Convert.toInt(map.get("endDays"), null);
+
+                    int firstAnomalyVal = firstPerenDays - firstLiveDays;
+                    int endAnomalyVal = endPerenDays - endLiveDays;
+                    builder.firstLiveVal(map.get("firstDate")).endLiveVal(map.get("endDate")).firstPerenVal(firstPerenDay)
+                            .endPerenVal(endPerenDay).firstAnomalyVal(firstAnomalyVal).endAnomalyVal(endAnomalyVal);
+                    // 计算排位
+                    List<Integer> firstList = yearDatas.stream().filter(x->Convert.toInt(x.get("year"))>=params.getRankStartYear()
+                            && Convert.toInt(x.get("year"))<=params.getRankEndYear()).map(x -> Convert.toInt(x.get("firstDays"))).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+                    List<Integer> endList = yearDatas.stream().filter(x->Convert.toInt(x.get("year"))>=params.getRankStartYear()
+                            && Convert.toInt(x.get("year"))<=params.getRankEndYear()).map(x -> Convert.toInt(x.get("endDays"))).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+                    int firstRank = firstList.indexOf(firstLiveDays) + 1;
+                    int endRank = endList.indexOf(endLiveDays) + 1;
+                    builder.firstRank(firstRank).endRank(endRank);
+                    // 如果款年key应该为2018-2019这样的格式
+                    if (StringUtils.compare(params.getST(),params.getET())>0){
+                        key = year + "-" + (i + 1);
+                    }
+                }
+                resMap.put(key, builder.build());
+                middleList.add(resMap);
+            }
+            firBuilder.data(middleList);
+            resList.add(firBuilder.build());
+        }
+
+        return resList;
+    }
+    // 得到单个站点历年所有的初日终日时间以及对应的天数
+    public List<Map<String,String>> firstDaysHandle(List<Daily> singleList){
+        List<Map<String,String>> resList = new ArrayList<>();
+        Map<Integer, List<Daily>> collect = singleList.stream().collect(Collectors.groupingBy(Daily::getYear));
+        for (Integer key : collect.keySet()) {
+            Map<String,String> map = new HashMap<>();
+            List<Daily> singleYearList = collect.get(key);
+            IntSummaryStatistics summaryStatistics = singleYearList.stream().mapToInt(x -> Convert.toInt(x.getObserverTime().toString().replace("-",""))).summaryStatistics();
+            String firstDate = summaryStatistics.getMin()+"";
+            String endDate = summaryStatistics.getMax()+"";
+            // 得到初终日对应的天数
+            int firstDays = LocalDateUtils.stringToDate(firstDate).getDayOfYear();
+            int endDays = LocalDateUtils.stringToDate(endDate).getDayOfYear();
+            map.put("year", key+"");
+            map.put("firstDate", LocalDateUtils.getMDDesc(firstDate));// 存储月日
+            map.put("endDate",  LocalDateUtils.getMDDesc(endDate));
+            map.put("firstDays", firstDays+"");
+            map.put("endDays", endDays+"");
+            resList.add(map);
+        }
+        return resList;
+    }
 }

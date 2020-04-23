@@ -5,8 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Entity;
-
 /**
  * @description:
  * @author: echo
@@ -14,15 +12,15 @@ import javax.persistence.Entity;
  * @version: 1.0
  */
 @ApiModel("数据的基本信息情况")
-@Entity
+@Data
 @Builder
 public class CommonVal {
-    @ApiModelProperty(name = "实况值")
+    @ApiModelProperty(value = "实况值")
     private Double liveVal;
-    @ApiModelProperty(name = "常年值")
+    @ApiModelProperty(value = "常年值")
     private Double perenVal;
-    @ApiModelProperty(name = "距平")
+    @ApiModelProperty(value = "距平")
     private Double anomalyVal;
-    @ApiModelProperty(name = "排位")
+    @ApiModelProperty(value = "排位")
     private Integer rank;
 }

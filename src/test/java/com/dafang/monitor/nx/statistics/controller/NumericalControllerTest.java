@@ -25,5 +25,11 @@ class NumericalControllerTest {
 //                .element("TEM_Max").build();
         controller.extrem(bean);
     }
+    @Test
+    void first(){
+        DailyParam bean = DailyParam.builder().startDate("20120801").endDate("20120831").regions("53517").climateScale("1981-2010")
+                .element("TEM_Max").min(30d).max(99d).rankStartYear(1961).rankEndYear(2020).build();
+        controller.firstDays(bean);
+    }
 
 }
