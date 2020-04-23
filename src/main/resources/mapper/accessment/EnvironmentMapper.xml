@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.accessment.mapper.EnvironmentMapper">
+    <!--查询环境数据-->
+    <select id="dataList" parameterType="EnvironmentParam" resultType="Environment">
+        SELECT
+            t.area,
+            t.position_name as positionName,
+            t.time_point as timePoint,
+            t.aqi,
+            t.pm2_5 as pm25,
+            t.pm10,
+            t.co,
+            t.no2,
+            t.o3,
+            t.o3_8h as o38h,
+            t.so2,
+            t.quality
+        FROM
+            base_aqi_data t
+        WHERE
+            t.time_point BETWEEN #{startDate} AND #{endDate}
+            AND t.area IN (${area})
+        limit ${page},${rows}
+    </select>
+    <!--查询环境数据-->
+    <select id="dataCount" parameterType="EnvironmentParam" resultType="int">
+        SELECT
+            count(*) as total
+        FROM
+            base_aqi_data t
+        WHERE
+            t.time_point BETWEEN #{startDate} AND #{endDate}
+            AND t.area IN (${area})
+    </select>
+</mapper>

@@ -45,6 +45,15 @@ public class Swagger2Config {
                 .build();
     }
     @Bean
+    public Docket createRestApi4() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("产品")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.dafang.monitor.nx.product.controller"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+    @Bean
     public ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("宁夏API文档")//接口文档主题

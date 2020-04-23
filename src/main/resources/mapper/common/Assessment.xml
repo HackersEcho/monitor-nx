@@ -7,30 +7,37 @@
    -->
     <sql id="notCrossYearSql">
         from
-        base_comfort_index t
+        <choose>
+            <when test="code == 1">base_day_data t</when>
+            <otherwise>base_comfort_index t</otherwise>
+        </choose>
         join geography_station_info  b ON t.stationNo = b.device_id where ${condition}
         and
         <choose>
-            <when test="sT != null and sT != ''">DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and #{eT} and</when><!--同期-->
-            <otherwise>t.ObserverTime between #{startDate} and #{endDate} and</otherwise><!--连续-->
+            <when test="sT != null and sT != ''">DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and #{eT} </when><!--同期-->
+            <otherwise>t.ObserverTime between #{startDate} and #{endDate} </otherwise><!--连续-->
         </choose>
-        t.comfort_type = #{comfortType}
     </sql>
 <!--    跨年sql prefix(0101-sT)  suffix(et-1231)-->
     <sql id="crossYearProfixSql">
         from
-        base_comfort_index t
+        <choose>
+            <when test="code == 1">base_day_data t</when>
+            <otherwise>base_comfort_index t</otherwise>
+        </choose>
         join geography_station_info  b ON t.stationNo = b.device_id where ${condition}
         and
-        DATE_FORMAT(t.ObserverTime,'%m%d')  between '0101' and #{eT} and
-        t.comfort_type = #{comfortType}
+        DATE_FORMAT(t.ObserverTime,'%m%d')  between '0101' and #{eT}
     </sql>
     <sql id="crossYearSuffixSql">
         from
-        base_comfort_index t
+        <choose>
+            <when test="code == 1">base_day_data t</when>
+            <otherwise>base_comfort_index t</otherwise>
+        </choose>
         join geography_station_info  b ON t.stationNo = b.device_id where ${condition}
         and
-        DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and '1231' and
-        t.comfort_type = #{comfortType}
+        DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and '1231'
     </sql>
+
 </mapper>
