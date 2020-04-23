@@ -47,6 +47,8 @@ public class NumericalController {
     @ApiOperation(value = "极值统计",notes = "统计最大值 最小值 极大值 极小值...")
     public ResuleDto<List<ComprehensiveExtrem>> extrem(@Apicp("regions,startDate,endDate,climateScale,element") @RequestBody DailyParam params){
         ResuleDto<List<ComprehensiveExtrem>> resuleDto = new ResuleDto<>();
+        params.setMin(-999d);
+        params.setMax(999d);
         params.setST(params.getStartDate().substring(4));
         params.setET(params.getEndDate().substring(4));
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
