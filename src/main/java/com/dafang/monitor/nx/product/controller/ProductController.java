@@ -5,6 +5,7 @@ import com.dafang.monitor.nx.product.TemplateAbstract;
 import com.dafang.monitor.nx.product.entity.po.Product;
 import com.dafang.monitor.nx.product.entity.po.ProductParams;
 import com.dafang.monitor.nx.product.impl.ClimateInfo;
+import com.dafang.monitor.nx.product.impl.DroughtMonitor;
 import com.dafang.monitor.nx.utils.CommonUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,19 +25,24 @@ import java.lang.reflect.Method;
 public class ProductController {
 
     @Autowired
-    ClimateInfo method;
+    ClimateInfo method1;
+    @Autowired
+    DroughtMonitor method2;
 
     @PostMapping(value = "creatProduct")
     @ApiOperation(value = "产品生成",notes = "产品")
     public void creatProduct(ProductParams params) throws Exception {
+//        params.setStartDate("20190101");
+//        params.setEndDate("20190201");
+//        params.setST("0101");
+//        params.setET("0201");
+//        params.setRegions("1");
+//        params.setElement("t.TEM_Avg,t.PRE_Time_2020");
+//        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+//        method1.entrance(params);
+
         params.setStartDate("20190101");
-        params.setEndDate("20190201");
-        params.setST("0101");
-        params.setET("0201");
-        params.setRegions("1");
-        params.setElement("t.TEM_Avg,t.PRE_Time_2020");
-        params.setCondition(CommonUtils.getCondition(params.getRegions()));
-        method.entrance(params);
+        method2.entrance(params);
     }
 
 }

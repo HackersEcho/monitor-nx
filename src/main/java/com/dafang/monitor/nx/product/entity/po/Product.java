@@ -24,6 +24,7 @@ public class Product implements Serializable {
     private Double TEM_Max;
     private Double TEM_Min;
     private Double SSH;
+    private Double CI;
     private String longitude;
     private String latitude;
 

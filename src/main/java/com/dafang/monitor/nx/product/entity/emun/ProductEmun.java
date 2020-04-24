@@ -4,7 +4,8 @@ import com.dafang.monitor.nx.product.impl.ClimateInfo;
 
 public enum ProductEmun {
 
-    PRODUCT1(3,"重要气候信息");
+    PRODUCT2(2,"宁夏气象干旱监测报告"),
+    PRODUCT3(3,"重要气候信息");
 
     private Integer id;
     private String fileName;

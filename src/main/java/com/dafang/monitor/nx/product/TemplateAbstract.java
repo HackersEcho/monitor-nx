@@ -25,6 +25,8 @@ public abstract class TemplateAbstract {
     protected String fileName;//文件名称
     protected String startData;
     protected String endData;
+    protected String startMonthDay;
+    protected String endMonthDay;
     protected String year;//当前年
     protected String month;//月
     protected String day;//日

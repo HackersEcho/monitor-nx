@@ -17,4 +17,10 @@
             </otherwise>
         </choose>
     </select>
+    <!--查询ci指数-->
+    <select id="ciList" parameterType="ProductParams" resultType="Product">
+        SELECT t.stationNo,b.station_name as stationName,b.longitude,b.latitude,t.ObserverTime,t.CI_VAL as CI,YEAR(ObserverTime) as year
+        FROM base_ci_index t JOIN geography_station_info b on t.stationNo = b.device_id
+        WHERE DATE_FORMAT(t.ObserverTime,'%Y%m%d') = #{startDate}
+    </select>
 </mapper>

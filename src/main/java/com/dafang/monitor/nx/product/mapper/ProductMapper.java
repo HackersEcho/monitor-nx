@@ -17,4 +17,8 @@ public interface ProductMapper extends MyMapper<Product> {
      */
     List<Product> periodList(ProductParams params);
 
+    /*
+    查询ci指数
+     */
+    List<Product> ciList(ProductParams params);
 }
