@@ -27,5 +27,7 @@ public class Product implements Serializable {
     private Double CI;
     private String longitude;
     private String latitude;
+    //命名其他数据
+    private Double val;
 
 }

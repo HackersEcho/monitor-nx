@@ -43,6 +43,9 @@ public class ProductParams implements Serializable {
     private String condition;
     @ApiModelProperty(value = "天气现象码")
     private String code;
+    @ApiModelProperty(value = "数据库查询是AVG或者SUM",hidden = true)
+    @JsonIgnore
+    private String cal;
 
     public ProductParams(String startDate, String endDate, String element, Double min, Double max, String regions, String sT, String eT, String condition, String code) {
         this.startDate = startDate;
