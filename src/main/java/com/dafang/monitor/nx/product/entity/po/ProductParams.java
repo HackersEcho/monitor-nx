@@ -47,7 +47,7 @@ public class ProductParams implements Serializable {
     @JsonIgnore
     private String cal;
 
-    public ProductParams(String startDate, String endDate, String element, Double min, Double max, String regions, String sT, String eT, String condition, String code) {
+    public ProductParams(String startDate, String endDate, String element, Double min, Double max, String regions, String sT, String eT, String condition, String code, String cal) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.element = element;
@@ -58,5 +58,6 @@ public class ProductParams implements Serializable {
         this.eT = eT;
         this.condition = condition;
         this.code = code;
+        this.cal = cal;
     }
 }

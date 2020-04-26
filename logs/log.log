@@ -850,3 +850,37 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check th
 2020-04-26 17:05:38.637 DEBUG 14236 --- [http-nio-8080-exec-7] c.d.m.n.s.m.DaysMapper.continuousDays    : ==>  Preparing: select t.stationNO,b.station_name as stationName,b.latitude,b.longitude,COUNT(1) AS val,YEAR(ObserverTime) as year from base_day_data t join geography_station_info b ON t.stationNo = b.device_id where b.station_type= 1 and t.ObserverTime between ? and ? and t.TEM_Avg between ? and ? GROUP BY stationNo,YEAR(ObserverTime) 
 2020-04-26 17:05:38.638 DEBUG 14236 --- [http-nio-8080-exec-7] c.d.m.n.s.m.DaysMapper.continuousDays    : ==> Parameters: 20180801(String), 20180831(String), 0.0(Double), 99.0(Double)
 2020-04-26 17:05:38.724 DEBUG 14236 --- [http-nio-8080-exec-7] c.d.m.n.s.m.DaysMapper.continuousDays    : <==      Total: 27
+2020-04-26 17:40:50.169  INFO 14236 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-26 17:40:50.180  INFO 14236 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-26 17:40:50.520  INFO 14236 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2020-04-26 17:41:59.157  INFO 9180 --- [main] c.d.monitor.nx.MonitorNxApplication      : Starting MonitorNxApplication on DESKTOP-9QOFKJO with PID 9180 (E:\IDEA\monitor-nx\target\classes started by zyj in E:\IDEA\monitor-nx)
+2020-04-26 17:41:59.172 DEBUG 9180 --- [main] c.d.monitor.nx.MonitorNxApplication      : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-04-26 17:41:59.173  INFO 9180 --- [main] c.d.monitor.nx.MonitorNxApplication      : The following profiles are active: zyj
+2020-04-26 17:42:01.564  INFO 9180 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-26 17:42:01.579  INFO 9180 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-26 17:42:01.580  INFO 9180 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-26 17:42:01.731  INFO 9180 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-26 17:42:01.732  INFO 9180 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2470 ms
+2020-04-26 17:42:01.821  INFO 9180 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2020-04-26 17:42:03.833  INFO 9180 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2020-04-26 17:42:05.584  INFO 9180 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-26 17:42:05.659  INFO 9180 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-26 17:42:05.901  INFO 9180 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2020-04-26 17:42:05.902  INFO 9180 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2020-04-26 17:42:05.902  INFO 9180 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2020-04-26 17:42:05.903  INFO 9180 --- [main] t.m.m.autoconfigure.MapperCacheDisabler  : Clear EntityHelper entityTableMap cache.
+2020-04-26 17:42:05.929  INFO 9180 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-04-26 17:42:05.949  INFO 9180 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 4 custom documentation plugin(s)
+2020-04-26 17:42:05.978  INFO 9180 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-26 17:42:06.082  INFO 9180 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-26 17:42:06.564  INFO 9180 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-26 17:42:06.581  INFO 9180 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-04-26 17:42:06.617  INFO 9180 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: dataListUsingPOST_1
+2020-04-26 17:42:06.628  INFO 9180 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: continueListUsingPOST_1
+2020-04-26 17:42:06.654  INFO 9180 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: periodListUsingPOST_1
+2020-04-26 17:42:06.661  INFO 9180 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: dataListUsingPOST_2
+2020-04-26 17:42:06.935  INFO 9180 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-26 17:42:06.938  INFO 9180 --- [main] c.d.monitor.nx.MonitorNxApplication      : Started MonitorNxApplication in 8.804 seconds (JVM running for 11.442)
+2020-04-26 17:42:33.734  INFO 9180 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-26 17:42:33.739  INFO 9180 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-04-26 17:42:33.752  INFO 9180 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
