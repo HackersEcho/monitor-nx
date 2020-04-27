@@ -41,7 +41,7 @@ public class DroughtMonitor extends TemplateAbstract {
     }
 
     @Override
-    protected Map<String, Object> getDatas() {
+    protected Map<String, Object> getDatas(ProductParams params) {
         Map<String,Object> result = new HashMap<>();
         //干旱数据
         Map<String, String> dataMap = handle();
@@ -52,11 +52,11 @@ public class DroughtMonitor extends TemplateAbstract {
         for (CIEnum value : CIEnum.values()) {
             String level = value.getLevel();
             String stationNames = dataMap.get(level);
-            if (stationNames != null && level != "无旱"){
+            if (stationNames != null && !level.equals("无旱")){
                 s2 += stationNames+"为"+level+",";
             }
         }
-        if(s2!=""){
+        if(!s2.equals("")){
             s2 = s2.substring(0,s2.length()-1);
         }else{
             s2 = "全区无旱";
