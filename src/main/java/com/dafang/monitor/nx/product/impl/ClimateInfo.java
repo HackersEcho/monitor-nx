@@ -50,7 +50,7 @@ public class ClimateInfo extends TemplateAbstract {
     }
 
     @Override
-    protected Map<String, Object> getDatas() {
+    protected Map<String, Object> getDatas(ProductParams params) {
         Map<String,Object> result = new HashMap<>();
         //得到区域站的实况常年距平
         Map<String, Object> handle = new HashMap<>();

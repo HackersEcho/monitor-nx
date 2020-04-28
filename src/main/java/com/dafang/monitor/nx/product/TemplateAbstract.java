@@ -21,7 +21,8 @@ public abstract class TemplateAbstract {
     // 受保护的属性放在init()数据初始化里面赋值
     protected String templateName;//模板名称
 //    private String filePath = "D:\\product";// 文件生成的目标路径，例如：D:/wordFile/
-    private String filePath = "W:\\newkmlfile\\Product";// 文件生成的目标路径，例如：D:/wordFile/
+//    private String filePath = "W:\\newkmlfile\\Product";// 文件生成的目标路径，例如：D:/wordFile/
+    private String filePath = "E:\\zyj\\Product";// 文件生成的目标路径，例如：D:/wordFile/
     protected String fileName;//文件名称
     protected String startData;
     protected String endData;
@@ -37,7 +38,7 @@ public abstract class TemplateAbstract {
     // 所有产品的入口
     public boolean entrance(ProductParams params){
         init(params);
-        Map<String,Object> dataMap = getDatas();
+        Map<String,Object> dataMap = getDatas(params);
         fileName = fileName+".doc";
         createWord(dataMap, templateName, fileName);
         return false;
@@ -46,7 +47,7 @@ public abstract class TemplateAbstract {
     // 初始化数据
     protected abstract void init(ProductParams params);
     // 获取所有的数据,放入map集合
-    protected abstract Map<String, Object> getDatas();
+    protected abstract Map<String, Object> getDatas(ProductParams params);
     /*
      *
      *生成word文件
