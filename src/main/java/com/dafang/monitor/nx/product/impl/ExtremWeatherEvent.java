@@ -39,8 +39,8 @@ public class ExtremWeatherEvent extends TemplateAbstract {
         //获取数据
         Map<String, Object> map = handleData(params);
         //拼接内容
-        String str1 = "%s,全区平均气温为%s℃,较常年同期偏%s %s℃;各地平均气温为%s°C，%s%s；高温日数为 %s 天。";
-        String str2 = "%s,全区平均降水量为 %smm,较常年同期偏%s %s%%，各地平均降水为%smm，%s%s；暴雨日数为 %s 天。";
+        String str1 = "%s,全区平均气温为%s℃,较常年同期偏%s %s℃;各地平均气温为%s°C %s%s；高温日数为 %s 天。";
+        String str2 = "%s,全区平均降水量为 %smm,较常年同期偏%s %s%%，各地平均降水为%smm %s%s；暴雨日数为 %s 天。";
         String s1 = year+"年"+month+"月";
         String s2 = map.get("TEM_AvgQXLiveVal").toString();
         String s3 = Convert.toDouble(map.get("TEM_AvgQXAnnomlyVal")) > 0 ? "高" : "低";
@@ -48,9 +48,9 @@ public class ExtremWeatherEvent extends TemplateAbstract {
         String s5 = map.get("TEM_Avgmin").toString()+"～"+map.get("TEM_Avgmax").toString();
         String s6 = "";
         if (!map.get("TEM_Avgstas").equals("")){
-            s6 = map.get("TEM_Avgstas").toString()+"较常年同期偏高"+map.get("TEM_AvgstaAnnMin").toString()+"～"+map.get("TEM_AvgstaAnnMax").toString()+"°C";
+            s6 = "，"+map.get("TEM_Avgstas").toString()+"较常年同期偏高"+map.get("TEM_AvgstaAnnMin").toString()+"～"+map.get("TEM_AvgstaAnnMax").toString()+"°C，";
             if(!map.get("TEM_Avgstas").toString().contains("、")){
-                s6 = map.get("TEM_Avgstas").toString()+"较常年同期偏高"+map.get("TEM_AvgstaAnnMin").toString()+"°C,";
+                s6 = ", "+map.get("TEM_Avgstas").toString()+"较常年同期偏高"+map.get("TEM_AvgstaAnnMin").toString()+"°C,";
             }
         }
         String s7 = map.get("TEM_AvgrankStr").toString();
@@ -61,7 +61,7 @@ public class ExtremWeatherEvent extends TemplateAbstract {
         String t5 = map.get("PRE_Time_2020min").toString()+"～"+map.get("PRE_Time_2020max").toString();
         String t6 = "";
         if (!map.get("PRE_Time_2020stas").equals("")){
-            t6 = map.get("PRE_Time_2020stas").toString()+"较常年同期偏多"+map.get("PRE_Time_2020staAnnMin").toString()+"～"+map.get("PRE_Time_2020staAnnMax").toString()+"mm";
+            t6 = map.get("PRE_Time_2020stas").toString()+"较常年同期偏多"+map.get("PRE_Time_2020staAnnMin").toString()+"～"+map.get("PRE_Time_2020staAnnMax").toString()+"mm，";
             if(!map.get("PRE_Time_2020stas").toString().contains("、")){
                 t6 = map.get("PRE_Time_2020stas").toString()+"较常年同期偏多"+map.get("PRE_Time_2020staAnnMin").toString()+"mm,";
             }
@@ -153,10 +153,11 @@ public class ExtremWeatherEvent extends TemplateAbstract {
             result.put(element+"stas", stas.substring(0,stas.length()-1));//较常年偏高的站点
             result.put(element+"staAnnMax",NumberUtil.round(staAnnMax,1));//各地距平最大值
             result.put(element+"staAnnMin",NumberUtil.round(staAnnMin,1));//各地距平最小值
-            if(rankStr.length() > 0){
-                rankStr.substring(0,rankStr.length()-1);
+            String rank = rankStr.toString();
+            if(!rank.equals("")){
+                rank = rank.substring(0,rank.length()-1);
             }
-            result.put(element+"rankStr", rankStr);//历史排位前5的站
+            result.put(element+"rankStr", rank);//历史排位前5的站
             result.put(element+"count",count);//暴雨、高温日数
         }
         return result;

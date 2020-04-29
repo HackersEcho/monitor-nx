@@ -153,7 +153,7 @@ public class ClimateInfo extends TemplateAbstract {
      */
     public List<Map<String,Object>> handleStationData(){
         List<Map<String,Object>> list = new ArrayList<>();
-        List<String> stationNos = currentList.stream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
+        List<String> stationNos = currentList.stream().map(Product::getStationNo).distinct().collect(Collectors.toList());
         for (String stationNo : stationNos) {
             Map<String,Object> map = new HashMap<>();
             List<Product> singleCurrentList = currentList.stream().filter(x -> StringUtils.equals(x.getStationNo(), stationNo)).collect(Collectors.toList());

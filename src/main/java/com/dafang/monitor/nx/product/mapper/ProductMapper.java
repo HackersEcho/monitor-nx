@@ -26,4 +26,9 @@ public interface ProductMapper extends MyMapper<Product> {
     查询同期AVG/SUM数据数据
      */
     List<Product> periodsList(ProductParams params);
+
+    /*
+    同期日数统计
+     */
+    List<Product> periodDays(ProductParams params);
 }

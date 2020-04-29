@@ -34,7 +34,7 @@ public class AgricultureServiceImpl implements AgricultureService {
         List<String> stationNos = baseData.stream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
         for (String stationNo : stationNos) {
             List<Agriculture> singleList = baseData.stream().filter(x -> StringUtils.equals(x.getStationNo(), stationNo)).collect(Collectors.toList());
-            String stationame = singleList.get(0).getStationName();
+            String stationName = singleList.get(0).getStationName();
             // 得到常年值数据
             List<Agriculture> perenList = singleList.stream().filter(x -> x.getYear() >= Convert.toInt(scale[0])
                     && x.getYear() <= Convert.toInt(scale[1])).collect(Collectors.toList());
@@ -47,6 +47,7 @@ public class AgricultureServiceImpl implements AgricultureService {
                 if(currentList.size()>0){
                     for (String element : elements) {
                         currentList = ReflectHandleUtils.filterData(currentList, element.split("_")[0]);
+                        perenList = ReflectHandleUtils.filterData(perenList, element.split("_")[0]);
                         handle(currentList,perenList,element.split("_")[0],element.split("_")[1],scaleLen,map);
                     }
                     //高温日数
@@ -55,6 +56,9 @@ public class AgricultureServiceImpl implements AgricultureService {
                     long frostDays = currentList.stream().filter(x -> Convert.toDouble(x.getTemMin()) < 0).count();
                     map.put("highTemDays",highTemDays);
                     map.put("frostDays",frostDays);
+                    map.put("year",year);
+                    map.put("stationNo",stationNo);
+                    map.put("stationName",stationName);
                     results.add(map);
                 }
             }

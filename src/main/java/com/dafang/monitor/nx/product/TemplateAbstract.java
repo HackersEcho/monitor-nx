@@ -18,6 +18,7 @@ import java.util.Map;
  * @version: 1.0
  */
 public abstract class TemplateAbstract {
+
     // 受保护的属性放在init()数据初始化里面赋值
     protected String templateName;//模板名称
 //    private String filePath = "D:\\product";// 文件生成的目标路径，例如：D:/wordFile/
@@ -34,6 +35,9 @@ public abstract class TemplateAbstract {
     protected List<Product> baseData;//所有数据
     protected List<Product> perenList;//常年值数据
     protected List<Product> currentList;//当年数据
+    protected List<Product> baseDayData;//所有数据
+    protected List<Product> perenDayList;//常年值数据
+    protected List<Product> currentDayList;//当年数据
 
     // 所有产品的入口
     public boolean entrance(ProductParams params){
