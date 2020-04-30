@@ -28,7 +28,7 @@ public class DecisionService extends TemplateAbstract implements Products {
         startData = params.getStartDate();
         endData = params.getEndDate();
         year = startData.substring(0,4);
-        fileName = year+"年"+ ProductEmun.getFileName(4);
+        fileName = year+"年"+ ProductEmun.getFileName(5);
         templateName = "决策服务材料.ftl";
         //各站降水量集合
         baseData = mapper.periodsList(params);
