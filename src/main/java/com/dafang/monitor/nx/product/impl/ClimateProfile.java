@@ -28,7 +28,7 @@ public class ClimateProfile extends TemplateAbstract {
     }
 
     @Override
-    protected Map<String, Object> getDatas() {
+    protected Map<String, Object> getDatas(ProductParams params) {
         return null;
     }
 }

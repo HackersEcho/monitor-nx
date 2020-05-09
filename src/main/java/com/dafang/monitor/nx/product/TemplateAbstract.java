@@ -18,29 +18,40 @@ import java.util.Map;
  * @version: 1.0
  */
 public abstract class TemplateAbstract {
+
     // 受保护的属性放在init()数据初始化里面赋值
     protected String templateName;//模板名称
-    private String filePath = "D:\\product";// 文件生成的目标路径，例如：D:/wordFile/
+//    private String filePath = "D:\\product";// 文件生成的目标路径，例如：D:/wordFile/
+//    private String filePath = "W:\\newkmlfile\\Product";// 文件生成的目标路径，例如：D:/wordFile/
+    private String filePath = "E:\\zyj\\Product";// 文件生成的目标路径，例如：D:/wordFile/
     protected String fileName;//文件名称
     protected String startData;
     protected String endData;
-    protected Integer year;//当前年
+    protected String startMonthDay;
+    protected String endMonthDay;
+    protected String year;//当前年
+    protected String month;//月
+    protected String day;//日
     protected List<Product> baseData;//所有数据
     protected List<Product> perenList;//常年值数据
     protected List<Product> currentList;//当年数据
+    protected List<Product> baseDayData;//所有数据
+    protected List<Product> perenDayList;//常年值数据
+    protected List<Product> currentDayList;//当年数据
 
     // 所有产品的入口
     public boolean entrance(ProductParams params){
         init(params);
-        Map<String,Object> dataMap = getDatas();
-//        createWord(dataMap, templateName, fileName);
+        Map<String,Object> dataMap = getDatas(params);
+        fileName = fileName+".doc";
+        createWord(dataMap, templateName, fileName);
         return false;
     }
 
     // 初始化数据
     protected abstract void init(ProductParams params);
     // 获取所有的数据,放入map集合
-    protected abstract Map<String, Object> getDatas();
+    protected abstract Map<String, Object> getDatas(ProductParams params);
     /*
      *
      *生成word文件
