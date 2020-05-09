@@ -64,7 +64,7 @@ public class SeasonServiceImpl implements SeasonService {
                     x -> x.getObserverTime().toString().replace("-","")).collect(Collectors.joining(","));
             String maxDaysTime = singleList.stream().filter(x -> x.getDays() == maxDays).map(
                     x -> x.getObserverTime().toString().replace("-","")).collect(Collectors.joining(","));
-            seasonBuilder.perenVal(perenMd).maxDaysTime(maxDaysTime).minDaysTime(minDaysTime);
+            seasonBuilder.perenVal(perenMd).minDays(minDays).maxDays(maxDays).maxDaysTime(maxDaysTime).minDaysTime(minDaysTime);
             // 查询年份数据
             List<Map<String, EventVal>> middleList = new ArrayList<>();
             for (int i=startYear;i<=endYear;i++){
@@ -98,7 +98,7 @@ public class SeasonServiceImpl implements SeasonService {
         String[] scales = params.getClimateScale().split("-");// 常年值区间段
         int scaleLen = Convert.toInt(scales[1]) -  Convert.toInt(scales[0]) + 1;
         // 获取数据
-        List<EventDaily> seasonDatas = mapper.seasonData(params);
+        List<EventDaily> seasonDatas = mapper.seasonLen(params);
         List<String> staList = seasonDatas.parallelStream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
         for (String stationNo : staList) {
             FourSeason.FourSeasonBuilder seasonBuilder = FourSeason.builder();
@@ -111,13 +111,14 @@ public class SeasonServiceImpl implements SeasonService {
             // 对每条数据增加一个日期入季的长度
             List<EventDaily> lenList = new ArrayList<>();
             for (Integer year : yearList) {
-                List<EventDaily> singleYearList = singleList.stream().filter(x -> x.getYear() == year).collect(Collectors.toList());
+                int years = year;
+                List<EventDaily> singleYearList = singleList.stream().filter(x -> x.getYear() == years).collect(Collectors.toList());
                 Optional<EventDaily> inOp = singleYearList.stream().filter(x -> x.getTimeType() == 1).findFirst();
                 Optional<EventDaily> outOp = singleYearList.stream().filter(x -> x.getTimeType() == 2).findFirst();
                 if (inOp.isPresent() && outOp.isPresent()){
                     EventDaily eventDaily1 = inOp.get();
                     EventDaily eventDaily2 = outOp.get();
-                    long len = LocalDateUtils.getDifferDays(eventDaily2.getObserverTime(), eventDaily1.getObserverTime());
+                    long len = LocalDateUtils.getDifferDays(eventDaily1.getObserverTime(), eventDaily2.getObserverTime());
                     eventDaily1.setDays(Convert.toInt(len));
                     lenList.add(eventDaily1);
                 }
@@ -125,8 +126,7 @@ public class SeasonServiceImpl implements SeasonService {
             // 常年值数据处理
             List<EventDaily> perenList = lenList.stream().filter(x -> x.getYear() >= Convert.toInt(scales[0])
                     && x.getYear() <= Convert.toInt(scales[1])).collect(Collectors.toList());
-            double asDouble = perenList.stream().mapToDouble(x -> x.getDays()).average().getAsDouble();
-            int perenVal = Convert.toInt(asDouble);
+            double perenVal = perenList.stream().mapToDouble(x -> x.getDays()).average().getAsDouble();
             // 得到当前站点历年对应天数集合并按从小到大的情况进行
             List<Integer> daysList = lenList.stream().map(x -> x.getDays()).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
             // 得到最早和最晚发生时间
@@ -137,7 +137,7 @@ public class SeasonServiceImpl implements SeasonService {
                     x -> x.getYear().toString()).collect(Collectors.joining(","));
             String maxDaysTime = lenList.stream().filter(x -> x.getDays() == maxDays).map(
                     x -> x.getYear().toString()).collect(Collectors.joining(","));
-            seasonBuilder.perenVal(perenVal+"").maxDaysTime(maxDaysTime).minDaysTime(minDaysTime);
+            seasonBuilder.perenVal(perenVal+"").minDays(minDays).maxDays(maxDays).maxDaysTime(maxDaysTime).minDaysTime(minDaysTime);
             // 查询年份数据
             List<Map<String, EventVal>> middleList = new ArrayList<>();
             for (int i=startYear;i<=endYear;i++){
