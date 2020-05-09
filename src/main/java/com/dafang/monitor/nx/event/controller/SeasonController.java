@@ -22,7 +22,7 @@ import java.util.List;
  * @createDate: 2020/5/7
  * @version: 1.0
  */
-@Api(value = "四季入季处理")
+@Api(value = "echo",tags = {"四季入季处理"})
 @RestController
 @RequestMapping(value = "season/")
 @Slf4j
@@ -30,13 +30,27 @@ public class SeasonController {
     @Autowired
     private SeasonService service;
 
-    @PostMapping(value = "period")
+    @PostMapping(value = "inOut")
     @ApiOperation(value = "四季入季数据查询",notes = "季节开始或者季节结束")
     public ResuleDto<List<FourSeason>> inOutSeason(@RequestBody SeasonParam params){
         log.info("四季入季数据查询");
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         ResuleDto<List<FourSeason>> resuleDto = new ResuleDto<>();
         List<FourSeason> fourSeasons = service.inOutSeason(params);
+        resuleDto.setRespData(fourSeasons);
+        if (fourSeasons.size() == 0){
+            resuleDto.setRespCode(0);
+            resuleDto.setMessage("输入条件有误,该条件下无数据");
+        }
+        return resuleDto;
+    }
+    @PostMapping(value = "len")
+    @ApiOperation(value = "四季入季长度统计",notes = "季节长度")
+    public ResuleDto<List<FourSeason>> seasonLen(@RequestBody SeasonParam params){
+        log.info("四季入季长度数据查询");
+        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+        ResuleDto<List<FourSeason>> resuleDto = new ResuleDto<>();
+        List<FourSeason> fourSeasons = service.seasonLen(params);
         resuleDto.setRespData(fourSeasons);
         if (fourSeasons.size() == 0){
             resuleDto.setRespCode(0);

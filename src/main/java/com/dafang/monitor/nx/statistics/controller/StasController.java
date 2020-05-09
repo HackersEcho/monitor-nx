@@ -23,7 +23,7 @@ import java.util.List;
  * @createDate: 2020/4/13
  * @version: 1.0
  */
-@Api(value = "echo",tags = "{站数处理}")
+@Api(value = "echo",tags = "站数处理")
 @RestController
 @RequestMapping("stas/")
 @Slf4j

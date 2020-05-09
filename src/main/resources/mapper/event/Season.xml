@@ -10,8 +10,8 @@
 
 
     <select id="seasonLen" parameterType="SeasonParam" resultType="EventDaily">
-       SELECT t.stationNo,b.station_name AS stationName,t.event_year AS year,CONCAT(t.event_year,t.event_time) AS observerTime,t.event_time as md
-        FROM base_season_data t JOIN geography_station_info b ON
+       SELECT t.stationNo,b.station_name AS stationName,t.event_year AS year,CONCAT(t.event_year,t.event_time) AS observerTime,t.event_time as md,
+       time_type as timeType FROM base_season_data t JOIN geography_station_info b ON
         t.stationNo = b.device_id WHERE ${condition} and t.season_type = #{seasonType}
     </select>
 </mapper>

@@ -19,6 +19,8 @@ public class EventDaily {
     private String observerTime;
     @ApiModelProperty(value = "月日")
     private String md;
+    @ApiModelProperty(value = "1-入季开始  2-入季结束")
+    private Integer timeType;
     @ApiModelProperty(value = "入季时间对应的天数")
     private Integer days;
     private Integer year;
