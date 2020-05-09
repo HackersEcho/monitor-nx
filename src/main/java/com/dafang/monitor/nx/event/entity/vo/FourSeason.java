@@ -21,6 +21,8 @@ public class FourSeason {
     private String stationNo;
     private String stationName;
     private String perenVal;
+    private Integer minDays;
+    private Integer maxDays;
     @ApiModelProperty("同期最早入季时间")
     private String minDaysTime;
     @ApiModelProperty("同期最晚入季时间")

@@ -37,7 +37,7 @@ public class NumericalController {
         ResuleDto<Object> resuleDto = new ResuleDto<>();
         List<Map<String, Object>> mapList = service.comprehensiveStatistic(params);
         resuleDto.setRespData(mapList);
-        if (mapList.size()>0){
+        if (mapList.size() == 0){
             resuleDto.setRespCode(0);
             resuleDto.setMessage("该条件下无数据");
         }

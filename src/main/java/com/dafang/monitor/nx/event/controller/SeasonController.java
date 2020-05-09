@@ -1,5 +1,7 @@
 package com.dafang.monitor.nx.event.controller;
 
+import com.dafang.monitor.nx.config.ApiIgp;
+import com.dafang.monitor.nx.config.Apicp;
 import com.dafang.monitor.nx.event.entity.po.SeasonParam;
 import com.dafang.monitor.nx.event.entity.vo.FourSeason;
 import com.dafang.monitor.nx.event.service.SeasonService;
@@ -17,22 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @description:
+ * @description:四季入季
  * @author: echo
  * @createDate: 2020/5/7
  * @version: 1.0
  */
 @Api(value = "echo",tags = {"四季入季处理"})
 @RestController
-@RequestMapping(value = "season/")
 @Slf4j
+@RequestMapping(value = "season/")
 public class SeasonController {
     @Autowired
     private SeasonService service;
 
     @PostMapping(value = "inOut")
     @ApiOperation(value = "四季入季数据查询",notes = "季节开始或者季节结束")
-    public ResuleDto<List<FourSeason>> inOutSeason(@RequestBody SeasonParam params){
+    public ResuleDto<List<FourSeason>> inOutSeason(@Apicp("regions,startYear,endYear,climateScale,seasonType,timeType") @RequestBody SeasonParam params){
         log.info("四季入季数据查询");
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         ResuleDto<List<FourSeason>> resuleDto = new ResuleDto<>();
@@ -46,7 +48,7 @@ public class SeasonController {
     }
     @PostMapping(value = "len")
     @ApiOperation(value = "四季入季长度统计",notes = "季节长度")
-    public ResuleDto<List<FourSeason>> seasonLen(@RequestBody SeasonParam params){
+    public ResuleDto<List<FourSeason>> seasonLen(@Apicp("regions,startYear,endYear,climateScale,seasonType") @RequestBody SeasonParam params){
         log.info("四季入季长度数据查询");
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         ResuleDto<List<FourSeason>> resuleDto = new ResuleDto<>();
