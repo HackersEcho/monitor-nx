@@ -149,7 +149,7 @@ public class NumericalServiceImpl implements NumericalService {
         int startYear = Convert.toInt(params.getStartDate().substring(0, 4));
         int endYear = Convert.toInt(params.getEndDate().substring(0, 4));
         String[] scales = params.getClimateScale().split("-");// 常年值区间段
-        int scaleLen = Convert.toInt(scales[1]) -  Convert.toInt(scales[0]);
+        int scaleLen = Convert.toInt(scales[1]) -  Convert.toInt(scales[0]) + 1;
         // 获取数据
         List<Daily> periodList = mapper.periodList(params);
         List<String> staList = periodList.parallelStream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
