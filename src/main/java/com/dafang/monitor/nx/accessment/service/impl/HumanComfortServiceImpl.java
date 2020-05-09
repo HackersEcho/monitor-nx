@@ -34,6 +34,7 @@ public class HumanComfortServiceImpl implements HumanComfortService {
         List<Map<String,Object>> resList = new ArrayList<>();
         //获取数据
         List<Comfort> baseData = humanComfortMapper.continueList(params);
+        List<String> staList = baseData.stream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
         //根据指数类型去筛选对应数据
         for (ComfortLevelEnum comfortLevel : ComfortLevelEnum.values()) {
             if(StringUtils.equals(comfortLevel.getIndex(),params.getComfortType())){//判断指数类别
@@ -45,13 +46,20 @@ public class HumanComfortServiceImpl implements HumanComfortService {
                 // 得到一个等级的所有数据
                 List<Comfort> singleList = baseData.stream().filter(x -> x.getIndexValue() >= Convert.toInt(scales.split("_")[0])
                         && x.getIndexValue() < Convert.toInt(scales.split("_")[1])).collect(Collectors.toList());
-                List<String> staList = singleList.stream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
+//                List<String> staList = singleList.stream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
                 Map<String, Object> staMap = new HashMap<>();
                 for (String stationNo : staList) {
                     List<Comfort> collect = singleList.stream().filter(x -> StringUtils.equals(x.getStationNo(), stationNo)).collect(Collectors.toList());
-                    Comfort comfort = collect.get(0);
-                    staMap.put("stationName",comfort.getStationName());
-                    staMap.put("liveVal",collect.size());
+                    if (collect.size() > 0){
+                        Comfort comfort = collect.get(0);
+                        staMap.put("stationName",comfort.getStationName());
+                        staMap.put("liveVal",collect.size());
+                    }else {
+                        String stationName = baseData.stream().filter(x -> StringUtils.equals(x.getStationNo(), stationNo)).
+                                map(x -> x.getStationName()).collect(Collectors.toList()).get(0);
+                        staMap.put("stationName",stationName);
+                        staMap.put("liveVal","0");
+                    }
                 }
                 resMap.put("data",staMap);
                 resList.add(resMap);
@@ -86,19 +94,22 @@ public class HumanComfortServiceImpl implements HumanComfortService {
                 // 得到一个等级的所有数据
                 List<Comfort> singleList = baseData.stream().filter(x -> x.getIndexValue() >= Convert.toInt(scales.split("_")[0])
                         && x.getIndexValue() < Convert.toInt(scales.split("_")[1])).collect(Collectors.toList());
-                List<String> staList = singleList.stream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
+//                List<String> staList = singleList.stream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
+                List<String> staList = baseData.stream().map(x -> x.getStationNo()).distinct().collect(Collectors.toList());
                 Map<String, Object> staMap = new HashMap<>();
                 for (String stationNo : staList) {
+                    String stationName = baseData.stream().filter(x -> StringUtils.equals(x.getStationNo(), stationNo)).
+                            map(x -> x.getStationName()).collect(Collectors.toList()).get(0);
                     List<Comfort> collect = singleList.stream().filter(x -> StringUtils.equals(stationNo, x.getStationNo())).collect(Collectors.toList());
-                    Comfort comfort = collect.get(0);
+                    long perenVal = 0; long liveVal = 0;
                     // 得到常年值
-                    long perenVal = collect.stream().filter(x -> x.getYear() >= Convert.toInt(climateScales[0]) && x.getYear() <= Convert.toInt(climateScales[1])).count() / perenLen;
+                    perenVal = collect.stream().filter(x -> x.getYear() >= Convert.toInt(climateScales[0]) && x.getYear() <= Convert.toInt(climateScales[1])).count() / perenLen;
                     // 遍历年份
                     Map<String, Object> yearMap = new HashMap<>();
                     for (int i=startYear;i<=endtYear;i++){
                         Map<String, Object> valMap = new HashMap<>();
                         int year = i;
-                        long liveVal = collect.stream().filter(x -> x.getYear() >= year).count();
+                        liveVal = collect.stream().filter(x -> x.getYear() == year).count();
                         long anomalyVal = liveVal - perenVal;
                         valMap.put("perenVal", perenVal);
                         valMap.put("liveVal", liveVal);
@@ -109,7 +120,8 @@ public class HumanComfortServiceImpl implements HumanComfortService {
                         }
                         yearMap.put(key, valMap);
                     }
-                    staMap.put(comfort.getStationName(),yearMap);
+//                    staMap.put(comfort.getStationName(),yearMap);
+                    staMap.put(stationName,yearMap);
                 }
                 resMap.put("data",staMap);
                 resList.add(resMap);
