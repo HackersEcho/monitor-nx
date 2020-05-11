@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.statistics.mapper.BaseMapper">
+
+    <!--  站点信息查询  -->
+    <select id="staInfoList" resultType="java.util.Map">
+        select b.device_id,b.station_name as stationName,b.latitude,b.longitude,t.region_name as regionName
+         from geography_region_info t join geography_station_info b on t.id = b.PID1 where  ${condition}
+    </select>
+
+</mapper>
