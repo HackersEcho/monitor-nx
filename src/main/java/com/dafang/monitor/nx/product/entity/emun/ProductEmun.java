@@ -1,7 +1,5 @@
 package com.dafang.monitor.nx.product.entity.emun;
 
-import com.dafang.monitor.nx.product.impl.ClimateInfo;
-
 public enum ProductEmun {
 
     PRODUCT1(1,"气候概况"),

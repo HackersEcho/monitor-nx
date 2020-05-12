@@ -1,7 +1,8 @@
 package com.dafang.monitor.nx.product.controller;
 
 import com.dafang.monitor.nx.product.entity.po.ProductParams;
-import com.dafang.monitor.nx.product.impl.*;
+import com.dafang.monitor.nx.product.impl.evaluate.MonthClimateImpact;
+import com.dafang.monitor.nx.product.impl.monitor.*;
 import com.dafang.monitor.nx.utils.CommonUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,6 +28,9 @@ public class ProductController {
     SpecialReport method5;
     @Autowired
     ClimateProfile method6;
+    @Autowired
+    MonthClimateImpact EvaMethod1;
+
 
     @PostMapping(value = "creatProduct")
     @ApiOperation(value = "产品生成",notes = "产品")
@@ -85,6 +89,14 @@ public class ProductController {
 //        params.setMax(999d);
 //        params.setMin(-999d);
 //        method6.entrance(params);
+
+    }
+
+    @PostMapping(value = "createEvaProduct")
+    @ApiOperation(value = "评价产品生成",notes = "产品")
+    public void createEvaProduct(ProductParams params){
+        params.setStartDate("201901");
+
 
     }
 

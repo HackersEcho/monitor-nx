@@ -1,4 +1,4 @@
-package com.dafang.monitor.nx.product.impl;
+package com.dafang.monitor.nx.product.impl.monitor;
 
 import cn.hutool.core.convert.Convert;
 import com.dafang.monitor.nx.entity.CIEnum;
@@ -8,14 +8,8 @@ import com.dafang.monitor.nx.product.entity.po.Product;
 import com.dafang.monitor.nx.product.entity.po.ProductParams;
 import com.dafang.monitor.nx.product.mapper.ProductMapper;
 import com.dafang.monitor.nx.utils.DrawUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.lang.reflect.Field;
-import java.lang.Class;
-import java.lang.Object;
-
 
 import java.util.ArrayList;
 import java.util.HashMap;

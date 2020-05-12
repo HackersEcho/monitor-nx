@@ -176,3 +176,6 @@
 2020-05-12 09:20:17.151 DEBUG 11932 --- [http-nio-8080-exec-9] c.d.m.n.s.m.NumericalMapper.periodList   : ==>  Preparing: select t.stationNO,b.station_name as stationName,TEM_Max as element,t.ObserverTime as observerTime,YEAR(ObserverTime) as year from base_day_data t join geography_station_info b ON t.stationNo = b.device_id where b.station_type= 1 and DATE_FORMAT(t.ObserverTime,'%m%d') between ? and ? and t.TEM_Max between ? and ? 
 2020-05-12 09:20:17.151 DEBUG 11932 --- [http-nio-8080-exec-9] c.d.m.n.s.m.NumericalMapper.periodList   : ==> Parameters: 0601(String), 0830(String), -999.0(Double), 999.0(Double)
 2020-05-12 09:20:40.758 DEBUG 11932 --- [http-nio-8080-exec-9] c.d.m.n.s.m.NumericalMapper.periodList   : <==      Total: 137786
+2020-05-12 09:35:30.860  INFO 11932 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-12 09:35:30.862  INFO 11932 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2020-05-12 09:35:30.869  INFO 11932 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

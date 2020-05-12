@@ -1,4 +1,4 @@
-package com.dafang.monitor.nx.product.impl;
+package com.dafang.monitor.nx.product.impl.monitor;
 
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.NumberUtil;
@@ -95,10 +95,10 @@ public class ClimateInfo extends TemplateAbstract {
         str = String.format(str,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20,s21,s22,s23,s24);
 
         //产品分布图绘制
-        String temPic1 = DrawUtils.drawImg(staDataList, "TEM_Avg-liveVal", startData + "~" + endData + "平均气温");
-        String temPic2 = DrawUtils.drawImg(staDataList, "TEM_Avg-annomlyVal", startData + "~" + endData + "平均气温距平");
-        String prePic1 = DrawUtils.drawImg(staDataList, "PRE_Time_2020-liveVal", startData + "~" + endData + "降水量");
-        String prePic2 = DrawUtils.drawImg(staDataList, "PRE_Time_2020-annomlyVal", startData + "~" + endData + "降水距平百分率");
+        String temPic1 = DrawUtils.drawImg(staDataList, "TEM_AvgliveVal", startData + "~" + endData + "平均气温");
+        String temPic2 = DrawUtils.drawImg(staDataList, "TEM_AvgannomlyVal", startData + "~" + endData + "平均气温距平");
+        String prePic1 = DrawUtils.drawImg(staDataList, "PRE_Time_2020liveVal", startData + "~" + endData + "降水量");
+        String prePic2 = DrawUtils.drawImg(staDataList, "PRE_Time_2020annomlyVal", startData + "~" + endData + "降水距平百分率");
 
         result.put("startData",startData);
         result.put("endData",endData);
@@ -168,9 +168,9 @@ public class ClimateInfo extends TemplateAbstract {
                     perenVal = ReflectHandleUtils.getValByOp(ReflectHandleUtils.filterData(singlePerenList, element), element, "sum")/30;
                     annomlyVal = (liveVal - perenVal)/perenVal*100;
                 }
-                map.put(element+"-"+"liveVal",liveVal);
-                map.put(element+"-"+"perenVal",perenVal);
-                map.put(element+"-"+"annomlyVal",annomlyVal);
+                map.put(element+"liveVal",liveVal);
+                map.put(element+"perenVal",perenVal);
+                map.put(element+"annomlyVal",annomlyVal);
             }
             map.put("stationNo",stationNo);
             map.put("stationName",product.getStationName());

@@ -1,21 +1,15 @@
 package com.dafang.monitor.nx.utils;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.List;
+import java.util.Map;
 
 
 public class DrawUtils {
@@ -132,12 +126,8 @@ public class DrawUtils {
 				colors = "[[58,58,255],[116,114,255],[0,247,247],[155,255,255],[0,255,0],[163,255,163],[255,255,205],"
 						+ "[247,247,0],[255,207,157],[255,181,104],[255,116,116],[255,26,24]]";// 颜色
 				break;
-			case "sshYearAnomaly1":
-				leves = "[-523.7,-437.9,-352.1,-266.3,-180.6,-94.8]";// 级别
-				colors = "[[255,255,205],[247,247,0],[255,207,157],[255,181,104],[255,116,116],[255,26,24]]";// 颜色
-				break;
-			case "ciDayAnomaly":
-				leves = "[-25,-15,-5,10]";// 级别
+			case "CI":
+				leves = "[-2.4,-1.8,-1.2,-0.6]";// 级别
 				colors = "[[255,255, 255],[166,251,214],[88,238,243],[87,211,252],[37,166,239]]";// 颜色
 				break;
 		}

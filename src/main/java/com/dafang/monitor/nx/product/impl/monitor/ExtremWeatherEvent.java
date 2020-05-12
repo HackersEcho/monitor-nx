@@ -1,4 +1,4 @@
-package com.dafang.monitor.nx.product.impl;
+package com.dafang.monitor.nx.product.impl.monitor;
 
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.NumberUtil;
