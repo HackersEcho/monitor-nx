@@ -31,7 +31,7 @@ public class StasServiceImpl implements StasService {
         int startYear = Convert.toInt(params.getStartDate().substring(0, 4));
         int endYear = Convert.toInt(params.getEndDate().substring(0, 4));
         String[] scales = params.getClimateScale().split("-");// 常年值区间段
-        int scaleLen = Convert.toInt(scales[1]) -  Convert.toInt(scales[0]);
+        int scaleLen = Convert.toInt(scales[1]) -  Convert.toInt(scales[0]) + 1;
         List<Daily> periodList = mapper.periodList(params);
         // 得到要统计的所有区域
         String[] regions = params.getRegions().split(",");

@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Entity;
 import java.io.Serializable;
 
 /**
@@ -18,7 +17,6 @@ import java.io.Serializable;
  */
 @Data
 @Builder
-@Entity
 @ApiModel(value = "前端传入的参数实体类")
 public class DailyParam implements Serializable {
     @JsonIgnore

@@ -8,6 +8,7 @@
     <sql id="notCrossYearSql">
         from
         <choose>
+            <when test="clodWaveLeavel != null">t_mete_climate_cold_wave t</when><!--寒潮-->
             <when test="code == null or code == ''">base_day_data t</when>
             <otherwise>base_day_wea t</otherwise><!--天气现象-->
         </choose>
@@ -24,6 +25,7 @@
                     <otherwise> t.${element} between #{min} and #{max}</otherwise>
                 </choose>
             </when>
+            <when test="clodWaveLeavel != null">disastrType = 1</when><!--寒潮-->
             <otherwise>t.wep_code = #{code}</otherwise>
         </choose>
     </sql>
@@ -31,6 +33,7 @@
     <sql id="crossYearProfixSql">
         from
         <choose>
+            <when test="clodWaveLeavel != null">t_mete_climate_cold_wave t</when><!--寒潮-->
             <when test="code == null or code == ''">base_day_data t</when>
             <otherwise>base_day_wea t</otherwise><!--天气现象-->
         </choose>
@@ -38,6 +41,7 @@
         and
         DATE_FORMAT(t.ObserverTime,'%m%d')  between '0101' and #{eT} and
         <choose>
+            <when test="clodWaveLeavel != null">disastrType = 1</when><!--寒潮-->
             <when test="code == null or code == ''">t.${element} between #{min} and #{max}</when>
             <otherwise>t.wep_code = #{code}</otherwise>
         </choose>
@@ -45,6 +49,7 @@
     <sql id="crossYearSuffixSql">
         from
         <choose>
+            <when test="clodWaveLeavel != null">t_mete_climate_cold_wave t</when><!--寒潮-->
             <when test="code == null or code == ''">base_day_data t</when>
             <otherwise>base_day_wea t</otherwise><!--天气现象-->
         </choose>
@@ -52,6 +57,7 @@
         and
         DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and '1231' and
         <choose>
+            <when test="clodWaveLeavel != null">disastrType = 1</when><!--寒潮-->
             <when test="code == null or code == ''">t.${element} between #{min} and #{max}</when>
             <otherwise>t.wep_code = #{code}</otherwise>
         </choose>
