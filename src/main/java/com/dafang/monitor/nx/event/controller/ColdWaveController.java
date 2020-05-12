@@ -27,17 +27,18 @@ import java.util.List;
  * @version: 1.0
  */
 @RestController
-@Api(value = "echo",tags = {"日数处理"})
+@Api(value = "echo",tags = {"寒潮"})
 @RequestMapping(value = "coldWave/")
 @Slf4j
 public class ColdWaveController {
     @Autowired
     private ColdWaveService service;
     @PostMapping(value = "period")
-    @ApiOperation(value = "寒潮站次同期数据查询",notes = "同期站次")
+    @ApiOperation(value = "寒潮次数同期数据查询",notes = "同期次数")
     public ResuleDto<List<PeriodDays>> periodDays(@Apicp("regions,startDate,endDate,climateScale," +
             "clodWaveLeavel,rankStartYear,rankEndYear") @RequestBody ColdWaveParam params){
         ResuleDto<List<PeriodDays>> resuleDto = new ResuleDto<>();
+        params.setRemark("coldWave");
         params.setST(params.getStartDate().substring(4));
         params.setET(params.getEndDate().substring(4));
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
@@ -50,10 +51,11 @@ public class ColdWaveController {
         return resuleDto;
     }
     @PostMapping(value = "continuous")
-    @ApiOperation(value = "寒潮站次连续数据查询",notes = "连续站次")
+    @ApiOperation(value = "寒潮次数连续数据查询",notes = "连续次数")
     public ResuleDto<List<ContinuousDays>> continuousDays(@Apicp("regions,startDate,endDate," +
             "clodWaveLeavel") @RequestBody ColdWaveParam params){
         ResuleDto<List<ContinuousDays>> resuleDto = new ResuleDto<>();
+        params.setRemark("coldWave");
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         List<ContinuousDays> continuousDays = service.continuousDays(params);
         resuleDto.setRespData(continuousDays);
@@ -68,6 +70,7 @@ public class ColdWaveController {
     public ResuleDto<List<PeriodStas>> PeriodStas(@Apicp("regions,startDate,endDate,climateScale," +
             "clodWaveLeavel,rankStartYear,rankEndYear") @RequestBody ColdWaveParam params){
         ResuleDto<List<PeriodStas>> resuleDto = new ResuleDto<>();
+        params.setRemark("coldWave");
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         List<PeriodStas> periodStas = service.periodSta(params);
         resuleDto.setRespData(periodStas);
@@ -82,6 +85,7 @@ public class ColdWaveController {
     public ResuleDto<List<CountiousSta>> countiousSta(@Apicp("regions,startDate,endDate," +
             "clodWaveLeavel") @RequestBody ColdWaveParam params){
         ResuleDto<List<CountiousSta>> resuleDto = new ResuleDto<>();
+        params.setRemark("coldWave");
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         List<CountiousSta> continuousSta = service.countiousSta(params);
         resuleDto.setRespData(continuousSta);

@@ -48,5 +48,7 @@ public class ColdWaveParam implements Serializable {
     @ApiModelProperty(value = "排位年限结束年份")
     @Builder.Default
     private Integer rankEndYear=2020;
+    @JsonIgnore
+    private String remark = "coldWave";
 
 }
