@@ -61,4 +61,6 @@ public class DailyParam implements Serializable {
     @ApiModelProperty(name = "客户端拼接的条件  带and",hidden = true)
     @JsonIgnore
     private String clientCondition;
+    @JsonIgnore
+    private String remark = "Daily";
 }
