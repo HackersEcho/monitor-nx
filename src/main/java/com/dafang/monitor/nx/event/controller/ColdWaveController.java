@@ -71,6 +71,8 @@ public class ColdWaveController {
             "clodWaveLeavel,rankStartYear,rankEndYear") @RequestBody ColdWaveParam params){
         ResuleDto<List<PeriodStas>> resuleDto = new ResuleDto<>();
         params.setRemark("coldWave");
+        params.setST(params.getStartDate().substring(4));
+        params.setET(params.getEndDate().substring(4));
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         List<PeriodStas> periodStas = service.periodSta(params);
         resuleDto.setRespData(periodStas);
