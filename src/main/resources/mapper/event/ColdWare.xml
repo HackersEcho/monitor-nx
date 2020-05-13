@@ -28,25 +28,22 @@
         GROUP BY stationNo,YEAR(ObserverTime)
     </select>
     <!--  同期站数统计  -->
-    <select id="periodList" parameterType="DailyParam" resultType="Daily">
+    <select id="periodList" parameterType="ColdWaveParam" resultType="Daily">
         <choose>
-            <when test="sT !=null and sT &lt; eT">select t.stationNO,${element} as element,YEAR(ObserverTime) as year
+            <when test="sT !=null and sT &lt; eT">select t.stationNO,YEAR(ObserverTime) as year
                 <include refid="Common.notCrossYearSql"></include>
-                <if test="clientCondition != null">${clientCondition}</if>
             </when>
             <otherwise>
-                select t.stationNo,${element} as element,YEAR(ObserverTime) as year
+                select t.stationNo,YEAR(ObserverTime) as year
                 <include refid="Common.crossYearProfixSql"></include>
-                <if test="clientCondition != null">${clientCondition}</if>
                 UNION ALL
-                select t.stationNo,${element} as element,YEAR(ObserverTime)-1 as year
+                select t.stationNo,YEAR(ObserverTime)-1 as year
                 <include refid="Common.crossYearSuffixSql"></include>
-                <if test="clientCondition != null">${clientCondition}</if>
             </otherwise>
         </choose>
     </select>
     <!--  连续站数统计  -->
-    <select id="continuouStas" parameterType="DailyParam" resultType="Daily">
+    <select id="continuouStas" parameterType="ColdWaveParam" resultType="Daily">
         select t.stationNo,b.station_name as stationName,b.latitude,b.longitude
         <include refid="Common.notCrossYearSql"></include>
     </select>
