@@ -36,7 +36,7 @@ public class BaseServiceImpl implements BaseService {
             condition += " AND t.WEP_Code IN (" + elements + ") ";
             elements = "WEP_Name,WEP_Code";
         }else {
-            String thresholdcondition = " AND t." + params.getElement() + " BETWEEN " + params.getMin() + " AND " + params.getMin();// 当为单要素是
+            String thresholdcondition = " AND t." + params.getElement() + " BETWEEN " + params.getMin() + " AND " + params.getMax();// 当为单要素是
             if ((params.getElement().contains(","))) {// 多要素时或者阈值为空时不统计阈值
                 thresholdcondition = "";
             }
