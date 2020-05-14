@@ -26,22 +26,10 @@ import java.util.Map;
 public class BaseController {
     @Autowired
     private BaseService service;
-    @PostMapping(value = "sta")
-    @ApiOperation(value = "站点信息查询",notes = "")
 
-    public ResuleDto<Object> staInfoSelect(@Apicp("regions") @RequestBody DailyParam params){
-        log.info("站点信息数据查询");
-        params.setCondition(CommonUtils.getCondition(params.getRegions()));
-        ResuleDto<Object> resuleDto = new ResuleDto<>();
-        List<Map<String, Object>> mapList = service.staInfoList(params);
-        resuleDto.setRespData(mapList);
-        if (mapList.size()==0){
-            resuleDto.setRespCode(0);
-            resuleDto.setMessage("该条件下无数据");
-        }
-        return resuleDto;
-    }
-    public ResuleDto<Object> infoSelect(@Apicp("regions") @RequestBody InfoParam params){
+    @PostMapping(value = "info")
+    @ApiOperation(value = "站点分页查询",notes = "")
+    public ResuleDto<Object> infoSelect(@RequestBody InfoParam params){
         log.info("站点信息数据查询");
         ResuleDto<Object> resuleDto = new ResuleDto<>();
         try {
@@ -54,5 +42,18 @@ public class BaseController {
         }
         return resuleDto;
     }
-
+    @PostMapping(value = "sta")
+    @ApiOperation(value = "站点信息查询",notes = "")
+    public ResuleDto<Object> staInfoSelect(@Apicp("regions") @RequestBody DailyParam params){
+        log.info("站点信息数据查询");
+        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+        ResuleDto<Object> resuleDto = new ResuleDto<>();
+        List<Map<String, Object>> mapList = service.staInfoList(params);
+        resuleDto.setRespData(mapList);
+        if (mapList.size()==0){
+            resuleDto.setRespCode(0);
+            resuleDto.setMessage("该条件下无数据");
+        }
+        return resuleDto;
+    }
 }
