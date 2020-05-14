@@ -3,8 +3,10 @@ package com.dafang.monitor.nx.statistics.controller;
 import com.dafang.monitor.nx.config.Apicp;
 import com.dafang.monitor.nx.statistics.entity.dto.ResuleDto;
 import com.dafang.monitor.nx.statistics.entity.po.DailyParam;
+import com.dafang.monitor.nx.statistics.entity.po.InfoParam;
 import com.dafang.monitor.nx.statistics.service.BaseService;
 import com.dafang.monitor.nx.utils.CommonUtils;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +41,18 @@ public class BaseController {
         }
         return resuleDto;
     }
-
+    public ResuleDto<Object> infoSelect(@Apicp("regions") @RequestBody InfoParam params){
+        log.info("站点信息数据查询");
+        ResuleDto<Object> resuleDto = new ResuleDto<>();
+        try {
+            PageInfo mapList = service.infoList(params);
+            resuleDto.setRespData(mapList);
+        }catch (Exception e){
+            e.printStackTrace();
+            resuleDto.setRespCode(0);
+            resuleDto.setMessage("该条件下无数据");
+        }
+        return resuleDto;
+    }
 
 }
