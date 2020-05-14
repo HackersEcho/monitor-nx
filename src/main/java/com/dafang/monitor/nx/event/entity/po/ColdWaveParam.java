@@ -1,4 +1,4 @@
-package com.dafang.monitor.nx.statistics.entity.po;
+package com.dafang.monitor.nx.event.entity.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Data
 @Builder
 @ApiModel(value = "前端传入的参数实体类")
-public class DailyParam implements Serializable {
+public class ColdWaveParam implements Serializable {
     @JsonIgnore
     private static final long serialVersionUID = 6522094017645298281L;
     @ApiModelProperty(value = "可以传入一个区域的编号 或者站点集合，用逗号分隔",example = "6  or 63567,53765")
@@ -31,18 +31,8 @@ public class DailyParam implements Serializable {
     private String endDate;
     @ApiModelProperty(name = "climateScale",value = "常年值区间",example = "1991-2010")
     private String climateScale;
-    @ApiModelProperty(value = "查询的数据库字段",example = "TEM_MAX")
-    private String element;
-    @ApiModelProperty(value = "最小值")
-    @Builder.Default
-    private Double min = -999d;
-    @ApiModelProperty(value = "最大值")
-    @Builder.Default
-    private Double max=999d;
-    @ApiModelProperty(value = "天气现象码")
-    private String code;
-    @ApiModelProperty(value = "操作类型",example = "sum || avg || min || max")
-    private String opType;
+    @ApiModelProperty(value = "寒潮等级",example = "寒潮")
+    private String clodWaveLeavel;
     @ApiModelProperty(value = "需要我们通过regions去得到要查询的的站点信息",hidden = true)
     @JsonIgnore
     private String condition;
@@ -58,9 +48,7 @@ public class DailyParam implements Serializable {
     @ApiModelProperty(value = "排位年限结束年份")
     @Builder.Default
     private Integer rankEndYear=2020;
-    @ApiModelProperty(name = "客户端拼接的条件  带and",hidden = true)
     @JsonIgnore
-    private String clientCondition;
-    @JsonIgnore
-    private String remark = "Daily";
+    private String remark = "coldWave";
+
 }

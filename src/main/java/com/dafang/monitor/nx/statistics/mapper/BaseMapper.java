@@ -11,4 +11,7 @@ import java.util.Map;
 @Repository
 public interface BaseMapper {
     List<Map<String, Object>> staInfoList(DailyParam params);
+    // 基础数据查询(日 侯 旬 月 季 年)
+    List<Map<String, Object>> infoList(String sql);
+
 }
