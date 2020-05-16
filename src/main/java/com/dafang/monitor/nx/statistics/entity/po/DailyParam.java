@@ -29,7 +29,7 @@ public class DailyParam implements Serializable {
     @ApiModelProperty(value = "结束时间")
     @JsonFormat(pattern = "yyyyMMdd")
     private String endDate;
-    @ApiModelProperty(name = "climateScale",value = "常年值区间",example = "1991-2010")
+    @ApiModelProperty(name = "climateScale",value = "常年值区间",example = "1981-2010")
     private String climateScale;
     @ApiModelProperty(value = "查询的数据库字段",example = "TEM_MAX")
     private String element;
