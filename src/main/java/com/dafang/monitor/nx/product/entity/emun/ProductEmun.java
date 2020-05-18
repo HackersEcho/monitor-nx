@@ -7,7 +7,9 @@ public enum ProductEmun {
     PRODUCT3(3,"重要气候信息"),
     PRODUCT4(4,"极端天气气候事件监测报告"),
     PRODUCT5(5,"决策服务材料"),
-    PRODUCT6(6,"专题报告");
+    PRODUCT6(6,"专题报告"),
+    PRODUCT7(7,"月气候影响评价"),
+    PRODUCT8(8,"季气候影响评价");
 
     private Integer id;
     private String fileName;
