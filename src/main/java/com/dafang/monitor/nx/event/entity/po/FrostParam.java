@@ -17,38 +17,32 @@ import java.io.Serializable;
  */
 @Data
 @Builder
-@ApiModel(value = "前端传入的寒潮参数实体类")
-public class ColdWaveParam implements Serializable {
+@ApiModel(value = "前端传入的霜冻参数实体类")
+public class FrostParam implements Serializable {
     @JsonIgnore
     private static final long serialVersionUID = 6522094017645298281L;
     @ApiModelProperty(value = "可以传入一个区域的编号 或者站点集合，用逗号分隔",example = "1  or 63567,53765")
     private String regions;
-    @ApiModelProperty(value = "开始时间")
-    @JsonFormat(pattern = "yyyyMMdd")
-    private String startDate;
-    @ApiModelProperty(value = "结束时间")
-    @JsonFormat(pattern = "yyyyMMdd")
-    private String endDate;
+    @ApiModelProperty(value = "开始年份")
+    @JsonFormat(pattern = "yyyy")
+    private String startYear;
+    @ApiModelProperty(value = "结束年份")
+    @JsonFormat(pattern = "yyyy")
+    private String endYear;
     @ApiModelProperty(name = "climateScale",value = "常年值区间",example = "1981-2010")
     private String climateScale;
-    @ApiModelProperty(value = "寒潮等级",example = "寒潮")
-    private String clodWaveLeavel;
+    @ApiModelProperty(value = "霜冻等级  1(轻霜) 2(重霜)",example = "1")
+    private String frostType;
+    @ApiModelProperty(value = "1表示结束 2表示开始",example = "1 天数的时候可以不填")
+    private Integer timeType;
     @ApiModelProperty(value = "需要我们通过regions去得到要查询的的站点信息",hidden = true)
     @JsonIgnore
     private String condition;
-    @ApiModelProperty(value = "通过startDate得到开始时间的月日  用于查询同期时需要用到",hidden = true)
-    @JsonIgnore
-    private String sT;
-    @ApiModelProperty(name = "得到结束时间的月日  用于查询同期时需要用到",hidden = true)
-    @JsonIgnore
-    private String eT;
     @ApiModelProperty(value = "排位年限开始年份",example = "1961")
     @Builder.Default
     private Integer rankStartYear=1961;
     @ApiModelProperty(value = "排位年限结束年份",example = "2020")
     @Builder.Default
     private Integer rankEndYear=2020;
-    @JsonIgnore
-    private String remark = "coldWave";
 
 }
