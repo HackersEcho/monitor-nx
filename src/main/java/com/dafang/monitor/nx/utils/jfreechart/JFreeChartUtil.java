@@ -30,7 +30,7 @@ import static com.dafang.monitor.nx.utils.DrawUtils.imageChangeBase64;
 public class JFreeChartUtil{
 
 	private static final Log log = LogFactory.getLog(DrawUtils.class);
-	private static String filePath = "C:\\Users\\zyj\\Desktop\\His\\";
+	private static String filePath = "E:\\zyj\\Product\\HIS\\";
 	
 	public static void main(String[] args) {
 		DefaultCategoryDataset s =  createDataset();

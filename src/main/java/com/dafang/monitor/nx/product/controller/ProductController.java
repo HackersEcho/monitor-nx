@@ -2,6 +2,8 @@ package com.dafang.monitor.nx.product.controller;
 
 import com.dafang.monitor.nx.product.entity.po.ProductParams;
 import com.dafang.monitor.nx.product.impl.evaluate.MonthClimateImpact;
+import com.dafang.monitor.nx.product.impl.evaluate.SeasonClimateImpact;
+import com.dafang.monitor.nx.product.impl.evaluate.YearClimateImpact;
 import com.dafang.monitor.nx.product.impl.monitor.*;
 import com.dafang.monitor.nx.utils.CommonUtils;
 import io.swagger.annotations.Api;
@@ -31,6 +33,10 @@ public class ProductController {
     ClimateProfile method6;
     @Autowired
     MonthClimateImpact evaMethod1;
+    @Autowired
+    SeasonClimateImpact evaMethod2;
+    @Autowired
+    YearClimateImpact evaMethod3;
 
 
     @PostMapping(value = "creatProduct")
@@ -97,12 +103,29 @@ public class ProductController {
     @ApiOperation(value = "评价产品生成",notes = "产品")
     public void createEvaProduct(@RequestBody ProductParams params){
         //月评价
-        params.setStartDate("201901");
+//        params.setStartDate("201901");
+//        params.setRegions("1");
+//        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+//        params.setMax(999d);
+//        params.setMin(-999d);
+//        evaMethod1.entrance(params);
+        //季评价
+//        params.setYear("2019");
+//        params.setSeason("春季");
+//        params.setRegions("1");
+//        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+//        params.setMax(999d);
+//        params.setMin(-999d);
+//        evaMethod2.entrance(params);
+        //年评价
+        params.setYear("2019");
         params.setRegions("1");
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         params.setMax(999d);
         params.setMin(-999d);
-        evaMethod1.entrance(params);
+        evaMethod3.entrance(params);
+
+
     }
 
 }
