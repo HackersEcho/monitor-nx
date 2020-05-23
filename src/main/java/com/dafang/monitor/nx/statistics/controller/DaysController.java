@@ -1,6 +1,6 @@
 package com.dafang.monitor.nx.statistics.controller;
 
-import com.dafang.monitor.nx.config.ApiIgp;
+import com.dafang.monitor.nx.config.Apicp;
 import com.dafang.monitor.nx.statistics.entity.dto.ResuleDto;
 import com.dafang.monitor.nx.statistics.entity.po.DailyParam;
 import com.dafang.monitor.nx.statistics.entity.vo.ContinuousDays;
@@ -23,23 +23,23 @@ import java.util.List;
  * @createDate: 2020/3/14
  * @version: 1.0
  */
-@Api(value = "echo",tags = {"日数处理"})
 @RestController
+@Api(value = "echo",tags = {"日数处理"})
 @RequestMapping(value = "days/")
 public class DaysController {
     @Autowired
     private DaysService service;
     @PostMapping(value = "period")
     @ApiOperation(value = "同期日数数据查询",notes = "同期日数")
-    public ResuleDto<List<PeriodDays>> periodDays(@ApiIgp("sT,eT,condition,serialVersionUID") @RequestBody  DailyParam params){
+    public ResuleDto<List<PeriodDays>> periodDays(@Apicp("regions,startDate,endDate,climateScale," +
+            "element,min,max,code,rankStartYear,rankEndYear") @RequestBody  DailyParam params){
         ResuleDto<List<PeriodDays>> resuleDto = new ResuleDto<>();
         params.setST(params.getStartDate().substring(4));
         params.setET(params.getEndDate().substring(4));
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         List<PeriodDays> periodDays = service.periodDays(params);
-        if (periodDays.size()>0){
-            resuleDto.setRespData(periodDays);
-        }else {
+        resuleDto.setRespData(periodDays);
+        if (periodDays.size() == 0){
             resuleDto.setRespCode(0);
             resuleDto.setMessage("该条件下无数据");
         }
@@ -47,16 +47,17 @@ public class DaysController {
     }
     @PostMapping(value = "continuous")
     @ApiOperation(value = "查询时间段日数数据查询",notes = "连续日数")
-    public ResuleDto<List<ContinuousDays>> continuousDays(@ApiIgp("sT,eT,condition,climateScale,serialVersionUID") @RequestBody  DailyParam params){
+    public ResuleDto<List<ContinuousDays>> continuousDays(@Apicp("regions,startDate,endDate," +
+            "element,min,max,code") @RequestBody  DailyParam params){
         ResuleDto<List<ContinuousDays>> resuleDto = new ResuleDto<>();
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
         List<ContinuousDays> continuousDays = service.continuousDays(params);
-        if (continuousDays.size()>0){
-            resuleDto.setRespData(continuousDays);
-        }else {
+        resuleDto.setRespData(continuousDays);
+        if (continuousDays.size() == 0){
             resuleDto.setRespCode(0);
             resuleDto.setMessage("该条件下无数据");
         }
         return resuleDto;
     }
+
 }

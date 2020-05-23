@@ -65,6 +65,9 @@ public static <T> List<T> filterData(List<T> datas,String element){
             e.printStackTrace();
         }
         Double aDouble = Convert.toDouble(invoke);
+        if(aDouble == null){
+            aDouble = -99999.0;
+        }
         return aDouble <= 999 && aDouble >= -999;
     }).collect(Collectors.toList());
 };

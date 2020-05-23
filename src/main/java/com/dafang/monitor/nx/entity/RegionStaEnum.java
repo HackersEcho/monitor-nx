@@ -1,7 +1,6 @@
 package com.dafang.monitor.nx.entity;
 
 import cn.hutool.core.convert.Convert;
-import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -23,7 +22,8 @@ public enum  RegionStaEnum {
     YC("7","53614,53618,53610,53619","银川市"),
     SZS("8","53517,53518,53519,53611,53615","石嘴山市"),
     WZ("9","53612,53617,53723,53810,53881,53727","吴忠市"),
-    ZW("10","53704,53705,53806,53707","中卫市");
+    ZW("10","53704,53705,53806,53707","中卫市"),
+    GY("11","53817,53903,53914,53916,53910","固原市");
 
     // 成员变量
     private String regionId;
@@ -35,7 +35,8 @@ public enum  RegionStaEnum {
         this.stas = stas;
         this.desc = desc;
     }
-// 通过regionId得到对应的站点
+
+    // 通过regionId得到对应的站点
     public static List<String> getStas(String regionId){
         List<String> res = new ArrayList<>();
         for (RegionStaEnum r : RegionStaEnum.values()) {
@@ -45,6 +46,28 @@ public enum  RegionStaEnum {
         }
         return res;
     }
+    //通过ID得到区域名
+    public static String getDesc(String regionId){
+        String desc = "";
+        for (RegionStaEnum value : RegionStaEnum.values()) {
+            if (StringUtils.equals(value.getRegionId(),regionId)){
+                desc = value.getDesc();
+            }
+        }
+        return desc;
+    }
+    public String getRegionId() {
+        return regionId;
+    }
+
+    public String getStas() {
+        return stas;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
     @Override
     public String toString() {
         return "RegionStaEnum{" +
@@ -53,5 +76,4 @@ public enum  RegionStaEnum {
                 ", desc='" + desc + '\'' +
                 '}';
     }
-
 }

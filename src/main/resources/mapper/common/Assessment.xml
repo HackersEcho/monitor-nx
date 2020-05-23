@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="AssessmentCommon">
+    <!--
+        1-人体舒适度公用sql
+       2-当sT月日不为空的时候查询同期  否则查询连续
+   -->
+    <sql id="notCrossYearSql">
+        from
+        <choose>
+            <when test="code == 1">base_day_data t</when>
+            <otherwise>base_comfort_index t</otherwise>
+        </choose>
+        join geography_station_info  b ON t.stationNo = b.device_id where ${condition}
+        and
+        <choose>
+            <when test="sT != null and sT != ''">DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and #{eT} </when><!--同期-->
+            <otherwise>t.ObserverTime between #{startDate} and #{endDate} </otherwise><!--连续-->
+        </choose>
+    </sql>
+<!--    跨年sql prefix(0101-sT)  suffix(et-1231)-->
+    <sql id="crossYearProfixSql">
+        from
+        <choose>
+            <when test="code == 1">base_day_data t</when>
+            <otherwise>base_comfort_index t</otherwise>
+        </choose>
+        join geography_station_info  b ON t.stationNo = b.device_id where ${condition}
+        and
+        DATE_FORMAT(t.ObserverTime,'%m%d')  between '0101' and #{eT}
+    </sql>
+    <sql id="crossYearSuffixSql">
+        from
+        <choose>
+            <when test="code == 1">base_day_data t</when>
+            <otherwise>base_comfort_index t</otherwise>
+        </choose>
+        join geography_station_info  b ON t.stationNo = b.device_id where ${condition}
+        and
+        DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and '1231'
+    </sql>
+
+</mapper>

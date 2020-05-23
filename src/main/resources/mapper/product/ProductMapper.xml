@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.product.mapper.ProductMapper">
+    <!--查询同期基本要素值-->
+    <select id="periodList" parameterType="ProductParams" resultType="Product">
+        <choose>
+            <when test="sT !=null and sT &lt; eT">
+                select t.stationNo,b.station_name as stationName,b.longitude,b.latitude,${element},YEAR(ObserverTime) as year
+                <include refid="Common.notCrossYearSql"></include>
+            </when>
+            <otherwise>
+                select t.stationNo,b.station_name as stationName,b.longitude,b.latitude,${element},YEAR(ObserverTime) as year
+                <include refid="Common.crossYearProfixSql"></include>
+                UNION ALL
+                select t.stationNo,b.station_name as stationName,b.longitude,b.latitude,${element},YEAR(ObserverTime)-1 as year
+                <include refid="Common.crossYearSuffixSql"></include>
+            </otherwise>
+        </choose>
+    </select>
+    <!--查询ci指数-->
+    <select id="ciList" parameterType="ProductParams" resultType="Product">
+        SELECT t.stationNo,b.station_name as stationName,b.longitude,b.latitude,t.ObserverTime,t.CI_VAL as CI,YEAR(ObserverTime) as year
+        FROM base_ci_index t JOIN geography_station_info b on t.stationNo = b.device_id
+        WHERE DATE_FORMAT(t.ObserverTime,'%Y%m%d') = #{startDate}
+    </select>
+    <!--查询同期基本要素AVG,SUM值-->
+    <select id="periodsList" parameterType="ProductParams" resultType="Product">
+        <choose>
+            <when test="sT !=null and sT &lt; eT">
+                select t.stationNo,b.station_name as stationName,b.longitude,b.latitude,${cal}(${element}) as val,YEAR(ObserverTime) as year
+                <include refid="Common.notCrossYearSql"></include>
+                GROUP BY stationNo,YEAR(ObserverTime)
+            </when>
+            <otherwise>
+                SELECT stationNo,stationName,longitude,latitude,val,year FROM
+                (select t.stationNo,b.station_name as stationName,b.longitude,b.latitude,${cal}(${element}) as val,YEAR(ObserverTime) as year
+                <include refid="Common.crossYearProfixSql"></include>
+                GROUP BY stationNo,YEAR(ObserverTime)
+                UNION ALL
+                select t.stationNo,b.station_name as stationName,b.longitude,b.latitude,${cal}(${element}) as val,YEAR(ObserverTime)-1 as year
+                <include refid="Common.crossYearSuffixSql"></include>
+                GROUP BY stationNo,YEAR(ObserverTime)) t GROUP BY stationNo,year
+            </otherwise>
+        </choose>
+    </select>
+    <!--  同期日数统计  -->
+    <select id="periodDays" parameterType="ProductParams" resultType="Product">
+        <choose>
+            <when test="sT !=null and sT &lt; eT">select t.stationNO,b.station_name as stationName,b.latitude,b.longitude,COUNT(1) AS val,YEAR(ObserverTime) as year
+                <include refid="Common.notCrossYearSql"></include>
+                GROUP BY stationNo,YEAR(ObserverTime)
+            </when>
+            <otherwise>
+                SELECT year,sum(val) as val,stationNo,stationName,longitude,latitude FROM (
+                select t.stationNo,b.station_name as stationName,b.latitude,b.longitude,COUNT(1) AS val,YEAR(ObserverTime) as year
+                <include refid="Common.crossYearProfixSql"></include>
+                GROUP BY stationNo,YEAR(ObserverTime)
+                UNION ALL
+                select t.stationNo,b.station_name as stationName,b.latitude,b.longitude,COUNT(1) AS val,YEAR(ObserverTime)-1 as year
+                <include refid="Common.crossYearSuffixSql"></include>
+                GROUP BY stationNo,YEAR(ObserverTime) )t GROUP BY stationNo,year
+            </otherwise>
+        </choose>
+    </select>
+    <!--人体舒适度-->
+    <select id="periodComfort" parameterType="ProductParams" resultType="Product">
+        <choose>
+            <when test="sT !=null and sT &lt; eT">
+                select t.stationNo,YEAR(ObserverTime) as year,index_value as val
+                <include refid="Common.notCrossYearSql"></include>
+                comfort_type = '5'
+            </when>
+            <otherwise>
+                select t.stationNo,YEAR(ObserverTime) as year,index_value as val
+                <include refid="Common.crossYearProfixSql"></include>
+                comfort_type = '5'
+                UNION ALL
+                select t.stationNo,YEAR(ObserverTime)-1 as year,index_value as val
+                <include refid="Common.crossYearSuffixSql"></include>
+                comfort_type = '5'
+            </otherwise>
+        </choose>
+    </select>
+</mapper>

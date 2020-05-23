@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.event.mapper.FrostMapper">
+
+    <!--  霜冻数据查询  -->
+    <select id="periodDatas" parameterType="FrostParam" resultType="FrostPo">
+            SELECT t.stationNO,b.station_name as stationName,b.latitude,b.longitude,
+            t.event_year as year,t.event_time AS md,t.time_type as timeType FROM t_mete_climate_frost t JOIN geography_station_info b ON
+            t.stationNo = b.device_id WHERE ${condition} and t.frost_type = #{frostType}
+            <if test="timeType != null">
+                AND t.time_type = #{timeType}
+            </if>
+            ;
+    </select>
+    <select id="periodStas" parameterType="FrostParam" resultType="FrostPo">
+        SELECT t.stationNO,b.station_name as stationName,b.latitude,b.longitude,
+        t.event_year as year,t.event_time AS md,t.time_type as timeType FROM t_mete_climate_frost t JOIN geography_station_info b ON
+        t.stationNo = b.device_id WHERE ${condition} and t.frost_type = #{frostType}
+        AND t.event_time between #{st} and #{et}
+        <if test="timeType != null">
+            AND t.time_type = #{timeType}
+        </if>
+        ;
+    </select>
+</mapper>
