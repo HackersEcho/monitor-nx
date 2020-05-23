@@ -62,4 +62,23 @@
             </otherwise>
         </choose>
     </select>
+    <!--人体舒适度-->
+    <select id="periodComfort" parameterType="ProductParams" resultType="Product">
+        <choose>
+            <when test="sT !=null and sT &lt; eT">
+                select t.stationNo,YEAR(ObserverTime) as year,index_value as val
+                <include refid="Common.notCrossYearSql"></include>
+                comfort_type = '5'
+            </when>
+            <otherwise>
+                select t.stationNo,YEAR(ObserverTime) as year,index_value as val
+                <include refid="Common.crossYearProfixSql"></include>
+                comfort_type = '5'
+                UNION ALL
+                select t.stationNo,YEAR(ObserverTime)-1 as year,index_value as val
+                <include refid="Common.crossYearSuffixSql"></include>
+                comfort_type = '5'
+            </otherwise>
+        </choose>
+    </select>
 </mapper>

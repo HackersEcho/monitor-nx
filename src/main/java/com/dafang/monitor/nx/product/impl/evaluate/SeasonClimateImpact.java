@@ -32,6 +32,7 @@ public class SeasonClimateImpact extends TemplateAbstract {
     protected void init(ProductParams params) {
         year = params.getYear();
         season = params.getSeason();
+        startData = year + "年" + season;
         templateName = "季气候影响评价.ftl";
         fileName = year + "年" + season + ProductEmun.getFileName(8);
     }
@@ -258,8 +259,8 @@ public class SeasonClimateImpact extends TemplateAbstract {
         String temPic2 = DrawUtils.drawImg(singleList,"TEM_AvgannomlyVal",startData+"平均气温距平分布图");
         String prePic1 = DrawUtils.drawImg(singleList,"PRE_Time_2020liveVal",startData+"降水分布图");
         String prePic2 = DrawUtils.drawImg(singleList,"PRE_Time_2020annomlyVal",startData+"降水距平百分率分布图");
-        String sshPic1 = DrawUtils.drawImg(singleList,"PRE_Time_2020annomlyVal",startData+"日照时数分布图");
-        String sshPic2 = DrawUtils.drawImg(singleList,"PRE_Time_2020annomlyVal",startData+"日照时数距平分布图");
+        String sshPic1 = DrawUtils.drawImg(singleList,"SSHliveVal",startData+"日照时数分布图");
+        String sshPic2 = DrawUtils.drawImg(singleList,"SSHannomlyVal",startData+"日照时数距平分布图");
         result.put("temPic1",temPic1);
         result.put("temPic2",temPic2);
         result.put("prePic1",prePic1);

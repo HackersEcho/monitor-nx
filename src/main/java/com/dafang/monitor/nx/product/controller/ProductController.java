@@ -1,11 +1,8 @@
 package com.dafang.monitor.nx.product.controller;
 
 import com.dafang.monitor.nx.product.entity.po.ProductParams;
-import com.dafang.monitor.nx.product.impl.evaluate.MonthClimateImpact;
-import com.dafang.monitor.nx.product.impl.evaluate.SeasonClimateImpact;
-import com.dafang.monitor.nx.product.impl.evaluate.YearClimateImpact;
+import com.dafang.monitor.nx.product.impl.evaluate.*;
 import com.dafang.monitor.nx.product.impl.monitor.*;
-import com.dafang.monitor.nx.utils.CommonUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +34,10 @@ public class ProductController {
     SeasonClimateImpact evaMethod2;
     @Autowired
     YearClimateImpact evaMethod3;
+    @Autowired
+    ClimateAndHumanComfort evaMethod4;
+    @Autowired
+    ClimateAndWaterResources evaMethod5;
 
 
     @PostMapping(value = "creatProduct")
@@ -118,14 +119,22 @@ public class ProductController {
 //        params.setMin(-999d);
 //        evaMethod2.entrance(params);
         //年评价
+//        params.setYear("2019");
+//        params.setRegions("1");
+//        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+//        params.setMax(999d);
+//        params.setMin(-999d);
+//        evaMethod3.entrance(params);
+        //人体舒适度
+//        params.setYear("2019");
+//        params.setRegions("1");
+//        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+//        params.setMax(999d);
+//        params.setMin(-999d);
+//        evaMethod4.entrance(params);
+        //水资源
         params.setYear("2019");
-        params.setRegions("1");
-        params.setCondition(CommonUtils.getCondition(params.getRegions()));
-        params.setMax(999d);
-        params.setMin(-999d);
-        evaMethod3.entrance(params);
-
-
+        evaMethod5.entrance(params);
     }
 
 }

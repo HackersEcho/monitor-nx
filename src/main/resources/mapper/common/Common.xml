@@ -10,6 +10,9 @@
         <if test="remark == 'coldWave'"><!--寒潮-->
            t_mete_climate_cold_wave t
         </if>
+        <if test="remark == 'comfort'"><!--人体舒适度-->
+            base_comfort_index t
+        </if>
         <if test= "remark == null or remark == ''">
             <choose>
             <when test="code == null or code == ''">base_day_data t</when>
@@ -43,6 +46,9 @@
         <if test="remark == 'coldWave'"><!--寒潮-->
             t_mete_climate_cold_wave t
         </if>
+        <if test="remark == 'comfort'"><!--人体舒适度-->
+            base_comfort_index t
+        </if>
         <if test= "remark == null or remark == ''">
             <choose>
                 <when test="code == null or code == ''">base_day_data t</when>
@@ -71,6 +77,9 @@
         from
         <if test="remark == 'coldWave'"><!--寒潮-->
             t_mete_climate_cold_wave t
+        </if>
+        <if test="remark == 'comfort'"><!--人体舒适度-->
+            base_comfort_index t
         </if>
         <if test= "remark == null or remark == ''">
             <choose>
