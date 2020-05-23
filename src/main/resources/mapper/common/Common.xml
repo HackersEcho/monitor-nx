@@ -12,6 +12,7 @@
         </if>
         <if test="remark == 'VariableTemp'"><!--变温-->
             base_day_data t
+        </if>
         <if test="remark == 'comfort'"><!--人体舒适度-->
             base_comfort_index t
         </if>
@@ -53,6 +54,7 @@
         </if>
         <if test="remark == 'VariableTemp'"><!--变温-->
             base_day_data t
+        </if>
         <if test="remark == 'comfort'"><!--人体舒适度-->
             base_comfort_index t
         </if>
@@ -90,6 +92,7 @@
         </if>
         <if test="remark == 'VariableTemp'"><!--变温-->
             base_day_data t
+        </if>
         <if test="remark == 'comfort'"><!--人体舒适度-->
             base_comfort_index t
         </if>
