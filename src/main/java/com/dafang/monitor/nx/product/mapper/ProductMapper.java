@@ -31,4 +31,10 @@ public interface ProductMapper extends MyMapper<Product> {
     同期日数统计
      */
     List<Product> periodDays(ProductParams params);
+
+    /*
+    查询人体舒适度
+     */
+    List<Product> periodComfort(ProductParams params);
+
 }

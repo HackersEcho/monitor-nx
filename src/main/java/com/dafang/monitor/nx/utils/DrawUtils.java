@@ -1,21 +1,15 @@
 package com.dafang.monitor.nx.utils;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.List;
+import java.util.Map;
 
 
 public class DrawUtils {
@@ -132,12 +126,20 @@ public class DrawUtils {
 				colors = "[[58,58,255],[116,114,255],[0,247,247],[155,255,255],[0,255,0],[163,255,163],[255,255,205],"
 						+ "[247,247,0],[255,207,157],[255,181,104],[255,116,116],[255,26,24]]";// 颜色
 				break;
-			case "sshYearAnomaly1":
-				leves = "[-523.7,-437.9,-352.1,-266.3,-180.6,-94.8]";// 级别
-				colors = "[[255,255,205],[247,247,0],[255,207,157],[255,181,104],[255,116,116],[255,26,24]]";// 颜色
+			case "SSHliveVal":
+				leves = "[0,200,400,600,800,1000,1200,1400,1600,1800,2000,2200,2400]";// 级别
+				colors = "[[255,255, 255],[177,243,239],[204,251,219],[249,249,213],[252,242,171],[252,227,126],"
+						+ "[252,200,101],[250,166,68],[250,146,0],[255,121,26],[241,93,5],[248,79,20],[252,38,2],"
+						+ "[230,0,0]]";// 颜色
 				break;
-			case "ciDayAnomaly":
-				leves = "[-25,-15,-5,10]";// 级别
+			case "SSHannomlyVal":
+				leves = "[-30,0,8,16,24,32,40,48,56,64,72,80,88,96]";// 级别
+				colors = "[[255,255, 255],[166,251,214],[177,243,239],[204,251,219],[249,249,213],[252,242,171],[252,227,126],"
+						+ "[252,200,101],[250,166,68],[250,146,0],[255,121,26],[241,93,5],[248,79,20],[252,38,2]"
+						+ ",[230,0,0]]";// 颜色
+				break;
+			case "CI":
+				leves = "[-2.4,-1.8,-1.2,-0.6]";// 级别
 				colors = "[[255,255, 255],[166,251,214],[88,238,243],[87,211,252],[37,166,239]]";// 颜色
 				break;
 		}

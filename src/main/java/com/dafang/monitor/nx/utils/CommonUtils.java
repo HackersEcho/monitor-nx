@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -155,5 +156,15 @@ public class CommonUtils {
         return data.stream().filter(x -> !Objects.isNull(x.get(filed))
                 && Double.parseDouble(x.get(filed).toString()) > -999
                 && Double.parseDouble(x.get(filed).toString()) < 999).collect(Collectors.toList());
+    }
+
+    /**
+     * 判断字符串是否为数字
+     * @param str
+     * @return
+     */
+    public static boolean isInteger(String str) {
+        Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
+        return pattern.matcher(str).matches();
     }
 }

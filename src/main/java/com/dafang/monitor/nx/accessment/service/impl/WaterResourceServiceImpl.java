@@ -4,7 +4,6 @@ import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.NumberUtil;
 import com.dafang.monitor.nx.accessment.entity.emun.AreaEnum;
 import com.dafang.monitor.nx.accessment.entity.emun.RegionEnum;
-import com.dafang.monitor.nx.accessment.entity.po.Agriculture;
 import com.dafang.monitor.nx.accessment.entity.po.WaterResource;
 import com.dafang.monitor.nx.accessment.entity.po.WaterResourceparam;
 import com.dafang.monitor.nx.accessment.mapper.WaterResourceMapper;
@@ -14,12 +13,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -89,12 +86,15 @@ public class WaterResourceServiceImpl implements WaterResourceService {
                     double standardValue = 0.0;
                     double rePerenVal = 0.0;
                     for (String sta : stas) {
-                        Map<String, Object> singleMap = yearList.stream().filter(x -> StringUtils.equals(x.get("regionName").toString(), sta)).
-                                collect(Collectors.toList()).get(0);
-                        reLiveVal += Convert.toDouble(singleMap.get("liveVal"));
-                        rePerenVal += Convert.toDouble(singleMap.get("perenVal"));
-                        reAnomalyVal += Convert.toDouble(singleMap.get("annomalyVal"));
-                        standardValue += Convert.toDouble(singleMap.get("standardValue"));
+                        List<Map<String, Object>> list = yearList.stream().filter(x -> StringUtils.equals(x.get("regionName").toString(), sta)).
+                                collect(Collectors.toList());
+                        if (list.size() > 0) {
+                            Map<String, Object> singleMap =list.get(0);
+                            reLiveVal += Convert.toDouble(singleMap.get("liveVal"));
+                            rePerenVal += Convert.toDouble(singleMap.get("perenVal"));
+                            reAnomalyVal += Convert.toDouble(singleMap.get("annomalyVal"));
+                            standardValue += Convert.toDouble(singleMap.get("standardValue"));
+                        }
                     }
                     map.put("year", year);
                     map.put("regionName", regionName);
