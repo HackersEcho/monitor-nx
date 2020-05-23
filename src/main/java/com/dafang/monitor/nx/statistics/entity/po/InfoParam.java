@@ -23,7 +23,7 @@ public class InfoParam implements Serializable {
     private static final long serialVersionUID = 6522094017645298281L;
     @ApiModelProperty(value = "表名")
     private String tableName;
-    @ApiModelProperty(value = "可以传入一个区域的编号 或者站点集合，用逗号分隔",example = "6  or 63567,53765")
+    @ApiModelProperty(value = "可以传入一个区域的编号 或者站点集合，用逗号分隔",example = "1  or 63567,53765")
     private String regions;
     @ApiModelProperty(value = "开始时间")
     @JsonFormat(pattern = "yyyyMMdd")

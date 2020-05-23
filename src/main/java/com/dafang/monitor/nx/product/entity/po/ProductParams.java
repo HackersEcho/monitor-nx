@@ -22,6 +22,11 @@ public class ProductParams implements Serializable {
     @ApiModelProperty(value = "结束时间")
     @JsonFormat(pattern = "yyyyMMdd")
     private String endDate;
+    @ApiModelProperty(value = "年份",example = "1981")
+    @JsonFormat(pattern = "yyyy")
+    private String year;
+    @ApiModelProperty(value = "季节",example = "春季")
+    private String season;
     @ApiModelProperty(value = "查询的数据库字段",example = "TEM_MAX")
     private String element;
     @ApiModelProperty(value = "最小值")
@@ -46,10 +51,15 @@ public class ProductParams implements Serializable {
     @ApiModelProperty(value = "数据库查询是AVG或者SUM",hidden = true)
     @JsonIgnore
     private String cal;
+    @JsonIgnore
+    private String remark = "";
 
-    public ProductParams(String startDate, String endDate, String element, Double min, Double max, String regions, String sT, String eT, String condition, String code, String cal) {
+
+    public ProductParams(String startDate, String endDate, String year, String season, String element, Double min, Double max, String regions, String sT, String eT, String condition, String code, String cal, String remark) {
         this.startDate = startDate;
         this.endDate = endDate;
+        this.year = year;
+        this.season = season;
         this.element = element;
         this.min = min;
         this.max = max;
@@ -59,5 +69,6 @@ public class ProductParams implements Serializable {
         this.condition = condition;
         this.code = code;
         this.cal = cal;
+        this.remark = remark;
     }
 }
