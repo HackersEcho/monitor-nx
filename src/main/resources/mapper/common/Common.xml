@@ -10,6 +10,9 @@
         <if test="remark == 'coldWave'"><!--寒潮-->
            t_mete_climate_cold_wave t
         </if>
+        <if test="remark == 'VariableTemp'"><!--变温-->
+            base_day_data t
+        </if>
         <if test="remark == 'comfort'"><!--人体舒适度-->
             base_comfort_index t
         </if>
@@ -27,6 +30,9 @@
         </choose>
         <if test="remark == 'coldWave'"><!--寒潮-->
             t.disaster_type = 1 and t.level = #{clodWaveLeavel}
+        </if>
+        <if test="remark == 'VariableTemp'"><!--变温-->
+            ${tempType} between '-999' and '999'
         </if>
         <if test= "remark == null or remark == ''">
             <choose>
@@ -46,6 +52,9 @@
         <if test="remark == 'coldWave'"><!--寒潮-->
             t_mete_climate_cold_wave t
         </if>
+        <if test="remark == 'VariableTemp'"><!--变温-->
+            base_day_data t
+        </if>
         <if test="remark == 'comfort'"><!--人体舒适度-->
             base_comfort_index t
         </if>
@@ -60,6 +69,9 @@
         DATE_FORMAT(t.ObserverTime,'%m%d')  between '0101' and #{eT} and
         <if test="remark == 'coldWave'"><!--寒潮-->
             t.disaster_type = 1 and t.level = #{clodWaveLeavel}
+        </if>
+        <if test="remark == 'VariableTemp'"><!--变温-->
+            ${tempType} between '-999' and '999'
         </if>
         <if test= "remark == null or remark == ''">
             <choose>
@@ -78,6 +90,9 @@
         <if test="remark == 'coldWave'"><!--寒潮-->
             t_mete_climate_cold_wave t
         </if>
+        <if test="remark == 'VariableTemp'"><!--变温-->
+            base_day_data t
+        </if>
         <if test="remark == 'comfort'"><!--人体舒适度-->
             base_comfort_index t
         </if>
@@ -92,6 +107,9 @@
         DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and '1231' and
         <if test="remark == 'coldWave'"><!--寒潮-->
             t.disaster_type = 1 and t.level = #{clodWaveLeavel}
+        </if>
+        <if test="remark == 'VariableTemp'"><!--变温-->
+            ${tempType} between '-999' and '999'
         </if>
         <if test= "remark == null or remark == ''">
             <choose>

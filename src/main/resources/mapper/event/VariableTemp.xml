@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.event.mapper.VariableTempMapper">
+
+    <!--  连续变温(幅度/次数)统计  -->
+    <select id="getVariableTempContinuousData" parameterType="VariableTempParam" resultType="java.util.Map">
+         select t.stationNO,b.station_name as stationName,YEAR(ObserverTime) as year,
+                DATE_FORMAT(ObserverTime, "%Y-%m-%d") AS time,${tempType}
+        <include refid="Common.notCrossYearSql"></include>
+    </select>
+    <!--  同期变温(次数)统计  -->
+    <select id="getVariableTempPeriodData" parameterType="VariableTempParam" resultType="java.util.Map">
+        <choose>
+            <when test="sT !=null and sT &lt; eT">select t.stationNO,b.station_name as stationName,t.Years,
+                DATE_FORMAT(ObserverTime, "%Y-%m-%d") AS time,${tempType}
+                <include refid="Common.notCrossYearSql"></include>
+            </when>
+            <otherwise>
+            select * from (
+                select t.stationNO,b.station_name as stationName,t.Years+1 Years,
+                DATE_FORMAT(ObserverTime, "%Y-%m-%d") AS time,${tempType}
+                <include refid="Common.crossYearSuffixSql"></include>
+                union all
+                select t.stationNO,b.station_name as stationName,t.Years,
+                DATE_FORMAT(ObserverTime, "%Y-%m-%d") AS time,${tempType}
+                <include refid="Common.crossYearProfixSql"></include>) a group by time
+            </otherwise>
+        </choose>
+
+    </select>
+</mapper>

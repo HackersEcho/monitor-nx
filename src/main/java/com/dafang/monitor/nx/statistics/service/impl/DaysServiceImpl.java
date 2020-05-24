@@ -50,7 +50,7 @@ public class DaysServiceImpl implements DaysService {
                 String maxDaysTime = singleList.stream().filter(x -> x.getVal() == maxDays).map(x -> x.getYear().toString()).collect(Collectors.joining("-"));
                // 得到常年天数并保留一位小数
                 double perenVal =  singleList.stream().filter(x -> x.getYear() >= Convert.toInt(scales[0])
-                       && x.getYear() <= Convert.toInt(scales[1])).mapToDouble(x -> x.getVal()).sum() / scaleLen;
+                       && x.getYear() <= Convert.toInt(scales[1])).mapToDouble(x -> x.getVal()).summaryStatistics().getAverage();
                 perenVal = NumberUtil.sub(perenVal, 0, 1).doubleValue();
                 List<Map<String, CommonVal>> data = new ArrayList<>();
                 for (int i = startYear;i<=endYear;i++){// 得到查询年份的
