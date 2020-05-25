@@ -2,6 +2,7 @@ package com.dafang.monitor.nx.product.controller;
 
 import com.dafang.monitor.nx.product.entity.po.ProductParams;
 import com.dafang.monitor.nx.product.impl.evaluate.*;
+import com.dafang.monitor.nx.product.impl.evaluate.climateAccessment.ClimateChangeReportService;
 import com.dafang.monitor.nx.product.impl.monitor.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 @Api(value = "产品",tags = {"产品"})
 @RestController
@@ -38,6 +41,8 @@ public class ProductController {
     ClimateAndHumanComfort evaMethod4;
     @Autowired
     ClimateAndWaterResources evaMethod5;
+    @Resource
+    ClimateChangeReportService evaMethod6;
 
 
     @PostMapping(value = "creatProduct")
@@ -102,7 +107,7 @@ public class ProductController {
 
     @PostMapping(value = "createEvaProduct")
     @ApiOperation(value = "评价产品生成",notes = "产品")
-    public void createEvaProduct(@RequestBody ProductParams params){
+    public void createEvaProduct(@RequestBody ProductParams params) {
         //月评价
 //        params.setStartDate("201901");
 //        params.setRegions("1");
@@ -132,9 +137,11 @@ public class ProductController {
 //        params.setMax(999d);
 //        params.setMin(-999d);
 //        evaMethod4.entrance(params);
-        //水资源
+//        //水资源
+//        params.setYear("2019");
+//        evaMethod5.entrance(params);
+        //宁夏变化评估报告
         params.setYear("2019");
-        evaMethod5.entrance(params);
+        evaMethod6.entrance(params);
     }
-
 }

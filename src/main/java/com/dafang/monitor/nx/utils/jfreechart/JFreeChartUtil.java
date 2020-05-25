@@ -1,6 +1,5 @@
 package com.dafang.monitor.nx.utils.jfreechart;
 
-import com.dafang.monitor.nx.utils.DrawUtils;
 import com.dafang.monitor.nx.utils.jfreechart.util.ChartUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -29,7 +28,7 @@ import static com.dafang.monitor.nx.utils.DrawUtils.imageChangeBase64;
 
 public class JFreeChartUtil{
 
-	private static final Log log = LogFactory.getLog(DrawUtils.class);
+	private static  final Log log = LogFactory.getLog(JFreeChartUtil.class);
 	private static String filePath = "E:\\zyj\\Product\\HIS\\";
 	
 	public static void main(String[] args) {
@@ -77,33 +76,6 @@ public class JFreeChartUtil{
 		}
 		return res;
 	}
-	
-//	// 生成图表主对象JFreeChart
-//	public static String createLineChart(String fileName,String chartName,String XaxisName,String YaxisName,DefaultCategoryDataset linedataset) {
-//		//创建主题样式  
-//		ChartUtils.setChartTheme();
-//	    // 定义图表对象
-////		JFreeChart chart = ChartFactory.createBarChart(chartName,XaxisName,YaxisName,linedataset);
-//		JFreeChart chart = ChartFactory.createLineChart(chartName, XaxisName, YaxisName, linedataset);
-////			JFreeChart chart = ChartFactory.createLineChart(chartName, XaxisName, YaxisName, linedataset);
-//		// 3:设置抗锯齿，防止字体显示不清楚
-//		ChartUtils.setAntiAlias(chart);// 抗锯齿
-//		// 4:对柱子进行渲染
-//		ChartUtils.setBarRenderer(chart.getCategoryPlot(), false);//
-//		// 5:对其他部分进行渲染
-//		ChartUtils.setXAixs(chart.getCategoryPlot());// X坐标轴渲染
-//		ChartUtils.setYAixs(chart.getCategoryPlot());// Y坐标轴渲染
-//		chart.getLegend().setFrame(new BlockBorder(Color.WHITE));// 设置标注无边框
-//		OutputStream fos_jpg = null;
-//		try {
-//			fos_jpg=new FileOutputStream(PropertiesConfig.readData("imgPath")+fileName+".png");
-//			ChartUtilities.writeChartAsPNG(fos_jpg,chart,800,600);
-//			fos_jpg.close();
-//		} catch (Exception e) {
-//			e.getMessage();
-//		}
-//		return fileName;
-//	}
 	
 	// 生成数据
 	public static DefaultCategoryDataset createDataset() {

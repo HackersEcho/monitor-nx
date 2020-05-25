@@ -12,7 +12,7 @@ public class ClimateAndAgriculture extends TemplateAbstract {
     protected void init(ProductParams params) {
         year = params.getYear();
         fileName = year + "年" + ProductEmun.getFileName(12);
-        templateName = "";
+        templateName = "气候与农业.ftl";
     }
 
     @Override
