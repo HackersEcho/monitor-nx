@@ -6,10 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class LocalDateUtils {
-	public static void main(String[] args) {
-		Long differDays = getDifferDays("20180101","20180111");
-		System.out.println(differDays);
-	}
+
 	//LocalDateTime与String的相互转化
 	public static LocalDateTime stringToDateTime(String date){
 		DateTimeFormatter df2 =  DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -92,5 +89,23 @@ public class LocalDateUtils {
 	public static String getMDDesc(String dateStr){
 		LocalDate date = stringToDate(dateStr);
 		return date.getMonthValue()+"月"+date.getDayOfMonth()+"日";
+	}
+	/*
+	*
+	 * 根据天数得到月日
+	 * @param days
+	 * @return java.lang.String
+	 * @author echo
+	 * @date 2020/5/16
+	 */
+	public static String getMD(int days){
+		LocalDate now = LocalDate.now();
+		LocalDate localDate = now.withDayOfYear(days);
+		return localDate.toString().replace("-", "").substring(4);
+	}
+
+	public static void main(String[] args) {
+		LocalDate localDate = LocalDate.ofYearDay(2020, 35).withDayOfYear(277);
+		System.out.println(localDate);
 	}
 }

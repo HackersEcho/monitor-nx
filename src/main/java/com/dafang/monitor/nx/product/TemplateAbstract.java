@@ -1,11 +1,12 @@
 package com.dafang.monitor.nx.product;
 
 
-import com.dafang.monitor.nx.product.entity.emun.ProductEmun;
 import com.dafang.monitor.nx.product.entity.po.Product;
 import com.dafang.monitor.nx.product.entity.po.ProductParams;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.io.*;
 import java.util.List;
@@ -19,6 +20,8 @@ import java.util.Map;
  */
 public abstract class TemplateAbstract {
 
+    private static final Log log = LogFactory.getLog(TemplateAbstract.class);
+
     // 受保护的属性放在init()数据初始化里面赋值
     protected String templateName;//模板名称
 //    private String filePath = "D:\\product";// 文件生成的目标路径，例如：D:/wordFile/
@@ -30,6 +33,7 @@ public abstract class TemplateAbstract {
     protected String startMonthDay;
     protected String endMonthDay;
     protected String year;//当前年
+    protected String season;//季
     protected String month;//月
     protected String day;//日
     protected List<Product> baseData;//所有数据
@@ -40,12 +44,16 @@ public abstract class TemplateAbstract {
     protected List<Product> currentDayList;//当年数据
 
     // 所有产品的入口
-    public boolean entrance(ProductParams params){
+    public void entrance(ProductParams params){
         init(params);
         Map<String,Object> dataMap = getDatas(params);
         fileName = fileName+".doc";
-        createWord(dataMap, templateName, fileName);
-        return false;
+        String word = createWord(dataMap, templateName, fileName);
+        if (word == null){
+            log.error(filePath+fileName+"生成失败！");
+        }else{
+            log.info(filePath+fileName+"生产成功！");
+        }
     }
 
     // 初始化数据

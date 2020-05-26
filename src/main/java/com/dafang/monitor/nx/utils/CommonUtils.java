@@ -5,10 +5,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.DoubleSummaryStatistics;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -37,9 +35,14 @@ public class CommonUtils {
             if (StringUtils.isBlank(regions)) {
                 regions = "\' \'";
             }
-            condition = "b.device_id IN (" + regions + ")";
-            if (!StringUtils.contains(regions, ",")) {
-                condition = "b.device_id = '" + regions + "'";
+            condition = "b.device_id = '"+ regions+"'";
+            if (StringUtils.contains(regions, ",")) {
+                String[] strs = regions.split(",");
+                StringJoiner sj = new StringJoiner(",");
+                for (String str : strs) {
+                    sj.add("'" + str + "'");
+                }
+                condition = "b.device_id IN (" + sj.toString() + ")";
             }
         } else {// 通过区域编号查找
             String regionField = "";
@@ -153,5 +156,15 @@ public class CommonUtils {
         return data.stream().filter(x -> !Objects.isNull(x.get(filed))
                 && Double.parseDouble(x.get(filed).toString()) > -999
                 && Double.parseDouble(x.get(filed).toString()) < 999).collect(Collectors.toList());
+    }
+
+    /**
+     * 判断字符串是否为数字
+     * @param str
+     * @return
+     */
+    public static boolean isInteger(String str) {
+        Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
+        return pattern.matcher(str).matches();
     }
 }

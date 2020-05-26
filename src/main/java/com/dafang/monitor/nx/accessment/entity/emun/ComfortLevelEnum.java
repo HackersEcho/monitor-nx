@@ -1,9 +1,5 @@
 package com.dafang.monitor.nx.accessment.entity.emun;
 
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.Map;
-
 public enum  ComfortLevelEnum {
     LEVEL_SHIWEN_9("1","4级","极热,极不舒适","80_999","湿温指数"),
     LEVEL_SHIWEN_8("1","3级","闷热,不舒适", "75_80","湿温指数"),
@@ -85,12 +81,15 @@ public enum  ComfortLevelEnum {
     public String getLabel() {
         return label;
     }
+
     @Override
     public String toString() {
         return "ComfortLevelEnum{" +
                 "index='" + index + '\'' +
                 ", level='" + level + '\'' +
                 ", fell='" + fell + '\'' +
+                ", desc='" + desc + '\'' +
+                ", label='" + label + '\'' +
                 '}';
     }
 }

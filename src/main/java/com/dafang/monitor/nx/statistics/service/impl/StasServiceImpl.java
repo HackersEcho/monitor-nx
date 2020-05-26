@@ -91,7 +91,7 @@ public class StasServiceImpl implements StasService {
                             }
                             // 计算排位
                             List<Integer> valList = yearDatas.stream().filter(x->x.get("year")>=params.getRankStartYear()
-                                 && x.get("year")>=params.getRankEndYear()).map(x -> x.get("val")).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+                                 && x.get("year")<=params.getRankEndYear()).map(x -> x.get("val")).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
                             int rank = valList.indexOf(liveVal) + 1;
                             builder.rank(rank);
                             // 如果款年key应该为2018-2019这样的格式

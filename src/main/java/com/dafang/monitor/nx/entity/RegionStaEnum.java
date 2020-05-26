@@ -37,7 +37,6 @@ public enum  RegionStaEnum {
     }
 
     // 通过regionId得到对应的站点
-
     public static List<String> getStas(String regionId){
         List<String> res = new ArrayList<>();
         for (RegionStaEnum r : RegionStaEnum.values()) {
@@ -46,6 +45,16 @@ public enum  RegionStaEnum {
             }
         }
         return res;
+    }
+    //通过ID得到区域名
+    public static String getDesc(String regionId){
+        String desc = "";
+        for (RegionStaEnum value : RegionStaEnum.values()) {
+            if (StringUtils.equals(value.getRegionId(),regionId)){
+                desc = value.getDesc();
+            }
+        }
+        return desc;
     }
     public String getRegionId() {
         return regionId;

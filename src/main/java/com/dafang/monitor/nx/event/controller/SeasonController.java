@@ -1,6 +1,5 @@
 package com.dafang.monitor.nx.event.controller;
 
-import com.dafang.monitor.nx.config.ApiIgp;
 import com.dafang.monitor.nx.config.Apicp;
 import com.dafang.monitor.nx.event.entity.po.SeasonParam;
 import com.dafang.monitor.nx.event.entity.vo.FourSeason;
