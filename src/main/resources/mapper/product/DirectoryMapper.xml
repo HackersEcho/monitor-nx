@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.product.mapper.DirectoryMapper">
+    <!--插入文档-->
+    <insert id="insertDirectories" parameterType="DirectoryParams">
+        INSERT INTO `os_sys_file_info`(display_name,directory_id,create_time,file_path,file_type)
+        VALUES('${displayName}','${directoryId}','${createTime}','${filePath}','${fileType}')
+    </insert>
+    <!--过滤重复文档-->
+    <delete id="deleteDirectories" parameterType="DirectoryParams">
+        DELETE FROM os_sys_file_info WHERE display_name = '${displayName}'
+    </delete>
+    <!--根据id和文档类型查询所有文档-->
+    <select id="selectDirectoryById" parameterType="DirectoryParams" resultType="Directory">
+        SELECT display_name as displayName,file_path as filePath,create_time as createTime,directory_id as directoryId,file_type as fileType
+        FROM `os_sys_file_info` WHERE directory_id = '${directoryId}' and file_type = '${fileType}'
+    </select>
+    <!--根据文件名查询产品路径-->
+    <select id="selectFilePathByFileName" parameterType="DirectoryParams" resultType="string">
+        SELECT DISTINCT file_path as fileName FROM `os_sys_file_info` WHERE display_name = '${displayName}'
+    </select>
+</mapper>

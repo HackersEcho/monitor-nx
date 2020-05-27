@@ -6,15 +6,14 @@ import com.dafang.monitor.nx.product.entity.po.ProductParams;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-
 @Service
-public class ClimateAndVegetation extends TemplateAbstract {
+public class ClimateAndAirQuality extends TemplateAbstract {
 
     @Override
     protected void init(ProductParams params) {
         year = params.getYear();
-        fileName = year + "年" + ProductEmun.getFileName(13);
-        templateName = "气候与植被.ftl";
+        fileName = year + "年" + ProductEmun.getFileName(15);
+        templateName = "气候与空气质量.ftl";
     }
 
     @Override

@@ -1,14 +1,20 @@
 package com.dafang.monitor.nx.product;
 
 
+import com.dafang.monitor.nx.product.entity.po.DirectoryParams;
 import com.dafang.monitor.nx.product.entity.po.Product;
 import com.dafang.monitor.nx.product.entity.po.ProductParams;
+import com.dafang.monitor.nx.product.mapper.DirectoryMapper;
+import com.dafang.monitor.nx.utils.DocToPdfUtils;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -20,13 +26,15 @@ import java.util.Map;
  */
 public abstract class TemplateAbstract {
 
+    @Autowired
+    DirectoryMapper mapper;
     private static final Log log = LogFactory.getLog(TemplateAbstract.class);
 
     // 受保护的属性放在init()数据初始化里面赋值
     protected String templateName;//模板名称
 //    private String filePath = "D:\\product";// 文件生成的目标路径，例如：D:/wordFile/
 //    private String filePath = "W:\\newkmlfile\\Product";// 文件生成的目标路径，例如：D:/wordFile/
-    private String filePath = "E:\\zyj\\Product";// 文件生成的目标路径，例如：D:/wordFile/
+    private String filePath = "D:\\product\\";// 文件生成的目标路径，例如：D:/wordFile/
     protected String fileName;//文件名称
     protected String startData;
     protected String endData;
@@ -45,14 +53,31 @@ public abstract class TemplateAbstract {
 
     // 所有产品的入口
     public void entrance(ProductParams params){
+        String path = filePath;
         init(params);
         Map<String,Object> dataMap = getDatas(params);
-        fileName = fileName+".doc";
-        String word = createWord(dataMap, templateName, fileName);
+        String doc = fileName+".doc";
+        String pdf = fileName+".pdf";
+        String word = createWord(dataMap, templateName, doc);
         if (word == null){
             log.error(filePath+fileName+"生成失败！");
         }else{
             log.info(filePath+fileName+"生产成功！");
+            //pdf转换
+            DocToPdfUtils.wordToPdf(filePath+doc,filePath+pdf);
+            //入库
+            Date date = new Date();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String createTime = df.format(date);
+            String[] files = {doc,pdf};
+            path = path.replaceAll("\\\\","\\\\\\\\");
+            for (String file : files) {
+                DirectoryParams deleteParams = new DirectoryParams(file);
+                mapper.deleteDirectories(deleteParams);
+                DirectoryParams insertParams = new DirectoryParams(file,path+file,createTime,params.getProductId(),file.substring(file.length()-3,file.length()));
+                mapper.insertDirectories(insertParams);
+            }
+            log.info("end");
         }
     }
 
