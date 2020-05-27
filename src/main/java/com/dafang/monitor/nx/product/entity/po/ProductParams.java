@@ -17,6 +17,8 @@ import java.io.Serializable;
 public class ProductParams implements Serializable {
 
     @ApiModelProperty(value = "开始时间")
+    private String productId;
+    @ApiModelProperty(value = "开始时间")
     @JsonFormat(pattern = "yyyyMMdd")
     private String startDate;
     @ApiModelProperty(value = "结束时间")
@@ -55,7 +57,8 @@ public class ProductParams implements Serializable {
     private String remark = "";
 
 
-    public ProductParams(String startDate, String endDate, String year, String season, String element, Double min, Double max, String regions, String sT, String eT, String condition, String code, String cal, String remark) {
+    public ProductParams(String productId, String startDate, String endDate, String year, String season, String element, Double min, Double max, String regions, String sT, String eT, String condition, String code, String cal, String remark) {
+        this.productId = productId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.year = year;

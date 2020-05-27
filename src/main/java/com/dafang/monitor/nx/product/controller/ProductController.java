@@ -4,8 +4,10 @@ import com.dafang.monitor.nx.product.entity.po.ProductParams;
 import com.dafang.monitor.nx.product.impl.evaluate.*;
 import com.dafang.monitor.nx.product.impl.evaluate.climateAccessment.ClimateChangeReportService;
 import com.dafang.monitor.nx.product.impl.monitor.*;
+import com.dafang.monitor.nx.utils.CommonUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,18 +51,21 @@ public class ProductController {
     @ApiOperation(value = "产品生成",notes = "产品")
     //生成气候监测产品
     public void creatProduct(@RequestBody ProductParams params) {
-        //重要气候信息
-//        params.setStartDate("20190101");
-//        params.setEndDate("20190201");
-//        params.setST("0101");
-//        params.setET("0201");
-//        params.setRegions("1");
-//        params.setElement("t.TEM_Avg,t.PRE_Time_2020");
-//        params.setCondition(CommonUtils.getCondition(params.getRegions()));
-//        method1.entrance(params);
-        //干旱监测报告
-//        params.setStartDate("20190101");
-//        method2.entrance(params);
+        String productId = params.getProductId();
+        if (StringUtils.equals(productId,"1")){//重要气候信息
+            params.setStartDate("20190101");
+            params.setEndDate("20190201");
+            params.setST("0101");
+            params.setET("0201");
+            params.setRegions("1");
+            params.setElement("t.TEM_Avg,t.PRE_Time_2020");
+            params.setCondition(CommonUtils.getCondition(params.getRegions()));
+            method1.entrance(params);
+        }else if(StringUtils.equals(productId,"2")){//干旱监测报告
+//            params.setStartDate("20190101");
+            method2.entrance(params);
+        }
+
         //极端天气气候事件报告
 //        params.setStartDate("201901");
 //        params.setST(params.getStartDate().substring(4,6)+"01");
@@ -141,7 +146,7 @@ public class ProductController {
 //        params.setYear("2019");
 //        evaMethod5.entrance(params);
         //宁夏变化评估报告
-        params.setYear("2019");
-        evaMethod6.entrance(params);
+//        params.setYear("2019");
+//        evaMethod6.entrance(params);
     }
 }
