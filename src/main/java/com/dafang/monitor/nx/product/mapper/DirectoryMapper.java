@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.MyMapper;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface DirectoryMapper extends MyMapper<Directory> {
@@ -19,4 +21,15 @@ public interface DirectoryMapper extends MyMapper<Directory> {
     插入
      */
     void insertDirectories(DirectoryParams params);
+
+    /*
+    根据id查询产品
+     */
+    List<Directory> selectDirectoryById(DirectoryParams params);
+
+    /*
+    根据文件名查询产品路径
+     */
+    String selectFilePathByFileName(DirectoryParams params);
+
 }

@@ -15,6 +15,6 @@ public class Directory implements Serializable {
     private String filePath;//文档路径
     private String createTime;//创建时间
     private String directoryId;//文档编号
-    private String fileType;//文件类型
+    private String fileType;//文档类型
 
 }

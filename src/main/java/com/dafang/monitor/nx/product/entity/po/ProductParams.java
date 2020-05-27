@@ -16,7 +16,7 @@ import java.io.Serializable;
 @ApiModel(value = "前端传入的参数实体类")
 public class ProductParams implements Serializable {
 
-    @ApiModelProperty(value = "开始时间")
+    @ApiModelProperty(value = "产品编号")
     private String productId;
     @ApiModelProperty(value = "开始时间")
     @JsonFormat(pattern = "yyyyMMdd")

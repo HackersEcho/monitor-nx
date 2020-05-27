@@ -3,9 +3,10 @@ package com.dafang.monitor.nx.product.impl.evaluate;
 import com.dafang.monitor.nx.product.TemplateAbstract;
 import com.dafang.monitor.nx.product.entity.emun.ProductEmun;
 import com.dafang.monitor.nx.product.entity.po.ProductParams;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
-
+@Service
 public class ClimateAndAgriculture extends TemplateAbstract {
 
     @Override
