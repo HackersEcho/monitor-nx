@@ -58,7 +58,6 @@ public class FrostServiceImpl implements FrostService {
                // 得到常年天数并保留一位小数
                 double perenVal =  singleList.stream().filter(x -> x.getYear() >= Convert.toInt(scales[0])
                        && x.getYear() <= Convert.toInt(scales[1])).mapToDouble(x -> x.getVal()).sum() / scaleLen;
-                perenVal = NumberUtil.sub(perenVal, 0, 1).doubleValue();
                 List<Map<String, CommonVal>> data = new ArrayList<>();
                 for (int i = startYear;i<=endYear;i++){// 得到查询年份的
                     Map<String, CommonVal> map = new HashMap<>();
@@ -68,7 +67,7 @@ public class FrostServiceImpl implements FrostService {
                     CommonVal build = CommonVal.builder().build();
                     if (optional.isPresent()){
                         double liveVal = optional.get().getVal();
-                        double anomalyVal = NumberUtil.sub(liveVal, perenVal, 1).doubleValue();
+                        double anomalyVal = NumberUtil.sub(liveVal, perenVal, 0).doubleValue();
                         int rank = rankList.indexOf(liveVal) + 1;
                         build = CommonVal.builder().liveVal(liveVal).perenVal(perenVal).anomalyVal(anomalyVal).rank(rank).build();
                     }
