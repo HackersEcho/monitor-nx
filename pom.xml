@@ -167,6 +167,11 @@
             <version>1.1.1</version>
         </dependency>
         <!--=================================-->
+        <dependency>
+            <groupId> e-iceblue </groupId>
+            <artifactId>spire.doc</artifactId>
+            <version>3.5.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -184,5 +189,11 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>com.e-iceblue</id>
+            <url>http://repo.e-iceblue.cn/repository/maven-public/</url>
+        </repository>
+    </repositories>
 
 </project>

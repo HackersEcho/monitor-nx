@@ -127,23 +127,38 @@ public class ClimateChangeReportService extends TemplateAbstract {
 			String tu1 = "",tu2 = "",tu3 = "";
 			String fieldName = entry.getKey();
 			String field = entry.getValue();
-			switch (field) {
-				case "TEM_Avg" -> {
-					tu1 = "（见图1.1.1a）";
-					tu2 = "（图1.1.2a）";
-					tu3 = "（图1.1.2b）";
-				}
-				case "TEM_Max" -> {
-					tu1 = "（见图1.1.1b）";
-					tu2 = "（图1.1.3a）";
-					tu3 = "（图1.1.3b）";
-				}
-				case "TEM_Min" -> {
-					tu1 = "（见图1.1.1c）";
-					tu2 = "（图1.1.4a）";
-					tu3 = "（图1.1.4b）";
-				}
+			if(StringUtils.equals(field,"TEM_Avg")){
+				tu1 = "（见图1.1.1a）";
+				tu2 = "（图1.1.2a）";
+				tu3 = "（图1.1.2b）";
 			}
+			if(StringUtils.equals(field,"TEM_Max")){
+				tu1 = "（见图1.1.1b）";
+				tu2 = "（图1.1.3a）";
+				tu3 = "（图1.1.3b）";
+			}
+			if(StringUtils.equals(field,"TEM_Min")){
+				tu1 = "（见图1.1.1c）";
+				tu2 = "（图1.1.4a）";
+				tu3 = "（图1.1.4b）";
+			}
+//			switch (field) {
+//				case "TEM_Avg" -> {
+//					tu1 = "（见图1.1.1a）";
+//					tu2 = "（图1.1.2a）";
+//					tu3 = "（图1.1.2b）";
+//				}
+//				case "TEM_Max" -> {
+//					tu1 = "（见图1.1.1b）";
+//					tu2 = "（图1.1.3a）";
+//					tu3 = "（图1.1.3b）";
+//				}
+//				case "TEM_Min" -> {
+//					tu1 = "（见图1.1.1c）";
+//					tu2 = "（图1.1.4a）";
+//					tu3 = "（图1.1.4b）";
+//				}
+//			}
 			String condition1 = "AVG("+field+") liveVal";//查询条件
 			String condition2 = ""+field+" between '-999' and '999'";
 			//全省年数据
