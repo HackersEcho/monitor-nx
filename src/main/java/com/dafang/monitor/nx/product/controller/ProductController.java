@@ -10,16 +10,17 @@ import com.dafang.monitor.nx.product.impl.evaluate.*;
 import com.dafang.monitor.nx.product.impl.evaluate.climateAccessment.ClimateChangeReportService;
 import com.dafang.monitor.nx.product.impl.monitor.*;
 import com.dafang.monitor.nx.utils.CommonUtils;
+import com.dafang.monitor.nx.utils.ImageHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.List;
 
 @Api(value = "产品",tags = {"产品"})
@@ -203,4 +204,86 @@ public class ProductController {
         return result;
     }
 
+    /**
+     * 前台输出图片
+     *
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "getImageStream", method = RequestMethod.GET)
+    @ApiOperation(value = "前台输出图片",notes = "产品")
+    public void getImageStream(HttpServletRequest request,
+                               HttpServletResponse response) throws IOException {
+        String imgPath = request.getParameter("imgPath");
+        InputStream ips = null;
+        OutputStream ops = null;
+        ImageHelper.convert(imgPath, imgPath);
+        File file = new File(imgPath);
+        if (file.exists()) {
+            try {
+                response.reset();
+                response.setContentType("multipart/form-data");
+                ops = response.getOutputStream();
+                ips = new FileInputStream(file);
+                response.setHeader("Content-type","textml;charset=utf-8");
+                response.setCharacterEncoding("UTF-8");
+                String path = file.getName().substring(0,file.getName().indexOf(".")-2)+".png";
+                response.setHeader("Content-disposition",
+                        "attachment; filename=" + new String(path.getBytes("utf-8"),"iso-8859-1"));
+                response.addHeader("Content-Length",
+                        new Long(file.length()).toString());
+                int i = 0;
+                byte[] buffer = new byte[1024];
+                i = ips.read(buffer);
+                while (i != -1) {
+                    ops.write(buffer, 0, i);
+                    i = ips.read(buffer);
+                }
+                ips.close();
+                ops.flush();
+                ops.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    /**
+     * 输出文件流
+     *
+     * @return
+     */
+    @RequestMapping(value = "getFileStream", method = RequestMethod.GET)
+    @ApiOperation(value = "前台输出文件",notes = "产品")
+    public void getFileStream(HttpServletRequest request,
+                              HttpServletResponse response) {
+        String imgPath = request.getParameter("filePath");
+        InputStream ips = null;
+        OutputStream ops = null;
+        File file = new File(imgPath);
+        if (file.exists()) {
+            try {
+                response.reset();
+                response.setContentType("multipart/form-data");
+                ops = response.getOutputStream();
+                ips = new FileInputStream(file);
+                response.setCharacterEncoding("utf-8");
+                response.setHeader("Content-disposition",
+                        "attachment; filename=" + file.getName());
+                response.addHeader("Content-Length",
+                        new Long(file.length()).toString());
+                int i = 0;
+                byte[] buffer = new byte[1024];
+                i = ips.read(buffer);
+                while (i != -1) {
+                    ops.write(buffer, 0, i);
+                    i = ips.read(buffer);
+                }
+                ips.close();
+                ops.flush();
+                ops.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
