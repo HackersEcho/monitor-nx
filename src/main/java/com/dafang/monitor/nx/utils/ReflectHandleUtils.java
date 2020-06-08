@@ -3,6 +3,7 @@ package com.dafang.monitor.nx.utils;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.ReflectUtil;
 import com.dafang.monitor.nx.statistics.entity.po.Daily;
+import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -38,12 +39,22 @@ public class ReflectHandleUtils {
             }
             return Convert.toDouble(invoke);
         }).summaryStatistics();
-        double res = switch(op){
-            case "min"-> summaryStatistics.getMin();
-            case "max"-> summaryStatistics.getMax();
-            case "sum"-> summaryStatistics.getSum();
-            default -> summaryStatistics.getAverage();
-        };
+//        double res = switch(op){
+//            case "min"-> summaryStatistics.getMin();
+//            case "max"-> summaryStatistics.getMax();
+//            case "sum"-> summaryStatistics.getSum();
+//            default -> summaryStatistics.getAverage();
+//        };
+        double res = 0.0;
+        if (StringUtils.equals(op,"min")){
+            res = summaryStatistics.getMin();
+        }else if(StringUtils.equals(op,"max")){
+            res = summaryStatistics.getMax();
+        }else if(StringUtils.equals(op,"sum")){
+            res = summaryStatistics.getSum();
+        }else {
+            res = summaryStatistics.getAverage();
+        }
         return res;
     }
 /*

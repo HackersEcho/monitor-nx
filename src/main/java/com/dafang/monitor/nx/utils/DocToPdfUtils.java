@@ -10,8 +10,8 @@ public class DocToPdfUtils {
     private static final Log log = LogFactory.getLog(DocToPdfUtils.class);
 
     public static void main(String[] args) {
-        String docPath = "E:\\zyj\\Product\\2019年专题报告.doc";
-        String pdfPath = "E:\\zyj\\Product\\2019年专题报告.pdf";
+        String docPath = "E:\\zyj\\Product\\2019年02月01日-2019年01月01日重要气候信息.doc";
+        String pdfPath = "E:\\zyj\\Product\\2019年02月01日-2019年01月01日重要气候信息.pdf";
         wordToPdf(docPath,pdfPath);
     }
 
@@ -28,7 +28,7 @@ public class DocToPdfUtils {
         //保存为PDF格式
         document.saveToFile(pdfPath, FileFormat.PDF);
         long et = System.currentTimeMillis();
-        long time = (et - st)*1000;
+        long time = (et - st)/1000;
         log.info(pdfPath + "生成成功，用时" + time + "秒");
     }
 }

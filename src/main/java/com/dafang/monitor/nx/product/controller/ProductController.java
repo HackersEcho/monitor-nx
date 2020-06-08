@@ -10,16 +10,17 @@ import com.dafang.monitor.nx.product.impl.evaluate.*;
 import com.dafang.monitor.nx.product.impl.evaluate.climateAccessment.ClimateChangeReportService;
 import com.dafang.monitor.nx.product.impl.monitor.*;
 import com.dafang.monitor.nx.utils.CommonUtils;
+import com.dafang.monitor.nx.utils.ImageHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.List;
 
 @Api(value = "产品",tags = {"产品"})
@@ -73,65 +74,51 @@ public class ProductController {
     //生成气候监测产品
     public void creatProduct(@Apicp("productId,startDate,endDate") @RequestBody ProductParams params) {
         String productId = params.getProductId();
-        if (StringUtils.equals(productId,"1")){//重要气候信息
+        params.setRegions("1");
+        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+        params.setMax(999d);
+        params.setMin(-999d);
+        if(StringUtils.equals(productId,"1")){//气候概况
 //            params.setStartDate("20190101");
 //            params.setEndDate("20190201");
-            params.setST("0101");
-            params.setET("0201");
-            params.setRegions("1");
-            params.setElement("t.TEM_Avg,t.PRE_Time_2020");
-            params.setCondition(CommonUtils.getCondition(params.getRegions()));
-            method1.entrance(params);
+            params.setST(params.getStartDate().substring(0,4));
+            params.setET(params.getEndDate().substring(0,4));
+            method6.entrance(params);
         }else if(StringUtils.equals(productId,"2")){//干旱监测报告
 //            params.setStartDate("20190101");
             method2.entrance(params);
-        }else if (StringUtils.equals(productId,"3")){//极端天气气候事件报告
+        }else if (StringUtils.equals(productId,"3")){//重要气候信息
+//            params.setStartDate("20190101");
+//            params.setEndDate("20190201");
+            params.setST(params.getStartDate().substring(0,4));
+            params.setET(params.getEndDate().substring(0,4));
+            params.setElement("t.TEM_Avg,t.PRE_Time_2020");
+            method1.entrance(params);
+        }else if (StringUtils.equals(productId,"4")){//极端天气气候事件报告
 //            params.setStartDate("201901");
             params.setST(params.getStartDate().substring(4,6)+"01");
             params.setET(params.getStartDate().substring(4,6)+"31");
-            params.setRegions("1");
-            params.setCondition(CommonUtils.getCondition(params.getRegions()));
-            params.setMax(999d);
-            params.setMin(-999d);
             method3.entrance(params);
-        }else if(StringUtils.equals(productId,"4")){//决策服务
+        }else if(StringUtils.equals(productId,"5")){//决策服务
 //            params.setStartDate("20190101");
 //            params.setEndDate("20190110");
-            params.setST("0101");
-            params.setET("0110");
-            params.setRegions("1");
-            params.setCondition(CommonUtils.getCondition(params.getRegions()));
-            params.setMax(999d);
-            params.setMin(-999d);
+            params.setST(params.getStartDate().substring(0,4));
+            params.setET(params.getEndDate().substring(0,4));
             params.setElement("PRE_Time_2020");
             method4.entrance(params);
-        }else if (StringUtils.equals(productId,"5")){//专题报告
+        }else if (StringUtils.equals(productId,"6")){//专题报告
 //            params.setStartDate("20190101");
 //            params.setEndDate("20190201");
-            params.setST("0101");
-            params.setET("0201");
-            params.setRegions("1");
+            params.setST(params.getStartDate().substring(0,4));
+            params.setET(params.getEndDate().substring(0,4));
             params.setElement("t.TEM_Avg,t.PRE_Time_2020");
-            params.setCondition(CommonUtils.getCondition(params.getRegions()));
-            params.setMax(999d);
-            params.setMin(-999d);
             method5.entrance(params);
-        }else if(StringUtils.equals(productId,"6")){
-//            params.setStartDate("20190101");
-//            params.setEndDate("20190201");
-            params.setST("0101");
-            params.setET("0201");
-            params.setRegions("1");
-            params.setCondition(CommonUtils.getCondition(params.getRegions()));
-            params.setMax(999d);
-            params.setMin(-999d);
-            method6.entrance(params);
         }
     }
 
     @PostMapping(value = "createEvaProduct")
     @ApiOperation(value = "评价产品生成",notes = "产品")
-    public void createEvaProduct(@RequestBody ProductParams params) {
+    public void createEvaProduct(@Apicp("productId,startDate,year,season") @RequestBody ProductParams params) {
         String productId = params.getProductId();
         if(StringUtils.equals(productId,"7")){//月评价
 //            params.setStartDate("201901");
@@ -189,8 +176,8 @@ public class ProductController {
     @ApiOperation(value = "文档展示",notes = "产品")
     //文档展示
     public List<Directory> documentDisplay(@ApiIgp("displayName,filePath,createTime") @RequestBody DirectoryParams params){
-        params.setDirectoryId("1");
-        params.setFileType("pdf");
+//        params.setDirectoryId("1");
+//        params.setFileType("pdf");
         return directoryService.documentDisplay(params);
     }
 
@@ -203,4 +190,133 @@ public class ProductController {
         return result;
     }
 
+    /**
+     * 前台输出图片
+     *
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "getImageStream", method = RequestMethod.GET)
+    @ApiOperation(value = "前台输出图片",notes = "产品")
+    public void getImageStream(HttpServletRequest request,
+                               HttpServletResponse response) throws IOException {
+        String imgPath = request.getParameter("imgPath");
+        InputStream ips = null;
+        OutputStream ops = null;
+        ImageHelper.convert(imgPath, imgPath);
+        File file = new File(imgPath);
+        if (file.exists()) {
+            try {
+                response.reset();
+                response.setContentType("multipart/form-data");
+                ops = response.getOutputStream();
+                ips = new FileInputStream(file);
+                response.setHeader("Content-type","textml;charset=utf-8");
+                response.setCharacterEncoding("UTF-8");
+                String path = file.getName().substring(0,file.getName().indexOf(".")-2)+".png";
+                response.setHeader("Content-disposition",
+                        "attachment; filename=" + new String(path.getBytes("utf-8"),"iso-8859-1"));
+                response.addHeader("Content-Length",
+                        new Long(file.length()).toString());
+                int i = 0;
+                byte[] buffer = new byte[1024];
+                i = ips.read(buffer);
+                while (i != -1) {
+                    ops.write(buffer, 0, i);
+                    i = ips.read(buffer);
+                }
+                ips.close();
+                ops.flush();
+                ops.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    /**
+     * 下载文件流
+     *
+     * @return
+     */
+    @RequestMapping(value = "getFileStream", method = RequestMethod.GET)
+    @ApiOperation(value = "下载文件",notes = "产品")
+    public void getFileStream(HttpServletRequest request,
+                              HttpServletResponse response) {
+        String imgPath = request.getParameter("filePath");
+        InputStream ips = null;
+        OutputStream ops = null;
+        File file = new File(imgPath);
+        if (file.exists()) {
+            try {
+                response.reset();
+                response.setContentType("multipart/form-data");
+                ops = response.getOutputStream();
+                ips = new FileInputStream(file);
+                response.setCharacterEncoding("utf-8");
+                response.addHeader("Content-Disposition", "attachment;filename=" + new String(file.getName().getBytes("utf-8"),"ISO8859-1"));
+//                response.setHeader("Content-disposition", "attachment; filename=" + file.getName());
+                response.addHeader("Content-Length", new Long(file.length()).toString());
+                int i = 0;
+                byte[] buffer = new byte[1024];
+                i = ips.read(buffer);
+                while (i != -1) {
+                    ops.write(buffer, 0, i);
+                    i = ips.read(buffer);
+                }
+                ips.close();
+                ops.flush();
+                ops.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    @RequestMapping(value = "showPDFClient", method = RequestMethod.GET)
+    @ApiOperation(value = "展示PDF文件",notes = "产品")
+    public void showPDFTXTClient(HttpServletRequest request, HttpServletResponse response)
+    {
+        try {
+//            String suffix = request.getParameter("suffix");
+            String realPath = request.getParameter("filePath");
+//            Map<String,Object> file = FileMgrService.findFileById(Integer.parseInt(request.getParameter("fileId")));
+            //首先，要在客户端输出PDF文件，必须将HTTP的请求头的MIME进行设置。
+            response.setContentType("application/pdf"); //请求响应PDF文件
+            //如果对HTTP请求头的MIME不是很清楚，大家去google上面搜索一下相关的介绍。
+            //其次，利用IO流将服务器端的PDF文件加载到输入流中，然后用输出流传送给客户端
+//            String realPath = file.get("file_path").toString();
+            InputStream ips = null;
+            OutputStream ops = null;
+            response.reset();
+            response.setCharacterEncoding("gbk");
+//            if(suffix.equalsIgnoreCase("pdf"))
+//            {
+                response.setContentType(com.dafang.monitor.nx.utils.Constants.PDF);
+//            }
+//            else
+//            {
+//                response.setContentType(org.os.mmbs.core.filesys.util.Constants.TXT);
+//            }
+            java.io.File file2 = new java.io.File(realPath);
+            ops = response.getOutputStream();
+            ips = new FileInputStream(file2);
+            response.addHeader("Content-Length", new Long(file2.length()).toString());
+            int i = 0;
+            byte[] buffer = new byte[1024];
+            i = ips.read(buffer);
+            while (i != -1)
+            {
+                ops.write(buffer, 0, i);
+                i = ips.read(buffer);
+            }
+            ips.close();
+            ops.flush();
+            ops.close();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

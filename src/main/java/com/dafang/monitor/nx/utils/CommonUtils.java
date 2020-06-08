@@ -107,12 +107,23 @@ public class CommonUtils {
     public static double getValByOp(@NotNull List<Map<String, Object>> datas, String element, String op){
         DoubleSummaryStatistics summaryStatistics = filterData(datas,element).stream().mapToDouble(x ->
                 Convert.toDouble(x.get(element))).summaryStatistics();
-        double res = switch(op){
-            case "min"-> summaryStatistics.getMin();
-            case "max"-> summaryStatistics.getMax();
-            case "sum"-> summaryStatistics.getSum();
-            default -> summaryStatistics.getAverage();
-        };
+//        double res = switch(op){
+//            case "min"-> summaryStatistics.getMin();
+//            case "max"-> summaryStatistics.getMax();
+//            case "sum"-> summaryStatistics.getSum();
+//            default -> summaryStatistics.getAverage();
+//        };
+        double res = 0.0;
+        if (StringUtils.equals(op,"min")){
+            res = summaryStatistics.getMin();
+        }else if(StringUtils.equals(op,"max")){
+            res = summaryStatistics.getMax();
+        }else if(StringUtils.equals(op,"sum")){
+            res = summaryStatistics.getSum();
+        }else {
+            res = summaryStatistics.getAverage();
+        }
+
         return res;
     }
 

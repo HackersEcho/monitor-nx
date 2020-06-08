@@ -3,6 +3,7 @@ package com.dafang.monitor.nx.event.mapper;
 import com.dafang.monitor.nx.event.entity.po.SeasonParam;
 import com.dafang.monitor.nx.event.entity.vo.EventDaily;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 import tk.mybatis.MyMapper;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  * @version: 1.0
  */
 @Mapper
+@Repository
 public interface SeasonMapper extends MyMapper<EventDaily> {
     List<EventDaily> seasonData(SeasonParam params);
     List<EventDaily> seasonLen(SeasonParam params);
