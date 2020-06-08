@@ -32,9 +32,7 @@ public abstract class TemplateAbstract {
 
     // 受保护的属性放在init()数据初始化里面赋值
     protected String templateName;//模板名称
-//    private String filePath = "D:\\product";// 文件生成的目标路径，例如：D:/wordFile/
-//    private String filePath = "W:\\newkmlfile\\Product";// 文件生成的目标路径，例如：D:/wordFile/
-    private String filePath = "D:\\product\\";// 文件生成的目标路径，例如：D:/wordFile/
+    private String filePath = "D:/product/";// 文件生成的目标路径，例如：D:/wordFile/
     protected String fileName;//文件名称
     protected String startData;
     protected String endData;
@@ -70,7 +68,6 @@ public abstract class TemplateAbstract {
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String createTime = df.format(date);
             String[] files = {doc,pdf};
-            path = path.replaceAll("\\\\","\\\\\\\\");
             for (String file : files) {
                 DirectoryParams deleteParams = new DirectoryParams(file);
                 mapper.deleteDirectories(deleteParams);

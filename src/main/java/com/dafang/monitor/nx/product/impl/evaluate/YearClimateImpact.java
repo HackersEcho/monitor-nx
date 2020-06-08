@@ -48,6 +48,8 @@ public class YearClimateImpact extends TemplateAbstract {
         //全区站点
         List<String> stas = RegionStaEnum.getStas("1");
         String stationNos = String.join(",", stas);
+        params.setST("0101");
+        params.setET("1231");
         for (String element : elements) {
             params.setElement(element);
             params.setCal("AVG");

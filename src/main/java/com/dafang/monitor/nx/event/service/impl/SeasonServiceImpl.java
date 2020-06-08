@@ -137,7 +137,11 @@ public class SeasonServiceImpl implements SeasonService {
                     x -> x.getYear().toString()).collect(Collectors.joining(","));
             String maxDaysTime = lenList.stream().filter(x -> x.getDays() == maxDays).map(
                     x -> x.getYear().toString()).collect(Collectors.joining(","));
-            seasonBuilder.perenVal(perenVal+"").minDays(minDays).maxDays(maxDays).maxDaysTime(maxDaysTime).minDaysTime(minDaysTime);
+            if(Convert.toDouble(params.getSeasonType()) == 4){
+                seasonBuilder.perenVal(perenVal+365+"").minDays(minDays+365).maxDays(maxDays+365).maxDaysTime(maxDaysTime).minDaysTime(minDaysTime);
+            }else {
+                seasonBuilder.perenVal(perenVal+"").minDays(minDays).maxDays(maxDays).maxDaysTime(maxDaysTime).minDaysTime(minDaysTime);
+            }
             // 查询年份数据
             List<Map<String, EventVal>> middleList = new ArrayList<>();
             for (int i=startYear;i<=endYear;i++){
@@ -151,7 +155,11 @@ public class SeasonServiceImpl implements SeasonService {
                     int liveVal = eventDaily.getDays();
                     double anomalyVal = liveVal - perenVal;
                     int rank = daysList.indexOf(liveVal) + 1;
-                    builder.liveVal(liveVal).perenVal(perenVal+"").anomalyVal(anomalyVal).rank(rank);
+                    if(Convert.toDouble(params.getSeasonType()) == 4){
+                        builder.liveVal(liveVal+365).perenVal(perenVal+365+"").anomalyVal(anomalyVal).rank(rank);
+                    }else{
+                        builder.liveVal(liveVal).perenVal(perenVal+"").anomalyVal(anomalyVal).rank(rank);
+                    }
                 }
                 resMap.put(key, builder.build());
                 middleList.add(resMap);

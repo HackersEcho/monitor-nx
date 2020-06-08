@@ -37,9 +37,5 @@ public interface ProductMapper extends MyMapper<Product> {
      */
     List<Product> periodComfort(ProductParams params);
 
-    /*
-    查询站点信息
-     */
-//    List<Map<String,Object>> get
 
 }

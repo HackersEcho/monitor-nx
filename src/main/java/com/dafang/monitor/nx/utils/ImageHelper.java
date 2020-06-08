@@ -14,10 +14,12 @@ public class ImageHelper {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        convert("aa", "aa");
+        convert("D:\\kmlfile\\最高温度（小时数据）分布_20200601145858.png", "D:\\kmlfile\\最高温度（小时数据）分布_20200601145858.png");
     }
     public static void convert(String inputFile, String outFile) throws IOException {
-        BufferedImage bufferedImage = ImageIO.read(new File(inputFile));
+        File file = new File(inputFile);
+        BufferedImage bufferedImage = ImageIO.read(file);
+//        BufferedImage bufferedImage = ImageIO.read(new File(inputFile));
         Image image = makeWhiteTransparent(bufferedImage);
         ImageIO.write(toBufferedImage(image), "png", new File(outFile));
     }

@@ -3,7 +3,6 @@ package com.dafang.monitor.nx.product.impl.monitor;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.NumberUtil;
 import com.dafang.monitor.nx.entity.RegionStaEnum;
-import com.dafang.monitor.nx.product.Products;
 import com.dafang.monitor.nx.product.TemplateAbstract;
 import com.dafang.monitor.nx.product.entity.emun.ProductEmun;
 import com.dafang.monitor.nx.product.entity.po.Product;
@@ -17,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 @Service
-public class DecisionService extends TemplateAbstract implements Products {
+public class DecisionService extends TemplateAbstract {
 
     @Autowired
     ProductMapper mapper;
