@@ -37,4 +37,6 @@ public class Daily implements Serializable {
     private Double val;// 对于要素的统计值,比如日数  平均值等等
     private Double element;// 前段传来的单要素
 
+    private Integer monthDay;//月日
+
 }
