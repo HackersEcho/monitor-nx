@@ -1,6 +1,8 @@
 package com.dafang.monitor.nx.event.entity.vo;
 
 import com.dafang.monitor.nx.statistics.entity.vo.CommonVal;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.OptBoolean;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.models.auth.In;
@@ -21,6 +23,7 @@ import java.util.Map;
  */
 @Data
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TheFirstRain implements Serializable{
     private static final long serialVersionUID = -8752056118824574544L;
     @ApiModelProperty(value = "站点编号")
@@ -34,11 +37,17 @@ public class TheFirstRain implements Serializable{
     @ApiModelProperty(value = "观测年份")
     private Integer statisticsYear;
     @ApiModelProperty(value = "观测月日")
-    private Integer statisticsMonthDay;
+    private Object statisticsMonthDay;
     @ApiModelProperty(value = "历史最大值")
     private Double earlierValue;
     @ApiModelProperty(value = "历史最大值出现时间")
     private String earlierValueTime;
+
+    @ApiModelProperty(value = "历史最早出现时间")
+    private Object maxDate;
+    @ApiModelProperty(value = "历史最晚出现时间")
+    private Object minDate;
+
     @ApiModelProperty(value = "查询年份中的数据",notes = "key = 年份  val = 对应的数据")
     private List<Map<String, EventVal>> data;
 

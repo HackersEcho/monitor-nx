@@ -1,10 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dafang.monitor.nx.event.mapper.TheFristRainMapper">
+    <!-- 首场透雨雨量查询 -->
     <select id="selectTheFirstRainRainfall" parameterType="TheFirstRainParam" resultType="Daily">
        SELECT t.stationNo as stationNo,b.station_name as stationName,t.event_time as monthDay,
        t.event_year as year,t.pre as val ,b.latitude,b.longitude
        FROM t_mete_climate_first_soaker t JOIN geography_station_info b ON t.stationNo = b.device_id
        WHERE ${condition} and  t.pre is not null
+    </select>
+    <!-- 首场透雨日期查询 -->
+    <select id="selectTheFirstRainRainDate" parameterType="TheFirstRainParam" resultType="Daily">
+       SELECT t.stationNo as stationNo,b.station_name as stationName,t.event_time as monthDay,
+       t.event_year as year ,b.latitude,b.longitude
+       FROM t_mete_climate_first_soaker t JOIN geography_station_info b ON t.stationNo = b.device_id
+       WHERE ${condition} and  t.pre is not null
+    </select>
+    <!-- 区域站点查询 -->
+    <select id="selectStationGroup"  resultType="Daily">
+       SELECT t.id as stationNo,t.station_id_array as stationIdArray,t.group_name as  stationName
+       FROM geography_station_group t
+       <where>
+           <if test="stations != null and stations != ''">
+               AND t.id IN
+               <foreach item="item" index="index" collection="stations" open="(" separator="," close=")">
+                   #{item}
+               </foreach>
+           </if>
+       </where>
+    </select>
+    <!-- 区域站点查询 -->
+    <select id="selectTheFirstRainStations" parameterType="TheFirstRainParam" resultType="Daily">
+        SELECT t.event_year as year, COUNT( 1 ) as val
+        FROM t_mete_climate_first_soaker t
+        <where>
+            <if test="stationNo != null and stationNo != ''">
+                AND t.stationNo IN
+                <foreach item="item" index="index" collection="stationNo" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            AND t.event_time &gt;= #{startMonthDay}
+            AND t.event_time &lt;= #{endMonthDay}
+            AND  t.pre is not null
+        </where>
+        GROUP BY
+        t.event_year
     </select>
 </mapper>

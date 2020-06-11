@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @description:
@@ -36,12 +37,45 @@ public class TheFristRainController {
 
     @PostMapping(value = "rainfall")
     @ApiOperation(value = "首场透雨雨量查询",notes = "透雨雨量")
-    public ResuleDto<List<TheFirstRain>> getSoakingDateStatistics(
+    public ResuleDto<List<TheFirstRain>> getSoakingPreStatistics(
             @Apicp("regions,startYear,endYear,climateScale,rankStartYear,rankEndYear")
             @RequestBody TheFirstRainParam theFirstRainParam){
         ResuleDto<List<TheFirstRain>> resuleDto = new ResuleDto<>();
         theFirstRainParam.setCondition(CommonUtils.getCondition(theFirstRainParam.getRegions()));
+        List<TheFirstRain> list = theFristRainService.getSoakingPreStatistics(theFirstRainParam);
+        resuleDto.setRespData(list);
+        if (list.size() == 0){
+            resuleDto.setRespCode(0);
+            resuleDto.setMessage("该条件下无数据");
+        }
+        return resuleDto;
+
+    }
+
+    @PostMapping(value = "rainDate")
+    @ApiOperation(value = "首场透雨日期",notes = "透雨日期")
+    public ResuleDto<List<TheFirstRain>> getSoakingDateStatistics(
+            @Apicp("regions,startYear,endYear,climateScale")
+            @RequestBody TheFirstRainParam theFirstRainParam){
+        ResuleDto<List<TheFirstRain>> resuleDto = new ResuleDto<>();
+        theFirstRainParam.setCondition(CommonUtils.getCondition(theFirstRainParam.getRegions()));
         List<TheFirstRain> list = theFristRainService.getSoakingDateStatistics(theFirstRainParam);
+        resuleDto.setRespData(list);
+        if (list.size() == 0){
+            resuleDto.setRespCode(0);
+            resuleDto.setMessage("该条件下无数据");
+        }
+        return resuleDto;
+
+    }
+
+    @PostMapping(value = "rainStation")
+    @ApiOperation(value = "首场透雨站数",notes = "透雨站数")
+    public ResuleDto<List<TheFirstRain>> getSoakingStationsStatistics(
+            @Apicp("regions,startDate,endDate,climateScale,rankStartYear,rankEndYear")
+            @RequestBody TheFirstRainParam theFirstRainParam){
+        ResuleDto<List<TheFirstRain>> resuleDto = new ResuleDto<>();
+        List<TheFirstRain> list = theFristRainService.getSoakingStationsStatistics(theFirstRainParam);
         resuleDto.setRespData(list);
         if (list.size() == 0){
             resuleDto.setRespCode(0);
