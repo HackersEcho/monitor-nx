@@ -13,8 +13,9 @@ public class Doc implements Serializable {
 
     private String stationNo;
     private String stationName;
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyyMMdd")
     private LocalDate observerTime;
+    private String time;
     private String year;
     private String longitude;
     private String latitude;

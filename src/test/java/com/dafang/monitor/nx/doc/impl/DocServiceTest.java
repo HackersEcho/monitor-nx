@@ -11,12 +11,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 class DocServiceTest {
     @Autowired
-    private DocService service;
+    private DocEventService service;
     @Test
     void run() {
-        DocParams params = new DocParams("20190101");
+        DocParams params = new DocParams();
+        params.setEndDate("20190501");
         params.setRegions("1");
         params.setCondition(CommonUtils.getCondition(params.getRegions()));
-        service.init(params);
+        service.run(params,"气温","DAY");
     }
 }

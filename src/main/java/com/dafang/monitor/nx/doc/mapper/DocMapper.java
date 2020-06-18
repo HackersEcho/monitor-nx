@@ -13,4 +13,12 @@ import java.util.List;
 public interface DocMapper extends MyMapper<Doc> {
     List<Doc> periodsList(DocParams params);
     List<Doc> periodDays(DocParams params);
+    /*
+    首场透雨
+     */
+    List<Doc> getFirstSoaker(DocParams params);
+    /*
+    四季入季
+     */
+    List<Doc> getSeason(DocParams params);
 }

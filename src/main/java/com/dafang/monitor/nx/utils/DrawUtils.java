@@ -15,6 +15,13 @@ import java.util.Map;
 public class DrawUtils {
 	private static final Log log = LogFactory.getLog(DrawUtils.class);
 
+	/**
+	 * 分布图绘制
+	 * @param list
+	 * @param type
+	 * @param fileName
+	 * @return
+	 */
 	public static String drawImg(List<Map<String, Object>> list,String type,String fileName) {
 		String lonStr = "";
 		String latStr = "";
@@ -29,16 +36,7 @@ public class DrawUtils {
 		stringBuffer1.append("latStr=" + latStr.substring(0, latStr.length() - 1) + "&");
 		stringBuffer1.append("valStr=" + valStr.substring(0, valStr.length() - 1) + "&");
 		String lablePointsStr = "[["+lonStr.substring(0, lonStr.length() - 1)+"],["+latStr.substring(0, latStr.length() - 1)+"],["+valStr.substring(0, valStr.length() - 1)+"]]";
-		// stringBuffer1.append("drawType=contourfmplus&");
-//		stringBuffer1.append("drawType=png&");
-//		stringBuffer1.append("graticules=true&");
-//		stringBuffer1.append("siteValue=false&");
-//		stringBuffer1.append("outFunction=nxquanqu_sharp&");
-//		stringBuffer1.append("siteName=true&");
-//		stringBuffer1.append("isShowPoint=true&");
-//		stringBuffer1.append("mapType=dzm&");
 
-//		stringBuffer1.append("mapName="+fileName+"&");
 		stringBuffer1.append("subTitle= &");
 		stringBuffer1.append("maptype=dzm&");
 		stringBuffer1.append("outFunction=nxquanqu_sharp4&");
@@ -46,13 +44,11 @@ public class DrawUtils {
 		stringBuffer1.append("lablePointsStr="+lablePointsStr+"&");
 		stringBuffer1.append("is_show_map_frame=true&");
 		stringBuffer1.append("is_show_point=false&");
-		stringBuffer1.append("is_show_label=true&");
+		stringBuffer1.append("is_show_label=false&");
 		stringBuffer1.append("is_show_map_grid=false&");
 		stringBuffer1.append("is_show_no_backgroud=false&");
 		stringBuffer1.append("is_point_2_rectangle=true&");
 		stringBuffer1.append("is_show_station_name=true&");
-
-
 		setParmsData(stringBuffer1, type);
 		String res = "";
 		try {
@@ -62,6 +58,48 @@ public class DrawUtils {
 			log.info("图片转换 出错");
 		}
 		return res;
+	}
+
+	/**
+	 * 散点图绘制
+	 * @param list
+	 * @param type
+	 * @param fileName
+	 */
+	public static void drawPoint(List<Map<String, Object>> list,String type,String fileName) {
+		String lonStr = "";
+		String latStr = "";
+		String valStr = "";
+		for (Map<String, Object> map : list) {
+			lonStr += map.get("longitude") + ",";
+			latStr += map.get("latitude") + ",";
+			valStr += map.get(type) + ",";
+		}
+		StringBuffer stringBuffer1 = new StringBuffer();
+		stringBuffer1.append("lonStr=" + lonStr.substring(0, lonStr.length() - 1) + "&");
+		stringBuffer1.append("latStr=" + latStr.substring(0, latStr.length() - 1) + "&");
+		stringBuffer1.append("valStr=" + valStr.substring(0, valStr.length() - 1) + "&");
+		String lablePointsStr = "[["+lonStr.substring(0, lonStr.length() - 1)+"],["+latStr.substring(0, latStr.length() - 1)+"],["+valStr.substring(0, valStr.length() - 1)+"]]";
+
+		stringBuffer1.append("subTitle= &");
+		stringBuffer1.append("maptype=point&");
+		stringBuffer1.append("outFunction=nxquanqu_sharp4&");
+		stringBuffer1.append("levsname=&");
+		stringBuffer1.append("lablePointsStr="+lablePointsStr+"&");
+		stringBuffer1.append("is_show_map_frame=true&");
+		stringBuffer1.append("is_show_point=false&");
+		stringBuffer1.append("is_show_label=false&");
+		stringBuffer1.append("is_show_map_grid=false&");
+		stringBuffer1.append("is_show_no_backgroud=false&");
+		stringBuffer1.append("is_point_2_rectangle=false&");
+		stringBuffer1.append("is_show_station_name=true&");
+		setParmsData(stringBuffer1, type);
+		try {
+			draw(stringBuffer1, fileName);
+			log.info("图片生成 成功");
+		} catch (Exception e) {
+			log.info("图片生成 出错");
+		}
 	}
 	/***
 	 * 绘图访问接口
@@ -89,7 +127,6 @@ public class DrawUtils {
 			// 建立输入流，向指向的URL传入参数
 			DataOutputStream dos = new DataOutputStream(connection.getOutputStream());
 
-//			dos.writeBytes(buffer.toString() + "&titleName=" + URLEncoder.encode(fileName, "UTF-8"));
 			dos.writeBytes(buffer.toString() + "&mapName=" + URLEncoder.encode(fileName, "UTF-8"));
 			dos.flush();
 			dos.close();
@@ -133,6 +170,14 @@ public class DrawUtils {
 				colors = "[[58,58,255],[116,114,255],[0,247,247],[155,255,255],[0,255,0],[163,255,163],[255,255,205],"
 						+ "[247,247,0],[255,207,157],[255,181,104],[255,116,116],[255,26,24]]";// 颜色
 				break;
+//			case "HighTemDays":
+//				leves = "0,5,10,15,20,30";// 级别
+//				colors = "[[255,255,205],[247,247,0],[255,207,157],[255,181,104],[255,116,116],[255,26,24],[255,13,13]]";// 颜色
+//				break;
+			case "HighTemDays":
+				leves = "0,5,10,15";// 级别
+				colors = "[[255,255,205],[247,247,0],[255,207,157],[255,181,104],[255,116,116]]";// 颜色
+				break;
 			case "PRE_Time_2020liveVal":
 				leves = "284.1,431.1,578.2,725.2,872.3,1019.3";// 级别
 				colors = "[[163,255,163],[0,255,0],[155,255,255],[0,247,247],[116,114,255],[58,58,255]]";// 颜色
@@ -141,6 +186,11 @@ public class DrawUtils {
 				leves = "-32.0,-25.6,-19.2,-12.8,-6.4,6.4,66.9,133.8,200.7,267.6,334.5";// 级别
 				colors = "[[58,58,255],[116,114,255],[0,247,247],[155,255,255],[0,255,0],[163,255,163],[255,255,205],"
 						+ "[247,247,0],[255,207,157],[255,181,104],[255,116,116],[255,26,24]]";// 颜色
+				break;
+			case "PreDays":
+				leves = "0,5,10,15,20,50,100,150,200";// 级别
+				colors = "[[58,58,255],[116,114,255],[155,255,255],[0,255,0],[163,255,163],[255,255,205],"
+						+ "[247,247,0],[255,207,157],[255,181,104],[255,26,24]]";// 颜色
 				break;
 			case "SSHliveVal":
 				leves = "0,200,400,600,800,1000,1200,1400,1600,1800,2000,2200,2400";// 级别

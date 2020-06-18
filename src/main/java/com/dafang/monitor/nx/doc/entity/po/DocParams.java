@@ -20,6 +20,8 @@ public class DocParams implements Serializable {
     private String endDate;
     @ApiModelProperty(value = "年份")
     private String year;
+    @ApiModelProperty(value = "产品id")
+    private Integer directoryId;
     @ApiModelProperty(value = "最小值")
     @Builder.Default
     private Double min =-999d;
@@ -47,8 +49,8 @@ public class DocParams implements Serializable {
     @JsonIgnore
     private String remark = "";
 
-    public DocParams(String endDate) {
-        this.endDate = endDate;
+    public DocParams() {
+
     }
 
     public DocParams(String startDate, String endDate, String year, Double min, Double max, String regions, String sT, String eT, String condition, String element, String code, String cal, String remark) {

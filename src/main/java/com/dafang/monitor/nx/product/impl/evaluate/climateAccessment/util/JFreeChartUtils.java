@@ -32,7 +32,7 @@ import static com.dafang.monitor.nx.utils.DrawUtils.imageChangeBase64;
 public class JFreeChartUtils {
 
     private static final Log log = LogFactory.getLog(JFreeChartUtils.class);
-    private static String filePath = "D:\\kmlfile";//柱状图地址
+    private static String filePath = "F:/NX_file/kmlfile";//柱状图地址
 
     public static void main(String[] args) {
         DefaultCategoryDataset s = createDataset();

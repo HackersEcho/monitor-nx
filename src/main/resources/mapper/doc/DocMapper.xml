@@ -40,4 +40,18 @@
             </otherwise>
         </choose>
     </select>
+    <!--首场透雨-->
+    <select id="getFirstSoaker" parameterType="DocParams" resultType="Doc">
+        SELECT t.stationNo,b.station_name as stationName,b.longitude,b.latitude,t.event_year as year
+        ,CONCAT(t.event_year,t.event_time) as time,${element} as val
+        FROM t_mete_climate_first_soaker t,geography_station_info b
+        WHERE t.stationNo = b.device_id
+    </select>
+    <!--四季入季-->
+    <select id="getSeason" parameterType="DocParams" resultType="Doc">
+        SELECT t.stationNo,b.station_name as stationName,b.longitude,b.latitude,t.event_year as year
+        ,CONCAT( t.event_year, t.event_time ) as time,t.event_time as val
+        FROM base_four_season_data t,geography_station_info b
+        WHERE t.stationNo = b.device_id and season_type = #{cal} and time_type = '1'
+    </select>
 </mapper>

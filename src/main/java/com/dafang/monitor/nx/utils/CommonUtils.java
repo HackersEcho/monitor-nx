@@ -4,6 +4,8 @@ import cn.hutool.core.convert.Convert;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotNull;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -177,5 +179,29 @@ public class CommonUtils {
     public static boolean isInteger(String str) {
         Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
         return pattern.matcher(str).matches();
+    }
+
+    /**
+     * 将日期转换为第X天
+     * @param date 20190101
+     * @return
+     */
+    public static Integer DateToDays(String date){
+        try{
+            int y,m,d;
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            y=Integer.parseInt(date.substring(0,4));
+            m=Integer.parseInt(date.substring(4,6));
+            d=Integer.parseInt(date.substring(6,8));
+            Date parse = df.parse(y + "");
+            java.util.Date d1 = df.parse(y+"-"+m+"-"+d);
+            java.util.Date d2 = df.parse(y+"-"+1+"-"+1);
+            long diff = d1.getTime() - d2.getTime();
+            long days = diff / (1000 * 60 * 60 * 24);
+            return Convert.toInt(days+1);
+        }catch(Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 }
