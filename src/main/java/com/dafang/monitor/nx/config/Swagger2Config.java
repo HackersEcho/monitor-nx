@@ -44,12 +44,22 @@ public class Swagger2Config {
                 .paths(PathSelectors.any())
                 .build();
     }
+
     @Bean
     public Docket createRestApi4() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("产品")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.dafang.monitor.nx.product.controller"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+    @Bean
+    public Docket createRestApi5() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("干旱")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.dafang.monitor.nx.drought.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

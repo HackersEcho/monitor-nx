@@ -1,6 +1,7 @@
 logging:
-  file: logs/log.log
   level.com.dafang.monitor.nx: DEBUG
+  file:
+    name: logs/log.log
 spring:
   datasource:
     druid:

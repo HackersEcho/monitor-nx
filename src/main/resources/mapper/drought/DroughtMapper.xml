@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.drought.mapper.DroughtMapper">
+
+    <!--  连续  -->
+    <select id="getContinue" resultType="Drought" parameterType="DroughtParam">
+        SELECT stationNo,station_name as stationName,
+        <choose>
+            <when test="code == 4 and element == 'temValue'">
+                ${cal}(POWER(1.07,1.8*${element})) as val
+            </when>
+            <otherwise>
+                ${cal}(${element}) as val
+            </otherwise>
+        </choose>
+        <include refid="DroughtCommon.notCrossYearSql"></include>
+        GROUP BY stationNo
+    </select>
+    <!--  同期  -->
+    <select id="getPeriod" parameterType="DroughtParam" resultType="Drought">
+        <choose>
+            <when test="sT !=null and sT &lt; eT">
+                select t.stationNo,b.station_name as stationName,${cal}(${element}) AS val,YEAR(ObserverTime) as year
+                <include refid="DroughtCommon.notCrossYearSql"></include>
+                GROUP BY stationNo,YEAR(ObserverTime)
+            </when>
+            <otherwise>
+                SELECT year,sum(val) as val,stationNo,stationName,longitude,latitude FROM (
+                select t.stationNo,b.station_name as stationName,${cal}(${element}) AS val,YEAR(ObserverTime)+1 as year
+                <include refid="DroughtCommon.crossYearProfixSql"></include>
+                GROUP BY stationNo,YEAR(ObserverTime)
+                UNION ALL
+                select t.stationNo,b.station_name as stationName,${cal}(${element}) AS val,YEAR(ObserverTime) as year
+                <include refid="DroughtCommon.crossYearSuffixSql"></include>
+                GROUP BY stationNo,YEAR(ObserverTime) )t GROUP BY stationNo,year
+            </otherwise>
+        </choose>
+    </select>
+
+    <!--  连续单要素  -->
+    <select id="getContinueData" resultType="Drought" parameterType="DroughtParam">
+        SELECT t.stationNo,t.ObserverTime as observerTime,b.station_name as stationName,b.longitude,b.latitude,${element} as val
+        <include refid="DroughtCommon.notCrossYearSql"></include>
+    </select>
+    <!--  同期单要素  -->
+    <select id="getPeriodData" parameterType="DroughtParam" resultType="Drought">
+        <choose>
+            <when test="sT !=null and sT &lt; eT">
+                select t.stationNo,t.ObserverTime as observerTime,b.station_name as stationName,b.longitude,b.latitude,${element} AS val,YEAR(ObserverTime) as year
+                <include refid="DroughtCommon.notCrossYearSql"></include>
+            </when>
+            <otherwise>
+                select t.stationNo,t.ObserverTime as observerTime,b.station_name as stationName,b.longitude,b.latitude,${element} AS val,YEAR(ObserverTime)+1 as year
+                <include refid="DroughtCommon.crossYearProfixSql"></include>
+                UNION ALL
+                select t.stationNo,t.ObserverTime as observerTime,b.station_name as stationName,b.longitude,b.latitude,${element} AS val,YEAR(ObserverTime) as year
+                <include refid="DroughtCommon.crossYearSuffixSql"></include>
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="getPerenVal" resultType="Drought" parameterType="DroughtParam">
+        SELECT t.stationNo,b.station_name AS stationName,SUM( ${element} ) AS val
+        FROM
+            t_mete_ns_multi_year t
+            JOIN geography_station_info b ON t.stationNo = b.device_id
+        WHERE
+            ${condition}
+            AND t.ObserverTime BETWEEN '${ST}' and '${ET}'
+            AND t.${element} BETWEEN ${min}
+            AND ${max}
+        GROUP BY
+            stationNo
+    </select>
+
+</mapper>

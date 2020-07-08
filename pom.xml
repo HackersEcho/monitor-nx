@@ -192,6 +192,7 @@
                 <configuration>
                     <source>13</source>
                     <target>13</target>
+                    <encoding>utf-8</encoding>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="DroughtCommon">
+    <sql id="notCrossYearSql">
+        from
+        <if test="code == 0">/*蒸散量表*/
+            t_mete_climate_pe_data t
+        </if>
+        <if test="code == 1">/*日数据表*/
+            base_day_data t
+        </if>
+        <if test="code == 2">/*气候干旱表*/
+            base_ci_index t
+        </if>
+        <if test="code == 3">/*常年值表*/
+            t_mete_ns_multi_year t
+        </if>
+        <if test="code == 4">/*气温降水预测*/
+            t_mete_climate_zqyb_data t
+        </if>
+        join geography_station_info  b ON t.stationNo = b.device_id where ${condition}
+        and
+        <choose>
+            <when test="sT != null and sT != ''">DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and #{eT} </when><!--同期-->
+            <otherwise>t.ObserverTime between #{startDate} and #{endDate} </otherwise><!--连续-->
+        </choose>
+        and t.${element} between #{min} and #{max}
+    </sql>
+    <sql id="crossYearProfixSql">
+        from
+        <if test="code == 0">
+            t_mete_climate_pe_data t
+        </if>
+        <if test="code == 1">
+            base_day_data t
+        </if>
+        <if test="code == 2">
+            base_ci_index t
+        </if>
+        <if test="code == 3">/*常年值表*/
+            t_mete_ns_multi_year t
+        </if>
+        <if test="code == 4">/*气温降水预测*/
+            t_mete_climate_zqyb_data t
+        </if>
+        join geography_station_info  b ON t.stationNo = b.device_id where ${condition}
+        and
+        DATE_FORMAT(t.ObserverTime,'%m%d')  between '0101' and #{eT}
+        and t.${element} between #{min} and #{max}
+    </sql>
+    <sql id="crossYearSuffixSql">
+        from
+        <if test="code == 0">
+            t_mete_climate_pe_data t
+        </if>
+        <if test="code == 1">
+            base_day_data t
+        </if>
+        <if test="code == 2">
+            base_ci_index t
+        </if>
+        <if test="code == 3">/*常年值表*/
+            t_mete_ns_multi_year t
+        </if>
+        <if test="code == 4">/*气温降水预测*/
+            t_mete_climate_zqyb_data t
+        </if>
+        join geography_station_info  b ON t.stationNo = b.device_id where ${condition}
+        and
+        DATE_FORMAT(t.ObserverTime,'%m%d')  between #{sT} and '1231'
+        and t.${element} between #{min} and #{max}
+    </sql>
+</mapper>

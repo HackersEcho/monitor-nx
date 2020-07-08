@@ -259,7 +259,7 @@ public class DrawUtils {
 		InputStream inputStream = null;
 		byte[] data = null;
 		try {
-			inputStream = new FileInputStream(java.net.URLDecoder.decode(imagePath, "utf-8"));
+			inputStream = new FileInputStream(java.net.URLDecoder.decode(imagePath, "UTF-8"));
 			data = new byte[inputStream.available()];
 			inputStream.read(data);
 			inputStream.close();
