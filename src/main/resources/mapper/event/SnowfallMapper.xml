@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.event.mapper.SnowfallMapper">
+    <!-- 降雪初终日查询 -->
+    <select id="selectSnowFallSDateStatisticsData" parameterType="SnowfallParam" resultType="SnowFallDaily">
+       SELECT t.stationNo as stationNo,b.station_name as stationName,t.stime as startTime,
+       t.etime as endTime, t.years as year ,b.latitude,b.longitude,t.type
+       FROM t_mete_climate_snowfall t JOIN geography_station_info b ON t.stationNo = b.device_id
+       WHERE ${condition}
+    </select>
+</mapper>
