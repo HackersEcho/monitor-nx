@@ -29,6 +29,8 @@ public class Daily implements Serializable {
     private Double TEM_Max;
     private Double TEM_Min;
     private Double SSH;
+    private Double FRS_Depth_AVG;//冻土
+    private Double Snow_Depth;//积雪
     private String longitude;
     private String latitude;
     private String region_id;

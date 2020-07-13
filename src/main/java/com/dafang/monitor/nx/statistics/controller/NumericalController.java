@@ -43,6 +43,23 @@ public class NumericalController {
         }
         return resuleDto;
     }
+
+    @PostMapping(value = "comprehensivePeriod")
+    @ApiOperation(value = "同期综合统计",notes = "平均值 累计值")
+    public ResuleDto<Object> comprehensivePeriod(@Apicp("regions,startDate,endDate,opType,element,min,max,climateScale,rankStartYear,rankEndYear") @RequestBody DailyParam params){
+        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+        params.setST(params.getStartDate().substring(4,8));
+        params.setET(params.getEndDate().substring(4,8));
+        ResuleDto<Object> resuleDto = new ResuleDto<>();
+        List<Map<String, Object>> mapList = service.comprehensiveStatisticPeriod(params);
+        resuleDto.setRespData(mapList);
+        if (mapList.size() == 0){
+            resuleDto.setRespCode(0);
+            resuleDto.setMessage("该条件下无数据");
+        }
+        return resuleDto;
+    }
+
     @PostMapping(value = "extrem")
     @ApiOperation(value = "极值统计",notes = "统计最大值 最小值 极大值 极小值...")
     public ResuleDto<List<ComprehensiveExtrem>> extrem(@Apicp("regions,startDate,endDate,climateScale,element,rankStartYear,rankEndYear") @RequestBody DailyParam params){

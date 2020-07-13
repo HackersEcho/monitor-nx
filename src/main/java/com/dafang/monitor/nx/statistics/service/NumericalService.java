@@ -16,13 +16,16 @@ import java.util.Map;
 public interface NumericalService {
     /*
     *
-     * 综合数据统计
+     * 综合数据统计(连续)
      * @param params
      * @return void
      * @author echo
      * @date 2020/4/2
      */
     List<Map<String, Object>> comprehensiveStatistic(DailyParam params);
+
+    List<Map<String, Object>> comprehensiveStatisticPeriod(DailyParam params);
+
     // 极值统计
     List<ComprehensiveExtrem> extrem(DailyParam params);
 

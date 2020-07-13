@@ -1,9 +1,13 @@
 package com.dafang.monitor.nx.statistics.service.impl;
 
 import cn.hutool.core.convert.Convert;
+import cn.hutool.core.util.NumberUtil;
 import com.dafang.monitor.nx.statistics.entity.po.Daily;
 import com.dafang.monitor.nx.statistics.entity.po.DailyParam;
-import com.dafang.monitor.nx.statistics.entity.vo.*;
+import com.dafang.monitor.nx.statistics.entity.vo.CommonVal;
+import com.dafang.monitor.nx.statistics.entity.vo.ComprehensiveExtrem;
+import com.dafang.monitor.nx.statistics.entity.vo.FirstDayCommonVal;
+import com.dafang.monitor.nx.statistics.entity.vo.FirstDays;
 import com.dafang.monitor.nx.statistics.mapper.NumericalMapper;
 import com.dafang.monitor.nx.statistics.service.NumericalService;
 import com.dafang.monitor.nx.utils.CommonUtils;
@@ -45,6 +49,99 @@ public class NumericalServiceImpl implements NumericalService {
                 map.put(element, val);
             }
             resList.add(map);
+        }
+        return resList;
+    }
+
+    @Override
+    public List<Map<String, Object>> comprehensiveStatisticPeriod(DailyParam params) {
+        List<Map<String, Object>> resList = new ArrayList<>();
+        boolean isSY = Convert.toInt(params.getST()) > Convert.toInt(params.getET());
+        int sYear = Convert.toInt(params.getStartDate().substring(0,4));//起始年份
+        int eYear = Convert.toInt(params.getEndDate().substring(0,4));//结束年份
+        if (isSY){
+            eYear = Convert.toInt(NumberUtil.sub(eYear,1));
+        }
+        String[] scales = params.getClimateScale().split("-");
+        int sScales = Convert.toInt(scales[0]);//起始常年值年份
+        int eScales = Convert.toInt(scales[1]);//结束常年值年份
+        Integer rankStartYear = params.getRankStartYear();//排位起始年份
+        Integer rankEndYear = params.getRankEndYear();//排位结束年份
+        String element = params.getElement();//要素
+        String opType = params.getOpType();//计算方式
+        //获取数据
+        List<Map<String, Object>> datas = mapper.periodByElement(params);
+        List<String> stationNos = datas.stream().map(x->x.get("stationNo").toString()).distinct().collect(Collectors.toList());
+        List<String> years = datas.stream().map(x -> x.get("year").toString()).distinct().collect(Collectors.toList());
+        List<Map<String,Object>> baseData = new ArrayList<>();
+        for (String stationNo : stationNos) {
+            List<Map<String, Object>> singleList = datas.stream().filter(x -> StringUtils.equals(stationNo, x.get("stationNo").toString())).collect(Collectors.toList());
+            Map<String, Object> maps = singleList.get(0);
+            for (String year : years) {
+                Map<String,Object> map = new HashMap<>();
+                List<Map<String, Object>> currentList = singleList.stream().filter(x -> StringUtils.equals(x.get("year").toString(), year)).collect(Collectors.toList());
+                double val = CommonUtils.getValByOp(currentList, "val", opType);
+                map.put("stationNo",stationNo);
+                map.put("stationName",maps.get("stationName"));
+                map.put("year",year);
+                map.put("longitude",maps.get("longitude"));
+                map.put("latitude",maps.get("latitude"));
+                map.put("val", NumberUtil.round(val,1));
+                baseData.add(map);
+            }
+        }
+        for (String stationNo : stationNos) {
+            List<Map<String, Object>> singleList = baseData.stream().filter(x -> StringUtils.equals(x.get("stationNo").toString(), stationNo)).collect(Collectors.toList());
+            Map<String, Object> maps = singleList.get(0);
+            double perenVal = singleList.stream().filter(x -> Convert.toInt(x.get("year").toString()) >= sScales && Convert.toInt(x.get("year").toString()) <= eScales).
+                    mapToDouble(x -> Convert.toDouble(x.get("val").toString())).summaryStatistics().getAverage();//常年值
+            List<Double> sortList = singleList.stream().filter(x -> Convert.toInt(x.get("year").toString()) >= rankStartYear && Convert.toInt(x.get("year").toString()) <= rankEndYear).
+                    map(x -> Convert.toDouble(x.get("val").toString())).collect(Collectors.toList());
+            if (StringUtils.equals(element,"TEM_Min")){
+                sortList.sort(Comparator.naturalOrder());//升序
+            }else {
+                sortList.sort(Comparator.reverseOrder());//降序
+            }
+            for (int i = sYear; i <= eYear; i++){
+                Map<String,Object> map = new HashMap<>();
+                int year = i;
+                OptionalDouble optionalDouble = singleList.stream().filter(x -> Convert.toInt(x.get("year").toString()) == year).
+                        mapToDouble(x -> Convert.toDouble(x.get("val").toString())).findFirst();
+                map.put("stationNo",stationNo);
+                map.put("stationName",maps.get("stationName"));
+                if (isSY){
+                    map.put("year",year + "-" + Convert.toInt(NumberUtil.add(year,1)));
+                }else {
+                    map.put("year",year);
+                }
+                map.put("longitude",maps.get("longitude"));
+                map.put("latitude",maps.get("latitude"));
+                if (optionalDouble.isPresent()){
+                    double liveVal = optionalDouble.getAsDouble();//实况值
+                    double anomalyVal = liveVal - perenVal;//距平
+                    if (StringUtils.contains("PRE",element)){
+                        map.put("anomolyPercent",NumberUtil.div(anomalyVal,perenVal,2)*100);
+                    }
+                    int rank = sortList.indexOf(liveVal)+1;//历史同期排位
+                    double historyMaxValue = sortList.get(0);//历史同期最大值
+                    String historyMaxValueTime = singleList.stream().filter(x->Convert.toDouble(x.get("val")) == historyMaxValue).
+                            map(x->x.get("year").toString()).collect(Collectors.joining("-"));//历史同期最大值对应时间
+                    map.put("liveVal",optionalDouble.getAsDouble());
+                    map.put("perenVal",NumberUtil.round(perenVal,1));
+                    map.put("anomalyVal",NumberUtil.round(anomalyVal,1));
+                    map.put("historyMaxValue",historyMaxValue);
+                    map.put("historyMaxValueTime",historyMaxValueTime);
+                    map.put("rank",rank);
+                }else {
+                    map.put("liveVal","");
+                    map.put("perenVal","");
+                    map.put("anomalyVal","");
+                    map.put("historyMaxValue","");
+                    map.put("historyMaxValueTime","");
+                    map.put("rank","");
+                }
+                resList.add(map);
+            }
         }
         return resList;
     }

@@ -18,6 +18,8 @@ import java.util.Map;
 @Repository
 public interface NumericalMapper{
     List<Map<String,Object>> continuousByElement(DailyParam params);
+    //平均值、累计值同期
+    List<Map<String,Object>> periodByElement(DailyParam params);
     // 单要素的同期数据查询
     List<Daily> periodList(DailyParam params);
 }
