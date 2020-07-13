@@ -9,7 +9,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -59,10 +58,10 @@ public class VariableTempServiceImpl implements VariableTempService {
                     boolean index = false;
                     boolean index2 = true;
                     index = Math.abs(rangeValue) >= Math.abs(params.getThreshold());
-                    if(params.getUpOrDown().equals("up")) {//升温
-                        index2 = afterValue>=beforeValue;
-                    }else if(params.getUpOrDown().equals("down")) {//降温
-                        index2 = afterValue<=beforeValue;
+                    if (params.getUpOrDown().equals("up")) {//升温
+                        index2 = afterValue >= beforeValue;
+                    } else if (params.getUpOrDown().equals("down")) {//降温
+                        index2 = afterValue <= beforeValue;
                     }
                     if (index && index2) {
                         counts++;
@@ -90,6 +89,7 @@ public class VariableTempServiceImpl implements VariableTempService {
         }
         return tempVOList;
     }
+
     /**
      * @param
      * @return
@@ -100,6 +100,7 @@ public class VariableTempServiceImpl implements VariableTempService {
     @Override
     public List<VariableTempVO> periodDays(VariableTempParam params) {
         List<VariableTempVO> tempVOList = new ArrayList<>();
+        List<VariableTempVO> hisList = new ArrayList<>();
         DecimalFormat dft = new DecimalFormat("0.00");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //时间处理
@@ -116,29 +117,88 @@ public class VariableTempServiceImpl implements VariableTempService {
         if (liveValue.size() > 0) {
             Integer startYear = Integer.valueOf(params.getStartDate().substring(0, 4));
             Integer endYear = Integer.valueOf(params.getEndDate().substring(0, 4));
-            LocalDate date = LocalDate.now();
-            Integer yearNow = Integer.valueOf(date.format(DateTimeFormatter.ofPattern("y")));
             List<String> statList = liveValue.stream().map(x -> x.get("stationNO").toString()).distinct().collect(Collectors.toList());
-            for (String stationNo : statList) {
-                List<VariableTempVO> listHis = new ArrayList<>();
-                List<Map<String, Object>> singleList = liveValue.stream().filter(
-                        x -> StringUtils.equals(stationNo, x.get("stationNO").toString())).collect(Collectors.toList());
-                if (params.getStatisticType().equals("rang")) {
-                    tempVOList = getRangVariableTemp(singleList, listHis, tempVOList, params,
-                            startYear, endYear, yearNow, day, dft, isCDY);
-                }
-                if (params.getStatisticType().equals("count")) {
-                    tempVOList = getCountVariableTemp(singleList, listHis, tempVOList, params,
-                            startYear, endYear, yearNow, day, sdf, dft, isCDY);
+            for (int i = startYear; i <= endYear; i++) {
+                String year = i + "";
+                for (String stationNo : statList) {
+                    List<Map<String, Object>> singleList = liveValue.stream().filter(
+                            x -> StringUtils.equals(stationNo, x.get("stationNO").toString())).collect(Collectors.toList());
+                    List<Map<String, Object>> currentList = singleList.stream().filter(x -> x.get("Years").toString().equals(year)).collect(Collectors.toList());
+                    if (params.getStatisticType().equals("rang")) {
+                        for (int m = day; m < currentList.size(); m++) {
+                            double beforeValue = Convert.toDouble(currentList.get(m - day).get(params.getTempType()));
+                            double afterValue = Convert.toDouble(currentList.get(m).get(params.getTempType()));
+                            String beforeTime = currentList.get(m - day).get("time").toString();//变温前时间
+                            String afterTime = currentList.get(m).get("time").toString();//变温后时间
+                            Double rangeValue = afterValue - beforeValue;//变温幅度
+                            if (Math.abs(rangeValue) >= Math.abs(params.getThreshold())) {
+                                //历史同期最大
+                                String md = beforeTime.replace("-","").substring(4,8);
+                                Map<String, Object> historyMap = getHistory(day, singleList, params, hisList, md, rangeValue);
+                                VariableTempVO build = VariableTempVO.builder()
+                                        .stationNo(currentList.get(m).get("stationNO").toString())
+                                        .stationName(currentList.get(m).get("stationName").toString())
+                                        .beforeTime(beforeTime)
+                                        .beforeValue(beforeValue)
+                                        .afterTime(afterTime)
+                                        .afterValue(afterValue)
+                                        .ObserverTime(year)
+                                        .historyMax(Convert.toDouble(historyMap.get("historyMax")))
+                                        .historyMaxTime(historyMap.get("historyMaxTime").toString())
+                                        .historicalRanking(historyMap.get("historicalRanking").toString())
+                                        .rangeValue(Double.valueOf(dft.format(rangeValue))).build();
+                                tempVOList.add(build);
+                            }
+                        }
+                    }
+                    if (params.getStatisticType().equals("count")) {
+                        tempVOList = getCountVariableTemp(singleList, tempVOList, params,
+                                startYear, endYear, day, sdf, dft, isCDY);
+                    }
                 }
             }
         }
         return tempVOList;
     }
+
+    private Map<String, Object> getHistory(int day, List<Map<String, Object>> singleList, VariableTempParam params,
+                                           List<VariableTempVO> hisList, String md, Double rangeValue) {
+        Map<String, Object> historyMap = new HashMap<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        DecimalFormat dft = new DecimalFormat("0.00");
+        for (int m = day; m < singleList.size(); m++) {
+            double beforeValue = Convert.toDouble(singleList.get(m - day).get(params.getTempType()));
+            double afterValue = Convert.toDouble(singleList.get(m).get(params.getTempType()));
+            String beforeTime = singleList.get(m - day).get("time").toString();//变温前时间
+            String monDay = beforeTime.replace("-","").substring(4,8);
+            Double hrangeValue = afterValue - beforeValue;//变温幅度
+            if (monDay.equals(md)) {
+                VariableTempVO build = VariableTempVO.builder()
+                        .beforeTime(beforeTime)
+                        .rangeValue(Double.valueOf(dft.format(hrangeValue))).build();
+                hisList.add(build);
+            }
+        }
+        if (params.getUpOrDown().equals("up")) {//升温
+            hisList = hisList.stream().
+                    sorted(Comparator.comparing(VariableTempVO::getRangeValue).reversed()).collect(Collectors.toList());
+        } else if (params.getUpOrDown().equals("down")) {//降温
+            hisList = hisList.stream().
+                    sorted(Comparator.comparing(VariableTempVO::getRangeValue)).collect(Collectors.toList());
+        }
+        historyMap.put("historyMax", Math.abs(hisList.get(0).getRangeValue()));
+        historyMap.put("historyMaxTime", hisList.get(0).getBeforeTime());
+        historyMap.put("historicalRanking",historicalRankingTotalDays(hisList, rangeValue, params.getUpOrDown()));
+        return historyMap;
+    }
+
     /*
      * 变温同期次数统计
      */
-    private List<VariableTempVO> getCountVariableTemp(List<Map<String, Object>> singleList, List<VariableTempVO> listHis, List<VariableTempVO> tempVOList, VariableTempParam params, Integer startYear, Integer endYear, Integer yearNow, int day, SimpleDateFormat sdf, DecimalFormat dft, Boolean isCDY) {
+    private List<VariableTempVO> getCountVariableTemp(List<Map<String, Object>> singleList, List<VariableTempVO> tempVOList, VariableTempParam params, Integer startYear, Integer endYear,int day, SimpleDateFormat sdf, DecimalFormat dft, Boolean isCDY) {
+        List<VariableTempVO> listHis = new ArrayList<>();
+        LocalDate date = LocalDate.now();
+        Integer yearNow = Integer.valueOf(date.format(DateTimeFormatter.ofPattern("y")));
         for (int m = 1951; m <= yearNow; m++) {
             int counts = 0;
             for (int n = day; n < singleList.size(); n++) {
@@ -200,7 +260,7 @@ public class VariableTempServiceImpl implements VariableTempService {
                     times = listSort.get(z).getCounts();
                 }
             }
-            perennialValue = dft.format(sum/(index==0?1:index));
+            perennialValue = dft.format(sum / (index == 0 ? 1 : index));
             String historicalRanking = historicalRankingTimes(listSort, times);
             VariableTempVO build = VariableTempVO.builder()
                     .stationNo(singleList.get(0).get("stationNO").toString())
@@ -208,7 +268,7 @@ public class VariableTempServiceImpl implements VariableTempService {
                     .ObserverTime(y + "")
                     .counts(times)
                     .perennialValue(perennialValue)
-                    .anomalyValue(dft.format(times-Double.valueOf(perennialValue)))
+                    .anomalyValue(dft.format(times - Double.valueOf(perennialValue)))
                     .historyMaxCount(listSort.get(0).getCounts())
                     .historicalRanking(historicalRanking).build();
             tempVOList.add(build);
@@ -229,71 +289,6 @@ public class VariableTempServiceImpl implements VariableTempService {
             historicalRanking = s + 1;
         }
         return historicalRanking + "";
-    }
-
-    /*
-     * 同期变温幅度
-     */
-    private List<VariableTempVO> getRangVariableTemp(List<Map<String, Object>> singleList, List<VariableTempVO> listHis, List<VariableTempVO> tempVOList, VariableTempParam params,
-                                                     Integer startYear, Integer endYear, int yearNow, int day, DecimalFormat dft, Boolean isCDY) {
-        for (int m = 1951; m <= yearNow; m++) {
-            for (int n = day; n < singleList.size(); n++) {
-                if (singleList.get(n).get("Years").toString().equals(m + "")) {
-                    double beforeValue = Convert.toDouble(singleList.get(n - day).get(params.getTempType()));
-                    double afterValue = Convert.toDouble(singleList.get(n).get(params.getTempType()));
-                    String beforeTime = singleList.get(n - day).get("time").toString();//变温前时间
-                    String afterTime = singleList.get(n).get("time").toString();//变温后时间
-                    Double rangeValue = afterValue - beforeValue;//变温幅度
-                    if (Math.abs(rangeValue) >= Math.abs(params.getThreshold())) {
-                        VariableTempVO build = VariableTempVO.builder()
-                                .stationNo(singleList.get(n).get("stationNO").toString())
-                                .stationName(singleList.get(n).get("stationName").toString())
-                                .beforeTime(beforeTime)
-                                .beforeValue(beforeValue)
-                                .afterTime(afterTime)
-                                .afterValue(afterValue)
-                                .ObserverTime(m + "")
-                                .rangeValue(Double.valueOf(dft.format(rangeValue))).build();
-                        listHis.add(build);
-                    }
-                }
-            }
-        }
-        //排序方便取历史同期最大值和历史排位
-        List<VariableTempVO> listSort = new ArrayList<>();
-        if (params.getUpOrDown().equals("up")) {//升温
-            listSort = listHis.stream().
-                    sorted(Comparator.comparing(VariableTempVO::getRangeValue).reversed()).collect(Collectors.toList());
-        } else if (params.getUpOrDown().equals("down")) {//降温
-            listSort = listHis.stream().
-                    sorted(Comparator.comparing(VariableTempVO::getRangeValue)).collect(Collectors.toList());
-        }
-        //组装返回数据
-        if (isCDY) {//跨年
-            startYear = startYear + 1;
-        }
-        for (int y = startYear; y <= endYear; y++) {
-            for (int z = 0; z < listSort.size(); z++) {
-                if (listSort.get(z).getObserverTime().equals(y + "")) {
-                    Double rangeValue = listSort.get(z).getRangeValue();
-                    String historicalRanking = historicalRankingTotalDays(listSort, rangeValue, params.getUpOrDown());
-                    VariableTempVO build = VariableTempVO.builder()
-                            .stationNo(listSort.get(z).getStationNo())
-                            .stationName(listSort.get(z).getStationName())
-                            .beforeTime(listSort.get(z).getBeforeTime())
-                            .beforeValue(listSort.get(z).getBeforeValue())
-                            .afterTime(listSort.get(z).getAfterTime())
-                            .afterValue(listSort.get(z).getAfterValue())
-                            .ObserverTime(listSort.get(z).getObserverTime())
-                            .historyMax(listSort.get(0).getRangeValue())
-                            .historyMaxTime(listSort.get(0).getAfterTime())
-                            .historicalRanking(historicalRanking)
-                            .rangeValue(rangeValue).build();
-                    tempVOList.add(build);
-                }
-            }
-        }
-        return tempVOList;
     }
 
     private Map<String, Object> hanldTime(String startDate, String variableTime) {

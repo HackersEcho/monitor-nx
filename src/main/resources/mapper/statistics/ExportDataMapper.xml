@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dafang.monitor.nx.statistics.mapper.ExportDataMapper">
+    <resultMap id="BaseResultMap" type="HashMap">
+        <result column="stationNo" jdbcType="VARCHAR" property="stationNo" />
+        <result column="stationName" jdbcType="VARCHAR" property="stationName" />
+        <result column="observerTime" jdbcType="VARCHAR" property="observerTime" />
+        <result column="temAvg" jdbcType="VARCHAR" property="temAvg" />
+    </resultMap>
+    <!--  查询导出数据  -->
+    <select id="getBasicsDataQueryDaoByRegion" resultMap="BaseResultMap">
+         select ${colStr}
+         from ${table}  t ,geography_station_info b
+         where  t.stationNo = b.device_id
+         and t.ObserverTime  BETWEEN #{startTime} AND #{endTime}
+         and ${condition}
+         and t.${col} BETWEEN #{min} and #{max}
+         order by  ObserverTime LIMIT #{startIndex},#{endIndex}
+    </select>
+    <select id="selectCount" resultType="Integer">
+         select count(1)
+         from ${table}  t ,geography_station_info b
+         where  t.stationNo = b.device_id
+         and t.ObserverTime  BETWEEN #{startTime} AND #{endTime}
+         and ${condition}
+         and t.${col} BETWEEN #{min} and #{max}
+    </select>
+</mapper>
