@@ -1,7 +1,9 @@
 package com.dafang.monitor.nx.statistics.service.impl;
 
 import cn.hutool.core.convert.Convert;
+import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.NumberUtil;
+import com.dafang.monitor.nx.entity.RegionStaEnum;
 import com.dafang.monitor.nx.statistics.entity.po.Daily;
 import com.dafang.monitor.nx.statistics.entity.po.DailyParam;
 import com.dafang.monitor.nx.statistics.entity.vo.CommonVal;
@@ -55,8 +57,18 @@ public class NumericalServiceImpl implements NumericalService {
 
     @Override
     public List<Map<String, Object>> comprehensiveStatisticPeriod(DailyParam params) {
-        List<Map<String, Object>> resList = new ArrayList<>();
-        boolean isSY = Convert.toInt(params.getST()) > Convert.toInt(params.getET());
+        List<Map<String, Object>> result = new ArrayList<>();
+        String[] Regions = params.getRegions().split(",");//判断区域、单站
+        String[] regions = {},stationNos = {};
+        for (String region : Regions) {
+            if (region.length() < 5){//区域
+                regions = ArrayUtil.append(regions, region);
+            }
+            if (region.length() >= 5){//单站
+                stationNos = ArrayUtil.append(stationNos,region);
+            }
+        }
+        boolean isSY = Convert.toInt(params.getST()) > Convert.toInt(params.getET());//是否跨年
         int sYear = Convert.toInt(params.getStartDate().substring(0,4));//起始年份
         int eYear = Convert.toInt(params.getEndDate().substring(0,4));//结束年份
         if (isSY){
@@ -71,25 +83,67 @@ public class NumericalServiceImpl implements NumericalService {
         String opType = params.getOpType();//计算方式
         //获取数据
         List<Map<String, Object>> datas = mapper.periodByElement(params);
-        List<String> stationNos = datas.stream().map(x->x.get("stationNo").toString()).distinct().collect(Collectors.toList());
         List<String> years = datas.stream().map(x -> x.get("year").toString()).distinct().collect(Collectors.toList());
-        List<Map<String,Object>> baseData = new ArrayList<>();
-        for (String stationNo : stationNos) {
-            List<Map<String, Object>> singleList = datas.stream().filter(x -> StringUtils.equals(stationNo, x.get("stationNo").toString())).collect(Collectors.toList());
-            Map<String, Object> maps = singleList.get(0);
-            for (String year : years) {
-                Map<String,Object> map = new HashMap<>();
-                List<Map<String, Object>> currentList = singleList.stream().filter(x -> StringUtils.equals(x.get("year").toString(), year)).collect(Collectors.toList());
-                double val = CommonUtils.getValByOp(currentList, "val", opType);
-                map.put("stationNo",stationNo);
-                map.put("stationName",maps.get("stationName"));
-                map.put("year",year);
-                map.put("longitude",maps.get("longitude"));
-                map.put("latitude",maps.get("latitude"));
-                map.put("val", NumberUtil.round(val,1));
-                baseData.add(map);
+        //区域处理哦
+        if (regions != null){
+            List<Map<String,Object>> baseRegionData = new ArrayList<>();
+            for (String region : regions) {
+                for (RegionStaEnum value : RegionStaEnum.values()) {
+                    if (StringUtils.equals(region,value.getRegionId())){
+                        List<Map<String, Object>> singleRegionList = datas.stream().filter(x -> StringUtils.contains(value.getStas(), x.get("stationNo").toString())).collect(Collectors.toList());
+                        for (String year : years) {
+                            Map<String,Object> map = new HashMap<>();
+                            List<Map<String, Object>> currentList = singleRegionList.stream().filter(x -> StringUtils.equals(x.get("year").toString(), year)).collect(Collectors.toList());
+                            double val = CommonUtils.getValByOp(currentList, "val", opType);
+                            map.put("stationNo",region);
+                            map.put("stationName",value.getDesc());
+                            map.put("year",year);
+                            map.put("val",NumberUtil.round(val,1));
+                            baseRegionData.add(map);
+                        }
+                    }
+                }
             }
+            result = processPeriodData(result,baseRegionData,regions,sYear,eYear,sScales,eScales,rankStartYear,rankEndYear,element,isSY);
         }
+        //单站处理哦
+        if (stationNos != null){
+            List<Map<String,Object>> baseData = new ArrayList<>();
+            for (String stationNo : stationNos) {
+                List<Map<String, Object>> singleList = datas.stream().filter(x -> StringUtils.equals(stationNo, x.get("stationNo").toString())).collect(Collectors.toList());
+                Map<String, Object> maps = singleList.get(0);
+                for (String year : years) {
+                    Map<String,Object> map = new HashMap<>();
+                    List<Map<String, Object>> currentList = singleList.stream().filter(x -> StringUtils.equals(x.get("year").toString(), year)).collect(Collectors.toList());
+                    double val = CommonUtils.getValByOp(currentList, "val", opType);
+                    map.put("stationNo",stationNo);
+                    map.put("stationName",maps.get("stationName"));
+                    map.put("year",year);
+                    map.put("val", NumberUtil.round(val,1));
+                    baseData.add(map);
+                }
+            }
+            result = processPeriodData(result,baseData,stationNos,sYear,eYear,sScales,eScales,rankStartYear,rankEndYear,element,isSY);
+        }
+        return result;
+    }
+
+    /**
+     * 同期平均累计常年值，距平，历史排位，历史同期最大（小）数据计算
+     * @param result 返回结果
+     * @param baseData 实况数据集合
+     * @param stationNos 站号（区域号）
+     * @param sYear 开始年份
+     * @param eYear 结束年份
+     * @param sScales 开始常年值
+     * @param eScales 结束常年值
+     * @param rankStartYear 开始历史同期排位
+     * @param rankEndYear 结束历史同期排位
+     * @param element 要素
+     * @param isSY 是否跨年
+     * @return
+     */
+    public List<Map<String,Object>> processPeriodData(List<Map<String,Object>> result, List<Map<String, Object>> baseData, String[] stationNos ,int sYear, int eYear, int sScales, int eScales, int rankStartYear, int rankEndYear, String element, boolean isSY){
         for (String stationNo : stationNos) {
             List<Map<String, Object>> singleList = baseData.stream().filter(x -> StringUtils.equals(x.get("stationNo").toString(), stationNo)).collect(Collectors.toList());
             Map<String, Object> maps = singleList.get(0);
@@ -114,12 +168,10 @@ public class NumericalServiceImpl implements NumericalService {
                 }else {
                     map.put("year",year);
                 }
-                map.put("longitude",maps.get("longitude"));
-                map.put("latitude",maps.get("latitude"));
                 if (optionalDouble.isPresent()){
                     double liveVal = optionalDouble.getAsDouble();//实况值
                     double anomalyVal = liveVal - perenVal;//距平
-                    if (StringUtils.contains("PRE",element)){
+                    if (StringUtils.contains(element,"PRE")){
                         map.put("anomolyPercent",NumberUtil.div(anomalyVal,perenVal,2)*100);
                     }
                     int rank = sortList.indexOf(liveVal)+1;//历史同期排位
@@ -140,10 +192,11 @@ public class NumericalServiceImpl implements NumericalService {
                     map.put("historyMaxValueTime","");
                     map.put("rank","");
                 }
-                resList.add(map);
+                result.add(map);
             }
         }
-        return resList;
+
+        return result;
     }
 
     @Override

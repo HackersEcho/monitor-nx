@@ -64,6 +64,22 @@ public class CommonUtils {
     }
 
     /**
+     * 站点查询条件
+     * @param regions
+     * @return
+     */
+    public static String getCondition2(String regions){
+        String condition = "";
+        String[] Regions = regions.split(",");
+        if (Regions.length == 1 && Regions[0].length() == 5){
+            condition = "b.device_id = '" +Regions[0]+ "'";
+        }else {
+            condition = "b.station_type = '1'";
+        }
+        return condition;
+    }
+
+    /**
      * 对集合处理，用字符串，连接。如果长度大于三则后面的用。。。显示
      *
      * @param list

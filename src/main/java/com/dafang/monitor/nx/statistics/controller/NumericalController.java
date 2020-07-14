@@ -47,7 +47,7 @@ public class NumericalController {
     @PostMapping(value = "comprehensivePeriod")
     @ApiOperation(value = "同期综合统计",notes = "平均值 累计值")
     public ResuleDto<Object> comprehensivePeriod(@Apicp("regions,startDate,endDate,opType,element,min,max,climateScale,rankStartYear,rankEndYear") @RequestBody DailyParam params){
-        params.setCondition(CommonUtils.getCondition(params.getRegions()));
+        params.setCondition(CommonUtils.getCondition2(params.getRegions()));
         params.setST(params.getStartDate().substring(4,8));
         params.setET(params.getEndDate().substring(4,8));
         ResuleDto<Object> resuleDto = new ResuleDto<>();
